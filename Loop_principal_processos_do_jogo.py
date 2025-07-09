@@ -10,11 +10,14 @@ screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 x, y = screen.get_size()
 
 clock = pygame.time.Clock()
-jogador = Principal()
+jogador = pygame.sprite.GroupSingle()
+jogador.add(Principal())
 
 while True:
     event_loop()
     screen.fill('aqua')
+    
+    jogador.draw(screen)
     
     pygame.display.update()
     clock.tick(32)

@@ -1,7 +1,7 @@
 import pygame
-from Loop_principal_processos_do_jogo import screen
+
 class Principal(pygame.sprite.Sprite):
     def __init__(self, *groups):
         super().__init__(*groups)
-        rect = pygame.rect.Rect(600, 300, 10, 10)
-        pygame.draw.rect(screen, "red", rect)
+        self.image = pygame.image.load("Grafismos/Personagem_Principal/pixil-frame-0.png")
+        self.rect = self.image.get_rect(center = (600, 300))
