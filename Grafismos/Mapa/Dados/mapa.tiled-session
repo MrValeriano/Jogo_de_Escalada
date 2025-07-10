@@ -1,0 +1,29 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "",
+    "expandedProjectPaths": [
+    ],
+    "fileStates": {
+        "fundo.tsx": {
+            "dynamicWrapping": false
+        }
+    },
+    "last.imagePath": "C:/Users/jessi/OneDrive/Documents/GitHub/Jogo_de_Escalada/Grafismos/Mapa",
+    "map.fixedSize": false,
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 96,
+    "map.tileWidth": 96,
+    "openFiles": [
+    ],
+    "project": "mapa.tiled-project",
+    "recentFiles": [
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 96,
+        "width": 96
+    }
+}
