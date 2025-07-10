@@ -9,6 +9,9 @@
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
+        "": {
+            "scaleInDock": 0.33
+        },
         "Mapa.tmx": {
             "scale": 1,
             "selectedLayer": 0,
@@ -31,7 +34,7 @@
             "scaleInEditor": 1
         }
     },
-    "last.imagePath": "C:/Users/jessi/OneDrive/Documents/GitHub/Jogo_de_Escalada/Grafismos/Personagem_Principal/Idle",
+    "last.imagePath": "C:/Users/jessi/OneDrive/Documents/GitHub/Jogo_de_Escalada/Grafismos/Mapa",
     "map.fixedSize": true,
     "map.height": 8,
     "map.lastUsedFormat": "tmx",
