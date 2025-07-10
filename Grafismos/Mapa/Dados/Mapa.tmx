@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="12" height="8" tilewidth="96" tileheight="96" infinite="0" nextlayerid="4" nextobjectid="9">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="11" height="7" tilewidth="96" tileheight="96" infinite="0" nextlayerid="4" nextobjectid="24">
  <tileset firstgid="1" name="fundo" tilewidth="96" tileheight="96" tilecount="9" columns="9">
   <image source="../mapa_tiles.png" width="864" height="96"/>
+  <tile id="0"/>
+  <tile id="1"/>
+  <tile id="2"/>
+  <tile id="3"/>
+  <tile id="5"/>
+  <tile id="7"/>
+  <tile id="8"/>
+  <tile id="4"/>
+  <tile id="6"/>
  </tileset>
  <tileset firstgid="10" source="personagem_para_referencia_tamanho.tsx"/>
- <layer id="1" name="Tile Layer 1" width="12" height="8">
+ <layer id="1" name="Tile Layer 1" width="11" height="7">
   <data encoding="csv">
-8,4,4,4,4,4,4,4,4,4,4,9,
-2,1,1,1,1,1,1,1,1,1,1,3,
-2,1,1,1,1,1,1,1,1,1,1,3,
-2,1,1,1,1,1,1,1,1,1,1,3,
-2,1,1,1,1,1,1,1,1,1,1,3,
-2,1,1,1,1,1,1,1,1,1,1,3,
-2,1,1,1,1,1,1,1,1,1,1,3,
-7,5,5,5,5,5,5,5,5,5,5,6
+8,4,4,4,4,4,4,4,4,4,9,
+2,1,1,1,1,1,1,1,1,1,3,
+2,1,1,1,1,1,1,1,1,1,3,
+2,1,1,1,1,1,1,1,1,1,3,
+2,1,1,1,1,1,1,1,1,1,3,
+2,1,1,1,1,1,1,1,1,1,3,
+7,5,5,5,5,5,5,5,5,5,6
 </data>
  </layer>
- <objectgroup id="3" name="Object Layer 1">
-  <object id="1" gid="10" x="66" y="743" width="96" height="96"/>
-  <object id="2" gid="10" x="65" y="637" width="96" height="96"/>
-  <object id="3" gid="10" x="64" y="530" width="96" height="96"/>
-  <object id="4" gid="10" x="63" y="430" width="96" height="96"/>
-  <object id="5" gid="10" x="66" y="328" width="96" height="96"/>
-  <object id="6" gid="10" x="66" y="226" width="96" height="96"/>
-  <object id="7" gid="10" x="67" y="126" width="96" height="96"/>
- </objectgroup>
+ <objectgroup id="3" name="Object Layer 1"/>
 </map>

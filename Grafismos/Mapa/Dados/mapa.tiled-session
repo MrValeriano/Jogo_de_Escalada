@@ -3,21 +3,23 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "Mapa.tmx",
     "expandedProjectPaths": [
+        "."
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
         "Mapa.tmx": {
-            "scale": 0.25,
+            "scale": 1,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 1070,
-                "y": 1134
+                "x": 570.5,
+                "y": 315.5
             }
         },
         "Mapa.tmx#fundo": {
-            "scaleInDock": 1
+            "scaleInDock": 0.33,
+            "scaleInEditor": 1
         },
         "fundo.tsx": {
             "dynamicWrapping": false,
@@ -25,6 +27,7 @@
             "scaleInEditor": 1
         },
         "personagem_para_referencia_tamanho.tsx": {
+            "scaleInDock": 1,
             "scaleInEditor": 1
         }
     },
@@ -36,12 +39,13 @@
     "map.tileWidth": 96,
     "map.width": 12,
     "openFiles": [
+        "Mapa.tmx"
     ],
     "project": "mapa.tiled-project",
     "recentFiles": [
+        "Mapa.tmx",
         "personagem_para_referencia_tamanho.tsx",
-        "fundo.tsx",
-        "Mapa.tmx"
+        "fundo.tsx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
