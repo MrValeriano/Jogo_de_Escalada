@@ -6,20 +6,42 @@
     "activeFile": "",
     "expandedProjectPaths": [
     ],
+    "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
+        "Mapa.tmx": {
+            "scale": 0.25,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 1070,
+                "y": 1134
+            }
+        },
+        "Mapa.tmx#fundo": {
+            "scaleInDock": 1
+        },
         "fundo.tsx": {
-            "dynamicWrapping": false
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "personagem_para_referencia_tamanho.tsx": {
+            "scaleInEditor": 1
         }
     },
-    "last.imagePath": "C:/Users/jessi/OneDrive/Documents/GitHub/Jogo_de_Escalada/Grafismos/Mapa",
-    "map.fixedSize": false,
+    "last.imagePath": "C:/Users/jessi/OneDrive/Documents/GitHub/Jogo_de_Escalada/Grafismos/Personagem_Principal/Idle",
+    "map.fixedSize": true,
+    "map.height": 8,
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 96,
     "map.tileWidth": 96,
+    "map.width": 12,
     "openFiles": [
     ],
     "project": "mapa.tiled-project",
     "recentFiles": [
+        "personagem_para_referencia_tamanho.tsx",
+        "fundo.tsx",
+        "Mapa.tmx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
