@@ -26,12 +26,18 @@
         "C:/Users/jessi/OneDrive/Ambiente de Trabalho/João/Projectos Python/Data/tmx/overworld.tmx#overworld_ground": {
             "scaleInDock": 1
         },
+        "C:/Users/jessi/OneDrive/Ambiente de Trabalho/João/Projectos Python/Data/tmx/overworld.tmx#trees": {
+            "scaleInDock": 1
+        },
+        "C:/Users/jessi/OneDrive/Ambiente de Trabalho/João/Projectos Python/Data/tmx/overworld.tmx#water": {
+            "scaleInDock": 1
+        },
         "Mapa.tmx": {
             "scale": 4,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 582.625,
-                "y": 33602.375
+                "x": 528.125,
+                "y": 33599.875
             }
         },
         "Mapa.tmx#fundo": {
@@ -67,10 +73,10 @@
     ],
     "project": "mapa.tiled-project",
     "recentFiles": [
+        "C:/Users/jessi/OneDrive/Ambiente de Trabalho/João/Projectos Python/Data/tmx/overworld.tmx",
         "Mapa.tmx",
         "fundo.tsx",
         "paredes.tsx",
-        "C:/Users/jessi/OneDrive/Ambiente de Trabalho/João/Projectos Python/Data/tmx/overworld.tmx",
         "personagem_para_referencia_tamanho.tsx"
     ],
     "tileset.lastUsedFormat": "tsx",
