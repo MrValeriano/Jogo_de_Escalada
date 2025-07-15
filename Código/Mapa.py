@@ -17,6 +17,8 @@ class TodosSprites(pygame.sprite.Group):
             self.display_surf.blit(sprite.image, sprite.rect.topleft + self.offset)
 
 todos_sprites = TodosSprites()
+fronteiras = []
+plataformas = []
 
 class Sprite(pygame.sprite.Sprite):
     def __init__(self, pos, surf, *groups):
@@ -44,7 +46,9 @@ class Mapa:
             if obj.name == "Jogador" and obj.properties["Posição"] == player_start_pos:
                 self.posição = (obj.x, obj.y)
         #* fronteiras
-        
+        for area in tmx_map.get_layer_by_name("Bordas_Colisão"):
+            rect = pygame.Rect(area.x, area.y, area.width, area.height)
+            fronteiras.append(rect)
         #* plataformas
         for area in tmx_map.get_layer_by_name("Níveis"):
             print(area.name)
