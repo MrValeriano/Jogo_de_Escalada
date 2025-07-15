@@ -7,10 +7,10 @@ jogador = pygame.sprite.GroupSingle()
 jogador.add(Principal())
 
 while True:
+    dt = clock.tick()/1000
     event_loop()
     screen.fill('aqua')
     
     jogador.draw(screen)
     
     pygame.display.update()
-    clock.tick(32)
