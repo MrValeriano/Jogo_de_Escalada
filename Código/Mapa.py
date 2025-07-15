@@ -40,7 +40,7 @@ class Mapa:
         #* terrain
         for layer in ["Fundo", "Paredes"]:
             for x, y, surf in tmx_map.get_layer_by_name(layer).tiles():
-                Sprite((x * TILE_SIZE, y * TILE_SIZE), surf, self.todos_sprites)
+                Sprite((x * TILE_SIZE, y * TILE_SIZE), surf, todos_sprites)
         #* entities
         for obj in tmx_map.get_layer_by_name("Entidades"):
             if obj.name == "Jogador" and obj.properties["Posição"] == player_start_pos:
