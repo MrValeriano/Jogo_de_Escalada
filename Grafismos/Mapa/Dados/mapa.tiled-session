@@ -33,16 +33,19 @@
             "scaleInDock": 1
         },
         "Mapa.tmx": {
-            "scale": 0.75,
-            "selectedLayer": 3,
+            "scale": 2,
+            "selectedLayer": 4,
             "viewCenter": {
-                "x": 570,
-                "y": 33599.33333333333
+                "x": 278.25,
+                "y": 67020.75
             }
         },
         "Mapa.tmx#fundo": {
             "scaleInDock": 0.33,
             "scaleInEditor": 1
+        },
+        "Mapa.tmx#paredes": {
+            "scaleInDock": 1
         },
         "fundo.tsx": {
             "dynamicWrapping": false,
@@ -66,15 +69,13 @@
     "map.tileWidth": 96,
     "map.width": 12,
     "openFiles": [
-        "Mapa.tmx",
-        "fundo.tsx",
-        "paredes.tsx"
+        "Mapa.tmx"
     ],
     "project": "mapa.tiled-project",
     "recentFiles": [
+        "Mapa.tmx",
         "paredes.tsx",
         "fundo.tsx",
-        "Mapa.tmx",
         "C:/Users/jessi/OneDrive/Ambiente de Trabalho/João/Projectos Python/Data/tmx/overworld.tmx",
         "personagem_para_referencia_tamanho.tsx"
     ],
