@@ -28,29 +28,34 @@ class Sprite(pygame.sprite.Sprite):
 
 class Mapa:
     def __init__(self):
-        self.importar_dados()
-        self.setup(self.tmx_maps["Mapa"], "Início")
+        self.importar_grafismos()
+        self.setup(self.mapas_tmx["Mapa"], "Início")
     
-    def importar_dados(self):
-        self.tmx_maps = {
+    def importar_grafismos(self):
+        self.mapas_tmx = {
             "Mapa": load_pygame(join('Grafismos','Mapa','Dados','Mapa.tmx'))
         }
+        self.plataformas = {
+            "Pequena": pygame.image.load(join('Grafismos','Mapa','Plataforma_pequena.png')),
+            "Média": pygame.image.load(join('Grafismos','Mapa','Plataforma_media.png')),
+            "Grande": pygame.image.load(join('Grafismos','Mapa','Plataforma_grande.png'))
+        }
     
-    def setup(self, tmx_map, player_start_pos):
+    def setup(self, tmx_mapa, player_start_pos):
         #* fundo
         for layer in ["Fundo", "Paredes"]:
-            for x, y, surf in tmx_map.get_layer_by_name(layer).tiles():
+            for x, y, surf in tmx_mapa.get_layer_by_name(layer).tiles():
                 Sprite((x * TILE_SIZE, y * TILE_SIZE), surf, todos_sprites)
         #* entidades
-        for obj in tmx_map.get_layer_by_name("Entidades"):
+        for obj in tmx_mapa.get_layer_by_name("Entidades"):
             if obj.name == "Jogador" and obj.properties["Posição"] == player_start_pos:
                 self.posição = (obj.x, obj.y)
         #* fronteiras
-        for area in tmx_map.get_layer_by_name("Bordas_Colisão"):
+        for area in tmx_mapa.get_layer_by_name("Bordas_Colisão"):
             rect = pygame.Rect(area.x, area.y, area.width, area.height)
             fronteiras.append(rect)
         #* plataformas
-        for area in tmx_map.get_layer_by_name("Níveis"):
+        for area in tmx_mapa.get_layer_by_name("Níveis"):
             print(area.name)
             print(area.x, area.y)
             print(area.width, area.height)
