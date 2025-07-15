@@ -33,7 +33,7 @@ class Mapa:
     
     def importar_dados(self):
         self.tmx_maps = {
-            "Mapa": load_pygame(join('..','Mapa','Dados','Mapa.tmx'))
+            "Mapa": load_pygame(join('Grafismos','Mapa','Dados','Mapa.tmx'))
         }
     
     def setup(self, tmx_map, player_start_pos):
