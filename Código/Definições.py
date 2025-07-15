@@ -12,6 +12,5 @@ ANIMATION_SPEED = 6
 
 pygame.display.set_caption('Jogo de Escalada')
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-x, y = screen.get_size()
 
 clock = pygame.time.Clock()
