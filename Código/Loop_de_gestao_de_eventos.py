@@ -1,4 +1,5 @@
 from Definições import *
+from sys import exit
 
 def event_loop():
     for event in pygame.event.get():
