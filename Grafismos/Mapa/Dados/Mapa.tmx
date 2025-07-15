@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="11" height="700" tilewidth="96" tileheight="96" infinite="0" nextlayerid="6" nextobjectid="32">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="11" height="700" tilewidth="96" tileheight="96" infinite="0" nextlayerid="9" nextobjectid="86">
  <tileset firstgid="1" source="fundo.tsx"/>
  <tileset firstgid="11" source="paredes.tsx"/>
  <layer id="1" name="Tile Layer 1" width="11" height="700">
@@ -1410,4 +1410,47 @@
 12,13,13,13,13,13,13,13,13,13,14
 </data>
  </layer>
+ <objectgroup id="6" name="BorderWalls">
+  <object id="32" name="Top" x="0" y="0" width="1056" height="24"/>
+  <object id="33" name="Left" x="0" y="24" width="12" height="67152"/>
+  <object id="34" name="Right" x="1044" y="24" width="12" height="67152"/>
+  <object id="35" name="Bottom" x="0" y="67176" width="1056" height="24"/>
+ </objectgroup>
+ <objectgroup id="7" name="PlayArea">
+  <object id="37" name="Play Area" x="12" y="24" width="1032" height="67152"/>
+ </objectgroup>
+ <objectgroup id="8" name="Levels">
+  <object id="39" name="100" x="12" y="24" width="1032" height="960"/>
+  <object id="40" name="99" x="12" y="984" width="1032" height="960"/>
+  <object id="44" name="98" x="12" y="1944" width="1032" height="960"/>
+  <object id="45" name="97" x="12" y="2904" width="1032" height="960"/>
+  <object id="46" name="96" x="12" y="3864" width="1032" height="960"/>
+  <object id="47" name="95" x="12" y="4824" width="1032" height="960"/>
+  <object id="48" name="94" x="12" y="5784" width="1032" height="960"/>
+  <object id="49" name="93" x="12" y="6744" width="1032" height="960"/>
+  <object id="50" name="92" x="12" y="7704" width="1032" height="960"/>
+  <object id="51" name="91" x="12" y="8664" width="1032" height="960"/>
+  <object id="52" name="90" x="12" y="9624" width="1032" height="960"/>
+  <object id="53" name="89" x="12" y="10584" width="1032" height="960"/>
+  <object id="54" name="88" x="12" y="11544" width="1032" height="960"/>
+  <object id="55" name="87" x="12" y="12504" width="1032" height="960"/>
+  <object id="56" name="86" x="12" y="13464" width="1032" height="960"/>
+  <object id="57" name="85" x="12" y="14424" width="1032" height="960"/>
+  <object id="58" name="84" x="12" y="15384" width="1032" height="960"/>
+  <object id="59" name="83" x="12" y="16344" width="1032" height="960"/>
+  <object id="60" name="82" x="12" y="17304" width="1032" height="960"/>
+  <object id="61" name="81" x="12" y="18264" width="1032" height="960"/>
+  <object id="62" name="80" x="12" y="19224" width="1032" height="960"/>
+  <object id="75" name="79" x="12" y="20184" width="1032" height="960"/>
+  <object id="76" name="78" x="12" y="21144" width="1032" height="960"/>
+  <object id="77" name="77" x="12" y="22104" width="1032" height="960"/>
+  <object id="78" name="76" x="12" y="23064" width="1032" height="960"/>
+  <object id="79" name="96" x="12" y="24037" width="1032" height="960"/>
+  <object id="80" name="95" x="12" y="24997" width="1032" height="960"/>
+  <object id="81" name="94" x="12" y="25957" width="1032" height="960"/>
+  <object id="82" name="93" x="12" y="26917" width="1032" height="960"/>
+  <object id="83" name="92" x="12" y="27877" width="1032" height="960"/>
+  <object id="84" name="91" x="12" y="28837" width="1032" height="960"/>
+  <object id="85" name="90" x="12" y="29803" width="1032" height="960"/>
+ </objectgroup>
 </map>
