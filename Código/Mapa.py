@@ -58,7 +58,5 @@ class Mapa:
         for area in tmx_mapa.get_layer_by_name("Níveis"):
             surf = self.plataformas_surf["Pequena"]
             plataforma = Sprite((area.x, area.y), surf, todos_sprites)
-            print(area.name)
-            print(area.x, area.y)
-            print(area.width, area.height)
+            lista_plataformas.append(plataforma)
         
