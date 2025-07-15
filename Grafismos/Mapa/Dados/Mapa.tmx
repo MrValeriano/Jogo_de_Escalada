@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="11" height="700" tilewidth="96" tileheight="96" infinite="0" nextlayerid="9" nextobjectid="300">
- <tileset firstgid="1" source="fundo.tsx"/>
- <tileset firstgid="11" source="paredes.tsx"/>
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="11" height="700" tilewidth="96" tileheight="96" infinite="0" nextlayerid="10" nextobjectid="301">
+ <tileset firstgid="1" name="fundo" tilewidth="96" tileheight="96" tilecount="10" columns="2">
+  <image source="../fundo_tiles.png" width="192" height="480"/>
+ </tileset>
+ <tileset firstgid="11" name="paredes" tilewidth="96" tileheight="96" tilecount="8" columns="2">
+  <image source="../paredes_tiles.png" width="192" height="384"/>
+ </tileset>
  <layer id="1" name="Tile Layer 1" width="11" height="700">
   <data encoding="csv">
 1,1,1,1,1,1,1,1,1,1,1,
@@ -1416,7 +1420,7 @@
   <object id="34" name="Right" x="1044" y="24" width="12" height="67152"/>
   <object id="35" name="Bottom" x="0" y="67176" width="1056" height="24"/>
  </objectgroup>
- <objectgroup id="7" name="PlayArea" visible="0">
+ <objectgroup id="7" name="PlayArea">
   <object id="37" name="Play Area" x="12" y="24" width="1032" height="67152"/>
  </objectgroup>
  <objectgroup id="8" name="Levels">
@@ -1520,5 +1524,10 @@
   <object id="298" name="98" x="12" y="1418" width="1032" height="671"/>
   <object id="299" name="99" x="12" y="747" width="1032" height="671"/>
   <object id="39" name="100" x="12" y="24" width="1032" height="723"/>
+ </objectgroup>
+ <objectgroup id="9" name="Entidades">
+  <object id="300" name="Player" x="528" y="67128">
+   <point/>
+  </object>
  </objectgroup>
 </map>

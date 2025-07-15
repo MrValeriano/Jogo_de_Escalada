@@ -1,4 +1,4 @@
-import pygame
+from Definições import *
 
 def event_loop():
     for event in pygame.event.get():
