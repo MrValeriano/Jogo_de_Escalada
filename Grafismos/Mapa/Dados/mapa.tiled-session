@@ -91,13 +91,14 @@
     "map.tileWidth": 96,
     "map.width": 24,
     "openFiles": [
-        "Mapa.tmx"
+        "Mapa.tmx",
+        "Tutorial.tmx"
     ],
     "project": "mapa.tiled-project",
     "recentFiles": [
-        "C:/Users/jessi/OneDrive/Documents/GitHub/Jogo_de_Escalada/Grafismos/Mapa/paredes_tiles_teste.tsx",
         "Tutorial.tmx",
         "Mapa.tmx",
+        "C:/Users/jessi/OneDrive/Documents/GitHub/Jogo_de_Escalada/Grafismos/Mapa/paredes_tiles_teste.tsx",
         "paredes.tsx",
         "fundo.tsx",
         "C:/Users/jessi/OneDrive/Ambiente de Trabalho/João/Projectos Python/Data/tmx/overworld.tmx",
