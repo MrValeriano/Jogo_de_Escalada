@@ -8,7 +8,7 @@ jogador = Principal(mapa.posição, todos_sprites)
 
 while True:
     #* tick
-    dt = clock.tick()/100#0
+    dt = clock.tick()/1000
     #* eventos
     event_loop()
     #* representações no ecrã
