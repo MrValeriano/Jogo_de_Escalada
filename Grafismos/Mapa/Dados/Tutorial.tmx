@@ -6,6 +6,18 @@
  <tileset firstgid="11" name="paredes" tilewidth="96" tileheight="96" tilecount="8" columns="2">
   <image source="../paredes_tiles.png" width="192" height="384"/>
  </tileset>
+ <tileset firstgid="19" name="plataformas" tilewidth="576" tileheight="48" tilecount="3" columns="0">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="0">
+   <image source="../Plataforma_grande.png" width="576" height="48"/>
+  </tile>
+  <tile id="1">
+   <image source="../Plataforma_media.png" width="384" height="48"/>
+  </tile>
+  <tile id="2">
+   <image source="../Plataforma_pequena.png" width="192" height="48"/>
+  </tile>
+ </tileset>
  <layer id="8" name="Fundo" width="24" height="16">
   <data encoding="csv">
 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
