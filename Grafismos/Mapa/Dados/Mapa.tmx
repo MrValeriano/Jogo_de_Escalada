@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="11" height="700" tilewidth="96" tileheight="96" infinite="0" nextlayerid="10" nextobjectid="301">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="11" height="700" tilewidth="96" tileheight="96" infinite="0" nextlayerid="10" nextobjectid="302">
  <tileset firstgid="1" name="fundo" tilewidth="96" tileheight="96" tilecount="10" columns="2">
   <image source="../fundo_tiles.png" width="192" height="480"/>
  </tileset>
  <tileset firstgid="11" name="paredes" tilewidth="96" tileheight="96" tilecount="8" columns="2">
   <image source="../paredes_tiles.png" width="192" height="384"/>
+ </tileset>
+ <tileset firstgid="19" name="plataformas" tilewidth="576" tileheight="48" tilecount="3" columns="0">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="0">
+   <image source="../Plataforma_grande.png" width="576" height="48"/>
+  </tile>
+  <tile id="1">
+   <image source="../Plataforma_media.png" width="384" height="48"/>
+  </tile>
+  <tile id="2">
+   <image source="../Plataforma_pequena.png" width="192" height="48"/>
+  </tile>
  </tileset>
  <layer id="1" name="Fundo" width="11" height="700">
   <data encoding="csv">
@@ -1532,5 +1544,6 @@
    </properties>
    <point/>
   </object>
+  <object id="301" name="Plataforma_final" gid="19" x="192" y="240" width="672" height="48"/>
  </objectgroup>
 </map>

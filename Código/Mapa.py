@@ -50,6 +50,8 @@ class Mapa:
         for obj in tmx_mapa.get_layer_by_name("Entidades"):
             if obj.name == "Jogador" and obj.properties["Posição"] == pos_inicial_jog:
                 self.posição = (obj.x, obj.y)
+            else:
+                Sprite((obj.x, obj.y), obj.image, todos_sprites)
         #* fronteiras
         for area in tmx_mapa.get_layer_by_name("Bordas_Colisão"):
             rect = pygame.Rect(area.x, area.y, area.width, area.height)
@@ -57,6 +59,6 @@ class Mapa:
         #* plataformas
         for area in tmx_mapa.get_layer_by_name("Níveis"):
             surf = self.plataformas_surf["Pequena"]
-            plataforma = Sprite((area.x, area.y), surf, todos_sprites)
+            plataforma = Sprite((area.x, ((area.y + area.height) - surf.height)), surf, todos_sprites)
             lista_plataformas.append(plataforma)
         
