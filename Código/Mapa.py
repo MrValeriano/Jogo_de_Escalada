@@ -33,7 +33,8 @@ class Mapa:
     
     def importar_grafismos(self):
         self.mapas_tmx = {
-            "Mapa": load_pygame(join('Grafismos','Mapa','Dados','Mapa.tmx'))
+            "Mapa": load_pygame(join('Grafismos','Mapa','Dados','Mapa.tmx')),
+            "Tutorial": load_pygame(join('Grafismos','Mapa','Dados','Tutorial.tmx'))
         }
         self.plataformas_surf = {
             "Pequena": pygame.image.load(join('Grafismos','Mapa','Plataforma_pequena.png')),
@@ -69,15 +70,15 @@ class Mapa:
                 plataforma = Sprite(coords, surf, todos_sprites)
                 lista_plataformas[area.name].append(plataforma)
         #* plataformas aleatórias de cada nível
-        print(lista_plataformas)
-        for area in tmx_mapa.get_layer_by_name("Níveis"):
-            tamanho = sample(list(self.plataformas_surf.keys()))
+        # print(lista_plataformas)
+        # for area in tmx_mapa.get_layer_by_name("Níveis"):
+        #     tamanho = sample(list(self.plataformas_surf.keys()))
             
-            surf = self.plataformas_surf["Pequena"]
-            for i in range(2):
-                if i == 0:
-                    coords = (area.x, ((area.y + area.height) - surf.height))
-                else:
-                    coords = (((area.x + area.width) - surf.width), ((area.y + area.height) - surf.height))
-                plataforma = Sprite(coords, surf, todos_sprites)
-                lista_plataformas.append(plataforma)
+        #     surf = self.plataformas_surf["Pequena"]
+        #     for i in range(2):
+        #         if i == 0:
+        #             coords = (area.x, ((area.y + area.height) - surf.height))
+        #         else:
+        #             coords = (((area.x + area.width) - surf.width), ((area.y + area.height) - surf.height))
+        #         plataforma = Sprite(coords, surf, todos_sprites)
+        #         lista_plataformas.append(plataforma)
