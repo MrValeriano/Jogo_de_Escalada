@@ -56,10 +56,15 @@ class Mapa:
         for area in tmx_mapa.get_layer_by_name("Bordas_Colisão"):
             rect = pygame.Rect(area.x, area.y, area.width, area.height)
             fronteiras.append(rect)
-        #* plataformas
+        #* plataformas base de cada nível - fixas
         for area in tmx_mapa.get_layer_by_name("Níveis"):
             if area.name == "1": continue
             surf = self.plataformas_surf["Pequena"]
-            plataforma = Sprite((area.x, ((area.y + area.height) - surf.height)), surf, todos_sprites)
-            lista_plataformas.append(plataforma)
+            for i in range(2):
+                if i == 0:
+                    coords = (area.x, ((area.y + area.height) - surf.height))
+                else:
+                    coords = (((area.x + area.width) - surf.width), ((area.y + area.height) - surf.height))
+                plataforma = Sprite(coords, surf, todos_sprites)
+                lista_plataformas.append(plataforma)
         
