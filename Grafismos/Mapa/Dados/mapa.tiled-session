@@ -33,11 +33,11 @@
             "scaleInDock": 1
         },
         "Mapa.tmx": {
-            "scale": 2,
+            "scale": 0.33,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 278.25,
-                "y": 67020.75
+                "x": 437.87878787878776,
+                "y": 34325.75757575757
             }
         },
         "Mapa.tmx#fundo": {
@@ -45,7 +45,7 @@
             "scaleInEditor": 1
         },
         "Mapa.tmx#paredes": {
-            "scaleInDock": 1
+            "scaleInDock": 0.75
         },
         "fundo.tsx": {
             "dynamicWrapping": false,
@@ -61,13 +61,14 @@
             "scaleInEditor": 1
         }
     },
+    "last.externalTilesetPath": "C:/Users/jessi/OneDrive/Documents/GitHub/Jogo_de_Escalada/Grafismos/Mapa/Dados",
     "last.imagePath": "C:/Users/jessi/OneDrive/Documents/GitHub/Jogo_de_Escalada/Grafismos/Mapa",
     "map.fixedSize": true,
-    "map.height": 8,
+    "map.height": 16,
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 96,
     "map.tileWidth": 96,
-    "map.width": 12,
+    "map.width": 24,
     "openFiles": [
         "Mapa.tmx"
     ],
@@ -79,6 +80,7 @@
         "C:/Users/jessi/OneDrive/Ambiente de Trabalho/João/Projectos Python/Data/tmx/overworld.tmx",
         "personagem_para_referencia_tamanho.tsx"
     ],
+    "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
         "height": 96,
