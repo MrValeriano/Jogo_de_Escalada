@@ -58,7 +58,7 @@ class Mapa:
             fronteiras.append(rect)
         #* plataformas base de cada nível - fixas
         for area in tmx_mapa.get_layer_by_name("Níveis"):
-            lista_plataformas.update({area:[]})
+            lista_plataformas.update({area.name:[]})
             if area.name == "1": continue
             surf = self.plataformas_surf["Pequena"]
             for i in range(2):
@@ -67,7 +67,7 @@ class Mapa:
                 else:
                     coords = (((area.x + area.width) - surf.width), ((area.y + area.height) - surf.height))
                 plataforma = Sprite(coords, surf, todos_sprites)
-                lista_plataformas[area].append(plataforma)
+                lista_plataformas[area.name].append(plataforma)
         #* plataformas aleatórias de cada nível
         print(lista_plataformas)
         # for area in tmx_mapa.get_layer_by_name("Níveis"):
