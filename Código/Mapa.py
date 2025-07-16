@@ -18,7 +18,7 @@ class TodosSprites(pygame.sprite.Group):
 
 todos_sprites = TodosSprites()
 fronteiras = []
-lista_plataformas = []
+lista_plataformas = {}
 
 class Sprite(pygame.sprite.Sprite):
     def __init__(self, pos, surf, *groups):
@@ -58,6 +58,7 @@ class Mapa:
             fronteiras.append(rect)
         #* plataformas base de cada nível - fixas
         for area in tmx_mapa.get_layer_by_name("Níveis"):
+            lista_plataformas.update({area:[]})
             if area.name == "1": continue
             surf = self.plataformas_surf["Pequena"]
             for i in range(2):
@@ -66,4 +67,17 @@ class Mapa:
                 else:
                     coords = (((area.x + area.width) - surf.width), ((area.y + area.height) - surf.height))
                 plataforma = Sprite(coords, surf, todos_sprites)
-                lista_plataformas.append(plataforma)
+                lista_plataformas[area].append(plataforma)
+        #* plataformas aleatórias de cada nível
+        print(lista_plataformas)
+        # for area in tmx_mapa.get_layer_by_name("Níveis"):
+        #     tamanho = sample(list(self.plataformas_surf.keys()))
+            
+        #     surf = self.plataformas_surf["Pequena"]
+        #     for i in range(2):
+        #         if i == 0:
+        #             coords = (area.x, ((area.y + area.height) - surf.height))
+        #         else:
+        #             coords = (((area.x + area.width) - surf.width), ((area.y + area.height) - surf.height))
+        #         plataforma = Sprite(coords, surf, todos_sprites)
+        #         lista_plataformas.append(plataforma)
