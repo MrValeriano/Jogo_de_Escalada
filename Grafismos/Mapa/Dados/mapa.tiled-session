@@ -38,11 +38,14 @@
             "scaleInEditor": 1
         },
         "Mapa.tmx": {
-            "scale": 0.33,
-            "selectedLayer": 4,
+            "expandedObjectLayers": [
+                9
+            ],
+            "scale": 2,
+            "selectedLayer": 5,
             "viewCenter": {
-                "x": 528.7878787878788,
-                "y": 45368.18181818182
+                "x": 526.25,
+                "y": 66952.75
             }
         },
         "Mapa.tmx#fundo": {
@@ -58,11 +61,11 @@
             "scaleInDock": 1
         },
         "Tutorial.tmx": {
-            "scale": 0.33,
-            "selectedLayer": 1,
+            "scale": 1.5,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 1153.0303030303028,
-                "y": 768.181818181818
+                "x": 419,
+                "y": 1268.3333333333333
             }
         },
         "Tutorial.tmx#fundo": {
