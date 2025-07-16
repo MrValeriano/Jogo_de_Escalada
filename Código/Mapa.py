@@ -51,7 +51,7 @@ class Mapa:
             if obj.name == "Jogador" and obj.properties["Posição"] == pos_inicial_jog:
                 self.posição = (obj.x, obj.y)
             else:
-                Sprite((obj.x, obj.y), obj.image, todos_sprites)
+                self.fim_do_jogo = Sprite((obj.x, obj.y), obj.image, todos_sprites)
         #* fronteiras
         for area in tmx_mapa.get_layer_by_name("Bordas_Colisão"):
             rect = pygame.Rect(area.x, area.y, area.width, area.height)
@@ -67,4 +67,3 @@ class Mapa:
                     coords = (((area.x + area.width) - surf.width), ((area.y + area.height) - surf.height))
                 plataforma = Sprite(coords, surf, todos_sprites)
                 lista_plataformas.append(plataforma)
-        
