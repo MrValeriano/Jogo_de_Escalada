@@ -70,15 +70,16 @@ class Mapa:
                 plataforma = Sprite(coords, surf, todos_sprites)
                 lista_plataformas[area.name].append(plataforma)
         #* plataformas aleatórias de cada nível
-        # print(lista_plataformas)
-        # for area in tmx_mapa.get_layer_by_name("Níveis"):
-        #     tamanho = sample(list(self.plataformas_surf.keys()))
+        print(lista_plataformas)
+        for area in tmx_mapa.get_layer_by_name("Níveis"):
+            print(area.height / 96)
+            # tamanho = sample(list(self.plataformas_surf.keys()))
             
-        #     surf = self.plataformas_surf["Pequena"]
-        #     for i in range(2):
-        #         if i == 0:
-        #             coords = (area.x, ((area.y + area.height) - surf.height))
-        #         else:
-        #             coords = (((area.x + area.width) - surf.width), ((area.y + area.height) - surf.height))
-        #         plataforma = Sprite(coords, surf, todos_sprites)
-        #         lista_plataformas.append(plataforma)
+            # surf = self.plataformas_surf["Pequena"]
+            # for i in range(2):
+            #     if i == 0:
+            #         coords = (area.x, ((area.y + area.height) - surf.height))
+            #     else:
+            #         coords = (((area.x + area.width) - surf.width), ((area.y + area.height) - surf.height))
+            #     plataforma = Sprite(coords, surf, todos_sprites)
+            #     lista_plataformas.append(plataforma)
