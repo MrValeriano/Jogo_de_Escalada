@@ -61,7 +61,8 @@
             "scaleInEditor": 1.5
         },
         "Tutorial.tmx#paredes": {
-            "scaleInDock": 1
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         },
         "fundo.tsx": {
             "dynamicWrapping": false,
