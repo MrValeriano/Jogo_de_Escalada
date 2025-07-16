@@ -58,6 +58,7 @@ class Mapa:
             fronteiras.append(rect)
         #* plataformas
         for area in tmx_mapa.get_layer_by_name("Níveis"):
+            if area.name == "1": continue
             surf = self.plataformas_surf["Pequena"]
             plataforma = Sprite((area.x, ((area.y + area.height) - surf.height)), surf, todos_sprites)
             lista_plataformas.append(plataforma)
