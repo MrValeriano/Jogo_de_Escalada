@@ -72,8 +72,9 @@ class Mapa:
         #* plataformas aleatórias de cada nível
         print(lista_plataformas)
         for area in tmx_mapa.get_layer_by_name("Níveis"):
-            print(area.height / 96)
-            # tamanho = sample(list(self.plataformas_surf.keys()))
+            area_util = (area.width // TILE_SIZE, area.height // TILE_SIZE)
+            print(area_util)
+            tamanho = sample(list(self.plataformas_surf.keys()), 1)
             
             # surf = self.plataformas_surf["Pequena"]
             # for i in range(2):
