@@ -61,6 +61,7 @@ class Mapa:
         for area in tmx_mapa.get_layer_by_name("Níveis"):
             lista_plataformas.update({area.name:[]})
             if area.name == "1": continue
+            if area.name in HANDMADE_LEVELS: continue
             surf = self.plataformas_surf["Pequena"]
             for i in range(2):
                 if i == 0:
@@ -71,8 +72,7 @@ class Mapa:
                 lista_plataformas[area.name].append(plataforma)
         #* plataformas aleatórias de cada nível
         for area in tmx_mapa.get_layer_by_name("Níveis"):
-            if area.name:
-                pass
+            if area.name in HANDMADE_LEVELS: continue
             print()
             print(area.name)
             largura = []
