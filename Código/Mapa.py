@@ -78,14 +78,12 @@ class Mapa:
             area_util = (int((area.width // TILE_SIZE) * TILE_SIZE),
                          int((area.height // TILE_SIZE) * TILE_SIZE))
             topleft = (int(area.x + ((area.width - area_util[0]) / 2)), int(area.y))
-            bottomright = (topleft[0] + area_util[0])
+            bottomright = (topleft[0] + area_util[0], topleft[1] + area_util[1])
             # for i in range(topleft[0], area_util[0], TILE_SIZE):
             #     largura.append(i)
             # for i in range(area_util[1], topleft[1], TILE_SIZE):
             #     altura.append(i)
-            print(area_util)
-            print(area.y, " | ", area.y + area.height, " | ", area.y + area_util[1])
-            print(topleft, bottomright)
+            
             tamanho = sample(list(self.plataformas_surf.keys()), 1)
             
             # surf = self.plataformas_surf["Pequena"]
