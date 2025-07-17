@@ -92,16 +92,16 @@ class Mapa:
             # pelo menos uma plataforma por altura
             if int(area.name) < 25:
                 tam_nível = tamanhos_todos[1:]
-                freq = [2, 3]
+                freq = [2, 4]
             elif int(area.name) < 50:
                 tam_nível = tamanhos_todos[1:2]
-                freq = [1, 3]
+                freq = [1, 4]
             elif int(area.name) < 75:
                 tam_nível = tamanhos_todos[0:2]
-                freq = [1, 2]
+                freq = [1, 3]
             elif int(area.name) < 100:
                 tam_nível = tamanhos_todos[0:1]
-                freq = [0, 2]
+                freq = [0, 3]
             for i in alturas:
                 while True:
                     tamanho = rd.sample(tam_nível, 1)[0]
@@ -126,7 +126,7 @@ class Mapa:
                     if tentativas == 50:
                         desistencia = True
                         break
-                    tamanho = rd.sample(list(self.plataformas_surf.keys()), 1)[0]
+                    tamanho = rd.sample(tam_nível, 1)[0]
                     pt_origem = rd.sample(origens, 1)[0]
                     surf = self.plataformas_surf[tamanho]
                     rect = surf.get_rect(topleft=pt_origem)
@@ -139,6 +139,5 @@ class Mapa:
                 plataforma = Sprite(pt_origem, surf, todos_sprites)
                 lista_plataformas[area.name].extend([plataforma, l_buffer, r_buffer])
                 origens.remove(pt_origem)
-            # print(origens)
-            
-            
+# region Reformular distribuição
+
