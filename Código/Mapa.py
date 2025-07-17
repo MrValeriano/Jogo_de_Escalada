@@ -84,7 +84,7 @@ class Mapa:
             # for i in range(area_util[1], topleft[1], TILE_SIZE):
             #     altura.append(i)
             print(area_util)
-            print(area.y + area.height)
+            print(area.y, " | ", area.y + area.height, " | ", area.y + area_util[1])
             print(topleft, bottomright)
             tamanho = sample(list(self.plataformas_surf.keys()), 1)
             
