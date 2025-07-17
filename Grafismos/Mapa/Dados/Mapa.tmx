@@ -1545,20 +1545,5 @@
    <point/>
   </object>
   <object id="301" name="Plataforma_final" gid="19" x="192" y="240" width="672" height="48"/>
-  <object id="303" gid="20" x="588" y="900" width="384" height="48"/>
-  <object id="305" gid="21" x="780" y="948" width="192" height="48"/>
-  <object id="306" gid="19" x="12" y="948" width="576" height="48"/>
-  <object id="309" gid="21" x="12" y="996" width="192" height="48"/>
-  <object id="310" gid="21" x="780" y="996" width="192" height="48"/>
-  <object id="313" gid="20" x="300" y="996" width="384" height="48"/>
-  <object id="314" gid="21" x="12" y="852" width="192" height="48"/>
-  <object id="315" gid="21" x="204" y="852" width="192" height="48"/>
-  <object id="316" gid="21" x="396" y="852" width="192" height="48"/>
-  <object id="317" gid="21" x="588" y="852" width="192" height="48"/>
-  <object id="318" gid="21" x="780" y="852" width="192" height="48"/>
-  <object id="319" gid="20" x="12" y="900" width="384" height="48"/>
-  <object id="320" gid="21" x="12" y="1044" width="192" height="48"/>
-  <object id="321" gid="21" x="384" y="1044" width="192" height="48"/>
-  <object id="322" gid="21" x="780" y="1044" width="192" height="48"/>
  </objectgroup>
 </map>
