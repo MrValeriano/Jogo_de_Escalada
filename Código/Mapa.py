@@ -61,7 +61,7 @@ class Mapa:
         for area in tmx_mapa.get_layer_by_name("Níveis"):
             lista_plataformas.update({area.name:[]})
             if area.name == "1": continue
-            if area.name in HANDMADE_LEVELS: continue
+            # if area.name in HANDMADE_LEVELS: continue
             surf = self.plataformas_surf["Pequena"]
             for i in range(2):
                 if i == 0:
@@ -71,6 +71,7 @@ class Mapa:
                 plataforma = Sprite(coords, surf, todos_sprites)
                 lista_plataformas[area.name].append(plataforma)
         #* plataformas aleatórias de cada nível
+        tamanhos_todos = ["Pequena", "Média", "Grande"]
         for area in tmx_mapa.get_layer_by_name("Níveis"):
             if area.name in HANDMADE_LEVELS: continue
             print(f"\n{area.name}")
@@ -81,23 +82,55 @@ class Mapa:
             rightlimit = topleft[0] + area_util[0]
             # definir uma matriz de possíveis pontos de origem para as plataformas
             origens = []
+            alturas = []
             cols_rows = [int(i/(TILE_SIZE*2)) for i in area_util]
             for i in range(cols_rows[1]):
                 for j in range(cols_rows[0]):
                     origens.append((topleft[0] + ((TILE_SIZE*2)*j), topleft[1] + ((TILE_SIZE*2)*i)))
+                alturas.append(topleft[1] + ((TILE_SIZE*2)*i))
             # definir plataformas no nível
-            n_plataformas = rd.randint(cols_rows[1], cols_rows[0])
-            for plat in range(n_plataformas):
+            # pelo menos uma plataforma por altura
+            if int(area.name) < 25:
+                tam_nível = tamanhos_todos[1:]
+                freq = [2, 3]
+            elif int(area.name) < 50:
+                tam_nível = tamanhos_todos[1:2]
+                freq = [1, 3]
+            elif int(area.name) < 75:
+                tam_nível = tamanhos_todos[0:2]
+                freq = [1, 2]
+            elif int(area.name) < 100:
+                tam_nível = tamanhos_todos[0:1]
+                freq = [0, 2]
+            for i in alturas:
+                while True:
+                    tamanho = rd.sample(tam_nível, 1)[0]
+                    pt_origem = rd.sample(origens, 1)[0]
+                    if pt_origem[1] != i: continue
+                    surf = self.plataformas_surf[tamanho]
+                    rect = surf.get_rect(topleft=pt_origem)
+                    if rect.right > rightlimit: continue
+                    l_buffer = pygame.rect.Rect(rect.right,rect.top, TILE_SIZE, TILE_SIZE)
+                    r_buffer = pygame.rect.Rect((rect.left-TILE_SIZE),rect.top, TILE_SIZE, TILE_SIZE)
+                    break
+                plataforma = Sprite(pt_origem, surf, todos_sprites)
+                lista_plataformas[area.name].extend([plataforma, l_buffer, r_buffer])
+                origens.remove(pt_origem)
+            # preencher o espaço restante com plataformas
+            n_plataformas = rd.randint(freq[0], freq[1])
+            for p in range(n_plataformas):
                 while True:
                     tamanho = rd.sample(list(self.plataformas_surf.keys()), 1)[0]
                     pt_origem = rd.sample(origens, 1)[0]
                     surf = self.plataformas_surf[tamanho]
                     rect = surf.get_rect(topleft=pt_origem)
                     if rect.right > rightlimit: continue
+                    l_buffer = pygame.rect.Rect(rect.right,rect.top, TILE_SIZE, TILE_SIZE)
+                    r_buffer = pygame.rect.Rect((rect.left-TILE_SIZE),rect.top, TILE_SIZE, TILE_SIZE)
                     if rect.collidelist(lista_plataformas[area.name]) != -1: continue
                     break
                 plataforma = Sprite(pt_origem, surf, todos_sprites)
-                lista_plataformas[area.name].append(plataforma)
+                lista_plataformas[area.name].extend([plataforma, l_buffer, r_buffer])
                 origens.remove(pt_origem)
             # print(origens)
             
