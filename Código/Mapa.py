@@ -73,26 +73,32 @@ class Mapa:
         #* plataformas aleatórias de cada nível
         for area in tmx_mapa.get_layer_by_name("Níveis"):
             if area.name in HANDMADE_LEVELS: continue
-            print()
-            print(area.name)
-            largura = []
-            altura = []
+            print(f"\n{area.name}")
+            # definir tamanho e limites da área útil para a geração de plataformas
             area_util = (int((area.width // TILE_SIZE) * TILE_SIZE),
                          int((area.height // TILE_SIZE) * TILE_SIZE))
-            topleft = (int(area.x + ((area.width - area_util[0]) / 2)), int(area.y))
-            bottomright = (topleft[0] + area_util[0], topleft[1] + area_util[1])
-            # for i in range(topleft[0], area_util[0], TILE_SIZE):
-            #     largura.append(i)
-            # for i in range(area_util[1], topleft[1], TILE_SIZE):
-            #     altura.append(i)
-            print(bottomright)
-            tamanho = sample(list(self.plataformas_surf.keys()), 1)
+            topleft = (int(area.x + ((area.width - area_util[0]) / 2)), int(area.y + TILE_SIZE))
+            rightlimit = topleft[0] + area_util[0]
+            # definir uma matriz de possíveis pontos de origem para as plataformas
+            origens = []
+            cols_rows = [int(i/(TILE_SIZE*2)) for i in area_util]
+            for i in range(cols_rows[1]):
+                for j in range(cols_rows[0]):
+                    origens.append((topleft[0] + ((TILE_SIZE*2)*j), topleft[1] + ((TILE_SIZE*2)*i)))
+            # definir plataformas no nível
+            n_plataformas = rd.randint(cols_rows[1], cols_rows[0])
+            for plat in range(n_plataformas):
+                while True:
+                    tamanho = rd.sample(list(self.plataformas_surf.keys()), 1)[0]
+                    pt_origem = rd.sample(origens, 1)[0]
+                    surf = self.plataformas_surf[tamanho]
+                    rect = surf.get_rect(topleft=pt_origem)
+                    if rect.right > rightlimit: continue
+                    if rect.collidelist(lista_plataformas[area.name]) != -1: continue
+                    break
+                plataforma = Sprite(pt_origem, surf, todos_sprites)
+                lista_plataformas[area.name].append(plataforma)
+                origens.remove(pt_origem)
+            # print(origens)
             
-            # surf = self.plataformas_surf["Pequena"]
-            # for i in range(2):
-            #     if i == 0:
-            #         coords = (area.x, ((area.y + area.height) - surf.height))
-            #     else:
-            #         coords = (((area.x + area.width) - surf.width), ((area.y + area.height) - surf.height))
-            #     plataforma = Sprite(coords, surf, todos_sprites)
-            #     lista_plataformas.append(plataforma)
+            
