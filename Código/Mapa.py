@@ -119,7 +119,13 @@ class Mapa:
             # preencher o espaço restante com plataformas
             n_plataformas = rd.randint(freq[0], freq[1])
             for p in range(n_plataformas):
+                tentativas = 0
+                desistencia = False
                 while True:
+                    tentativas += 1
+                    if tentativas == 50:
+                        desistencia = True
+                        break
                     tamanho = rd.sample(list(self.plataformas_surf.keys()), 1)[0]
                     pt_origem = rd.sample(origens, 1)[0]
                     surf = self.plataformas_surf[tamanho]
@@ -129,6 +135,7 @@ class Mapa:
                     r_buffer = pygame.rect.Rect((rect.left-TILE_SIZE),rect.top, TILE_SIZE, TILE_SIZE)
                     if rect.collidelist(lista_plataformas[area.name]) != -1: continue
                     break
+                if desistencia: continue
                 plataforma = Sprite(pt_origem, surf, todos_sprites)
                 lista_plataformas[area.name].extend([plataforma, l_buffer, r_buffer])
                 origens.remove(pt_origem)
