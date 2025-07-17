@@ -181,3 +181,4 @@ cython_debug/
 .cursorindexingignore
 *.tiled-session
 .tiled-session
+Grafismos/Mapa/Dados/mapa.tiled-session

@@ -86,7 +86,7 @@ class Mapa:
             cols_rows = [int(i/(TILE_SIZE*2)) for i in area_util]
             for i in range(cols_rows[1]):
                 for j in range(cols_rows[0]):
-                    origens.append((topleft[0] + ((TILE_SIZE*2)*j), topleft[1] + ((TILE_SIZE*2)*i)))
+                    origens.append((topleft[0] + ((TILE_SIZE)*j), topleft[1] + ((TILE_SIZE*2)*i)))
                 alturas.append(topleft[1] + ((TILE_SIZE*2)*i))
             # definir plataformas no nível
             # pelo menos uma plataforma por altura
@@ -110,8 +110,8 @@ class Mapa:
                     surf = self.plataformas_surf[tamanho]
                     rect = surf.get_rect(topleft=pt_origem)
                     if rect.right > rightlimit: continue
-                    l_buffer = pygame.rect.Rect(rect.right,rect.top, TILE_SIZE, TILE_SIZE)
-                    r_buffer = pygame.rect.Rect((rect.left-TILE_SIZE),rect.top, TILE_SIZE, TILE_SIZE)
+                    l_buffer = pygame.rect.Rect(rect.right,rect.top, int(TILE_SIZE/2), TILE_SIZE)
+                    r_buffer = pygame.rect.Rect((rect.left-int(TILE_SIZE/2)),rect.top, int(TILE_SIZE/2), TILE_SIZE)
                     break
                 plataforma = Sprite(pt_origem, surf, todos_sprites)
                 lista_plataformas[area.name].extend([plataforma, l_buffer, r_buffer])
@@ -123,7 +123,7 @@ class Mapa:
                 desistencia = False
                 while True:
                     tentativas += 1
-                    if tentativas == 50:
+                    if tentativas == 100:
                         desistencia = True
                         break
                     tamanho = rd.sample(tam_nível, 1)[0]
@@ -131,8 +131,8 @@ class Mapa:
                     surf = self.plataformas_surf[tamanho]
                     rect = surf.get_rect(topleft=pt_origem)
                     if rect.right > rightlimit: continue
-                    l_buffer = pygame.rect.Rect(rect.right,rect.top, TILE_SIZE, TILE_SIZE)
-                    r_buffer = pygame.rect.Rect((rect.left-TILE_SIZE),rect.top, TILE_SIZE, TILE_SIZE)
+                    l_buffer = pygame.rect.Rect(rect.right,rect.top, int(TILE_SIZE/2), TILE_SIZE)
+                    r_buffer = pygame.rect.Rect((rect.left-int(TILE_SIZE/2)),rect.top, int(TILE_SIZE/2), TILE_SIZE)
                     if rect.collidelist(lista_plataformas[area.name]) != -1: continue
                     break
                 if desistencia: continue
@@ -140,4 +140,5 @@ class Mapa:
                 lista_plataformas[area.name].extend([plataforma, l_buffer, r_buffer])
                 origens.remove(pt_origem)
 # region Reformular distribuição
+# talvez usar plataformas pequenas como iniciais e restringi-las às bordas
 
