@@ -71,25 +71,23 @@ class Mapa:
                 lista_plataformas[area.name].append(plataforma)
         #* plataformas aleatórias de cada nível
         for area in tmx_mapa.get_layer_by_name("Níveis"):
+            print()
             print(area.name)
             largura = []
             altura = []
             area_util = (int((area.width // TILE_SIZE) * TILE_SIZE),
                          int((area.height // TILE_SIZE) * TILE_SIZE))
             topleft = (int(area.x + ((area.width - area_util[0]) / 2)), int(area.y))
-            for i in range(topleft[0], area_util[0], TILE_SIZE):
-                largura.append(i)
-            if area.name == "100":
-                for i in range(topleft[1], area_util[1], TILE_SIZE):
-                    altura.append(i)
-            else:
-                for i in range(area_util[1], topleft[1], TILE_SIZE):
-                    altura.append(i)
-            print(largura)
-            print(altura)
-            print(topleft[1], area_util[1])
+            bottomright = (topleft[0] + area_util[0])
+            # for i in range(topleft[0], area_util[0], TILE_SIZE):
+            #     largura.append(i)
+            # for i in range(area_util[1], topleft[1], TILE_SIZE):
+            #     altura.append(i)
+            print(area_util)
+            print(area.y + area.height)
+            print(topleft, bottomright)
             tamanho = sample(list(self.plataformas_surf.keys()), 1)
-        print(tmx_mapa.get_layer_by_name("Área_de_Jogo"))
+            
             # surf = self.plataformas_surf["Pequena"]
             # for i in range(2):
             #     if i == 0:
