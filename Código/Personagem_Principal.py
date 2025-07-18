@@ -6,20 +6,20 @@ class Principal(pygame.sprite.Sprite):
         super().__init__(*groups)
         self.frames = {
             "parado": {
-                "direita": importar_pasta("..","Grafismos","Personagem_Principal","Idle","Direita"),
-                "esquerda": importar_pasta("..","Grafismos","Personagem_Principal","Idle","Esquerda")
+                "direita": importar_pasta("Grafismos","Personagem_Principal","Idle","Direita"),
+                "esquerda": importar_pasta("Grafismos","Personagem_Principal","Idle","Esquerda")
             },
             "andar": {
-                "direita": importar_pasta("..","Grafismos","Personagem_Principal","Walk_Cycle","Direita"),
-                "esquerda": importar_pasta("..","Grafismos","Personagem_Principal","Walk_Cycle","Esquerda")
+                "direita": importar_pasta("Grafismos","Personagem_Principal","Walk_Cycle","Direita"),
+                "esquerda": importar_pasta("Grafismos","Personagem_Principal","Walk_Cycle","Esquerda")
             },
             "salto": {
-                "direita": importar_pasta("..","Grafismos","Personagem_Principal","Jump_Cycle","Direita"),
-                "esquerda": importar_pasta("..","Grafismos","Personagem_Principal","Jump_Cycle","Esquerda")
+                "direita": importar_pasta("Grafismos","Personagem_Principal","Jump_Cycle","Direita"),
+                "esquerda": importar_pasta("Grafismos","Personagem_Principal","Jump_Cycle","Esquerda")
             },
             "pendurado": {
-                "direita": importar_pasta("..","Grafismos","Personagem_Principal","Hang_Cycle","Direita"),
-                "esquerda": importar_pasta("..","Grafismos","Personagem_Principal","Hang_Cycle","Esquerda")
+                "direita": importar_pasta("Grafismos","Personagem_Principal","Hang_Cycle","Direita"),
+                "esquerda": importar_pasta("Grafismos","Personagem_Principal","Hang_Cycle","Esquerda")
             }
         }
         self.acção = "parado"
@@ -34,6 +34,7 @@ class Principal(pygame.sprite.Sprite):
 
     def animação(self, dt):
         self.indice_frame += 4 * dt
+        print(self.indice_frame)
         self.image = self.frames[self.acção][self.lado][int(self.indice_frame) % len(self.frames)]
 
     def update(self, dt):

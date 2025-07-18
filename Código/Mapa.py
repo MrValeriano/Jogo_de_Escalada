@@ -131,7 +131,6 @@ class Mapa:
                     if tentativas == 100:
                         desistencia = True
                         origens.remove(pt_origem)
-                        print("Desistência")
                         break
                     tamanho = rd.sample(tam_nível, 1)[0]
                     pt_origem = rd.sample(origens, 1)[0]
