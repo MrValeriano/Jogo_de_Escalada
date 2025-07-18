@@ -36,6 +36,3 @@ class Inimigo(pygame.sprite.Sprite):
     def update(self, dt):
         self.movimentação(dt)
         self.animação(dt)
-tarta = Inimigo((0,0),"Tartaruga",1)
-from Loop_principal_processos_do_jogo import dt
-tarta.update(dt)
