@@ -32,10 +32,16 @@ class Inimigo(pygame.sprite.Sprite):
             elif self.rect.left <= self.âncora.rect.left:
                 self.lado = "direita"
         if self.acção == "andar":
-            if self.lado == "direita" and not self.rect.right >= self.âncora.rect.right:
+            if self.lado == "direita":
                 self.direção.x += 1
-            elif self.lado == "esquerda" and not self.rect.left <= self.âncora.rect.left:
+                if self.rect.right >= self.âncora.rect.right:
+                    self.rect.right == self.âncora.rect.right
+                    self.direção = vector()
+            elif self.lado == "esquerda":
                 self.direção.x -= 1
+                if self.rect.left <= self.âncora.rect.left:
+                    self.rect.left == self.âncora.rect.left
+                    self.direção = vector()
         else:
             self.direção = vector()
         self.rect.center += self.direção * 50 * dt
