@@ -147,4 +147,3 @@ class Mapa:
                 origens.remove(pt_origem)
         #* geração de inimigos/obstáculos
         
-        

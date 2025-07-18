@@ -36,7 +36,6 @@ class Principal(pygame.sprite.Sprite):
         self.indice_frame += ANIMATION_SPEED * dt
         if int(self.indice_frame) >= len(self.frames[self.acção][self.lado]):
             self.indice_frame = 0
-        print(int(self.indice_frame), len(self.frames[self.acção][self.lado]))
         self.image = self.frames[self.acção][self.lado][int(self.indice_frame)]
 
     def update(self, dt):
