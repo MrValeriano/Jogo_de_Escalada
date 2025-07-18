@@ -71,14 +71,12 @@ class Mapa:
                 plataforma = Sprite(coords, surf, todos_sprites)
                 lista_plataformas[area.name].append(plataforma)
         #* plataformas aleatórias de cada nível
-        tamanhos_todos = ["Pequena", "Média", "Grande"]
         for area in tmx_mapa.get_layer_by_name("Níveis"):
             if area.name in HANDMADE_LEVELS: continue
             print(f"\n{area.name}")
             # definir tamanho e limites da área útil para a geração de plataformas
             area_util = (int((area.width // TILE_SIZE) * TILE_SIZE),
                          int((area.height // TILE_SIZE) * TILE_SIZE))
-            print(area_util)
             topleft = (int(area.x + ((area.width - area_util[0]) / 2)), int(area.y + TILE_SIZE))
             rightlimit = topleft[0] + area_util[0]
             # definir uma matriz de possíveis pontos de origem para as plataformas
@@ -91,6 +89,7 @@ class Mapa:
                     origens.append((topleft[0] + ((TILE_SIZE)*j), topleft[1] + ((TILE_SIZE*2)*i)))
                 alturas.append(topleft[1] + ((TILE_SIZE*2)*i))
             # definir plataformas no nível
+            tamanhos_todos = ["Pequena", "Média", "Grande"]
             if int(area.name) < 25:
                 tam_nível = tamanhos_todos[1:]
                 freq = [2, 4]
@@ -103,15 +102,13 @@ class Mapa:
             elif int(area.name) < 100:
                 tam_nível = tamanhos_todos[0:1]
                 freq = [0, 3]
-            print(origens)
-            print(topleft[0]+TILE_SIZE*(cols-1))
             # pelo menos uma plataforma por altura, nos lados do ecrã
             for i in alturas:
                 while True:
                     tamanho = rd.sample(tam_nível, 1)[0]
                     pt_origem = rd.sample(origens, 1)[0]
                     if pt_origem[1] != i: continue
-                    # if pt_origem[0] not in [topleft[0], topleft[0]+TILE_SIZE*2*cols_rows[0]]:continue
+                    if pt_origem[0] not in [topleft[0], topleft[0]+TILE_SIZE*(cols-1)]:continue
                     surf = self.plataformas_surf[tamanho]
                     rect = surf.get_rect(topleft=pt_origem)
                     if rect.right > rightlimit: continue
