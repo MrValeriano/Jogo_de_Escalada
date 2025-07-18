@@ -8,7 +8,7 @@ class NPC(pygame.sprite.Sprite):
                 "direita": importar_pasta("Grafismos","Personagem_Principal","Idle","Direita"),
                 "esquerda": importar_pasta("Grafismos","Personagem_Principal","Idle","Esquerda")
             },
-            "andar": {
+            "falar": {
                 "direita": importar_pasta("Grafismos","Personagem_Principal","Walk_Cycle","Direita"),
                 "esquerda": importar_pasta("Grafismos","Personagem_Principal","Walk_Cycle","Esquerda")
             }
