@@ -22,7 +22,7 @@ class Principal(pygame.sprite.Sprite):
                 "esquerda": importar_pasta("Grafismos","Personagem_Principal","Hang_Cycle","Esquerda")
             }
         }
-        self.acção = "parado"
+        self.acção = "pendurado"
         self.lado = "direita"
         self.indice_frame = 0
         self.image = self.frames[self.acção][self.lado][self.indice_frame]
@@ -33,8 +33,11 @@ class Principal(pygame.sprite.Sprite):
         self.rect.center += self.direção * 500 * dt
 
     def animação(self, dt):
-        self.indice_frame += 4 * dt
-        self.image = self.frames[self.acção][self.lado][int(self.indice_frame) % len(self.frames)]
+        self.indice_frame += 20 * dt
+        if int(self.indice_frame) >= len(self.frames[self.acção][self.lado]):
+            self.indice_frame = 0
+        print(int(self.indice_frame), len(self.frames[self.acção][self.lado]))
+        self.image = self.frames[self.acção][self.lado][int(self.indice_frame)]
 
     def update(self, dt):
         self.direção = input_jogador()
