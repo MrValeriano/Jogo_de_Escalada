@@ -10,7 +10,7 @@ SCREEN_HEIGHT = 720
 TILE_SIZE = 96
 ANIMATION_SPEED = 6
 HANDMADE_LEVELS = ["25", "50", "75", "100"]
-
+EMPTY_EDGES = [12, 12]
 pygame.display.set_caption('Jogo de Escalada')
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 

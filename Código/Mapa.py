@@ -10,7 +10,7 @@ class TodosSprites(pygame.sprite.Group):
         self.offset = vector()
         
     def draw(self, player_center):
-        self.offset.x = -(player_center[0] - SCREEN_WIDTH / 2)
+        self.offset.x = EMPTY_EDGES[0]
         self.offset.y = -(player_center[1] - SCREEN_HEIGHT / 2)
         
         for sprite in self:
