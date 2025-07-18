@@ -1,8 +1,9 @@
 from Definições import *
 
 class Inimigo(pygame.sprite.Sprite):
-    def __init__(self, pos, tipo, *groups):
+    def __init__(self, pos, tipo, âncora, *groups):
         super().__init__(*groups)
+        self.âncora = âncora
         self.frames = {
             "parado": {
                 "direita": importar_pasta("Grafismos","Inimigos",tipo,"Idle","Direita"),
@@ -21,6 +22,9 @@ class Inimigo(pygame.sprite.Sprite):
         self.direção = vector()
     
     def movimentação(self, dt):
+        #* escolha aleatória de acção dentro da plataforma de âncora
+        self.acção = rd.sample(list(self.frames.keys()), 1)
+        print(self.acção)
         self.rect.center += self.direção * 500 * dt
 
     def animação(self, dt):
@@ -32,3 +36,6 @@ class Inimigo(pygame.sprite.Sprite):
     def update(self, dt):
         self.movimentação(dt)
         self.animação(dt)
+tarta = Inimigo((0,0),"Tartaruga",1)
+from Loop_principal_processos_do_jogo import dt
+tarta.update(dt)
