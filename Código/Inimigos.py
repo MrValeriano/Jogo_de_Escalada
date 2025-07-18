@@ -1,16 +1,16 @@
 from Definições import *
 
 class Inimigo(pygame.sprite.Sprite):
-    def __init__(self, pos, *groups):
+    def __init__(self, pos, tipo, *groups):
         super().__init__(*groups)
         self.frames = {
             "parado": {
-                "direita": importar_pasta("Grafismos","Personagem_Principal","Idle","Direita"),
-                "esquerda": importar_pasta("Grafismos","Personagem_Principal","Idle","Esquerda")
+                "direita": importar_pasta("Grafismos","Inimigos",tipo,"Idle","Direita"),
+                "esquerda": importar_pasta("Grafismos","Inimigos",tipo,"Idle","Esquerda")
             },
             "andar": {
-                "direita": importar_pasta("Grafismos","Personagem_Principal","Walk_Cycle","Direita"),
-                "esquerda": importar_pasta("Grafismos","Personagem_Principal","Walk_Cycle","Esquerda")
+                "direita": importar_pasta("Grafismos","Inimigos",tipo,"Walk_Cycle","Direita"),
+                "esquerda": importar_pasta("Grafismos","Inimigos",tipo,"Walk_Cycle","Esquerda")
             }
         }
         self.acção = "parado"
