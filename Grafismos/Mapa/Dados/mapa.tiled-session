@@ -42,9 +42,9 @@
                 9
             ],
             "scale": 1,
-            "selectedLayer": 5,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 528,
+                "x": 528.5,
                 "y": 33600
             }
         },
@@ -67,8 +67,8 @@
             "scale": 0.5,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 1152,
-                "y": 769
+                "x": 1153,
+                "y": 768
             }
         },
         "Tutorial.tmx#fundo": {
