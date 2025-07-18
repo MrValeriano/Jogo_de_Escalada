@@ -8,7 +8,7 @@ from Personagem_Principal import *
 
 mapa = Mapa()
 jogador = Principal(mapa.posição, todos_sprites)
-tarta = Inimigo((0,0),"Tartaruga",1)
+tarta = Inimigo(mapa.posição, "Tartaruga", todos_sprites)
 
 while True:
     #* tick
@@ -19,7 +19,5 @@ while True:
     todos_sprites.update(dt)
     screen.fill('black')
     todos_sprites.draw(jogador.rect.center)
-    
-    tarta.update(dt)
     
     pygame.display.update()
