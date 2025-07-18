@@ -23,11 +23,20 @@ class Inimigo(pygame.sprite.Sprite):
     
     def actividade(self, dt):
         #* esperar o fim da acção anterior
-        if int(self.indice_frame) >= len(self.frames[self.acção][self.lado]):
+        if int(self.indice_frame) == 0:
             #* escolha aleatória de acção dentro da plataforma de âncora
             self.acção = rd.sample(list(self.frames.keys()), 1)[0]
-            self.lado = rd.sample(["esquerda", "direita"], 1)[0]
-        print(int(self.indice_frame), self.acção, self.lado)
+            if self.rect.right >= self.âncora.rect.right:
+                self.lado = "esquerda"
+            elif self.rect.left <= self.âncora.rect.left:
+                self.lado = "direita"
+        if self.acção == "andar":
+            if self.lado == "direita":
+                self.direção.x += 1
+            elif self.lado == "esquerda":
+                self.direção.x -= 1
+        else:
+            self.direção = vector()
         self.rect.center += self.direção * 500 * dt
 
     def animação(self, dt):
