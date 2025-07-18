@@ -34,7 +34,6 @@ class Principal(pygame.sprite.Sprite):
 
     def animação(self, dt):
         self.indice_frame += 4 * dt
-        print(self.indice_frame)
         self.image = self.frames[self.acção][self.lado][int(self.indice_frame) % len(self.frames)]
 
     def update(self, dt):
