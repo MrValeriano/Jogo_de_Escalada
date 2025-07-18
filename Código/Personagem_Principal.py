@@ -15,6 +15,7 @@ class Principal(pygame.sprite.Sprite):
 
     def animação(self, dt):
         self.indice_frame += 4 * dt
+        self.image = self.frames[int(self.indice_frame % len(self.frames))]
 
     def update(self, dt):
         self.direção = input_jogador()
