@@ -8,7 +8,7 @@ class Principal(pygame.sprite.Sprite):
         self.rect = self.image.get_frect(center = pos)
         self.dire = vector()
         self.facing = "right"
-        self.frame
+        self.frame = 0
     
     def movimentação(self, dt):
         self.rect.center += self.direction * 500 * dt
