@@ -73,7 +73,6 @@ class Mapa:
         #* plataformas aleatórias de cada nível
         for area in tmx_mapa.get_layer_by_name("Níveis"):
             if area.name in HANDMADE_LEVELS: continue
-            print(f"\n{area.name}")
             # definir tamanho e limites da área útil para a geração de plataformas
             area_util = (int((area.width // TILE_SIZE) * TILE_SIZE),
                          int((area.height // TILE_SIZE) * TILE_SIZE))
