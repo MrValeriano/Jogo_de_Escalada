@@ -33,7 +33,7 @@ class Principal(pygame.sprite.Sprite):
         self.rect.center += self.direção * 500 * dt
 
     def animação(self, dt):
-        self.indice_frame += 20 * dt
+        self.indice_frame += ANIMATION_SPEED * dt
         if int(self.indice_frame) >= len(self.frames[self.acção][self.lado]):
             self.indice_frame = 0
         print(int(self.indice_frame), len(self.frames[self.acção][self.lado]))
