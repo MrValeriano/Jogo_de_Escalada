@@ -16,7 +16,7 @@ while True:
     event_loop()
     #* representações no ecrã
     todos_sprites.update(dt)
-    screen.fill('aqua')
+    screen.fill('black')
     todos_sprites.draw(jogador.rect.center)
     
     pygame.display.update()
