@@ -9,9 +9,6 @@ class Itens(pygame.sprite.Sprite):
         self.rect = self.image.get_frect(center = pos)
         self.direção = vector()
     
-    def movimentação(self, dt):
-        self.rect.center += self.direção * 500 * dt
-
     def animação(self, dt):
         self.indice_frame += ANIMATION_SPEED * dt
         if int(self.indice_frame) >= len(self.frames):
