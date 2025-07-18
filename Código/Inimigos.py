@@ -1,7 +1,7 @@
 from Definições import *
 
 class Inimigo(pygame.sprite.Sprite):
-    def __init__(self, pos, tipo, âncora, *groups):
+    def __init__(self, tipo, âncora, *groups):
         super().__init__(*groups)
         self.âncora = âncora
         self.frames = {
@@ -18,7 +18,8 @@ class Inimigo(pygame.sprite.Sprite):
         self.lado = "direita"
         self.indice_frame = 0
         self.image = self.frames[self.acção][self.lado][self.indice_frame]
-        self.rect = self.image.get_frect(center = pos)
+        self.pos = (self.âncora.rect.midtop[0], self.âncora.rect.midtop[1] - (self.image.height / 2))
+        self.rect = self.image.get_frect(center = self.pos)
         self.direção = vector()
     
     def actividade(self, dt):
@@ -31,13 +32,13 @@ class Inimigo(pygame.sprite.Sprite):
             elif self.rect.left <= self.âncora.rect.left:
                 self.lado = "direita"
         if self.acção == "andar":
-            if self.lado == "direita":
+            if self.lado == "direita" and not self.rect.right >= self.âncora.rect.right:
                 self.direção.x += 1
-            elif self.lado == "esquerda":
+            elif self.lado == "esquerda" and not self.rect.left <= self.âncora.rect.left:
                 self.direção.x -= 1
         else:
             self.direção = vector()
-        self.rect.center += self.direção * 500 * dt
+        self.rect.center += self.direção * 50 * dt
 
     def animação(self, dt):
         self.indice_frame += ANIMATION_SPEED * dt
