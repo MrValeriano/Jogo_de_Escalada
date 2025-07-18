@@ -1,6 +1,6 @@
 from Definições import *
 
-class Principal(pygame.sprite.Sprite):
+class Inimigo(pygame.sprite.Sprite):
     def __init__(self, pos, *groups):
         super().__init__(*groups)
         self.frames = {
