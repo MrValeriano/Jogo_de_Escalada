@@ -23,7 +23,7 @@ class Inimigo(pygame.sprite.Sprite):
     
     def movimentação(self, dt):
         #* escolha aleatória de acção dentro da plataforma de âncora
-        self.acção = rd.sample(list(self.frames.keys()), 1)
+        self.acção = rd.sample(list(self.frames.keys()), 1)[0]
         print(self.acção)
         self.rect.center += self.direção * 500 * dt
 
