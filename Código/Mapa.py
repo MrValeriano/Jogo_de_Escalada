@@ -92,29 +92,33 @@ class Mapa:
             tamanhos_todos = ["Pequena", "Média", "Grande"]
             if int(area.name) < 25:
                 tam_nível = tamanhos_todos[1:]
-                freq = [2, 4]
+                freq = [4, 6]
             elif int(area.name) < 50:
                 tam_nível = tamanhos_todos[1:2]
-                freq = [1, 4]
+                freq = [3, 5]
             elif int(area.name) < 75:
                 tam_nível = tamanhos_todos[0:2]
-                freq = [1, 3]
+                freq = [2, 4]
             elif int(area.name) < 100:
                 tam_nível = tamanhos_todos[0:1]
-                freq = [0, 3]
+                freq = [1, 2]
             # pelo menos uma plataforma por altura, nos lados do ecrã
+            lados = [topleft[0], topleft[0]+TILE_SIZE*(cols-1)]
+            índice = rd.randint(0,1)
             for i in alturas:
                 while True:
-                    tamanho = rd.sample(tam_nível, 1)[0]
+                    # tamanho = rd.sample(tam_nível, 1)[0]
+                    tamanho = tamanhos_todos[0]
                     pt_origem = rd.sample(origens, 1)[0]
                     if pt_origem[1] != i: continue
-                    if pt_origem[0] not in [topleft[0], topleft[0]+TILE_SIZE*(cols-1)]:continue
+                    if pt_origem[0] != lados[índice % len(lados)] :continue
                     surf = self.plataformas_surf[tamanho]
                     rect = surf.get_rect(topleft=pt_origem)
                     if rect.right > rightlimit: continue
                     l_buffer = pygame.rect.Rect(rect.right,rect.top, int(TILE_SIZE/2), TILE_SIZE)
                     r_buffer = pygame.rect.Rect((rect.left-int(TILE_SIZE/2)),rect.top, int(TILE_SIZE/2), TILE_SIZE)
                     break
+                índice += 1
                 plataforma = Sprite(pt_origem, surf, todos_sprites)
                 lista_plataformas[area.name].extend([plataforma, l_buffer, r_buffer])
                 origens.remove(pt_origem)
@@ -143,6 +147,4 @@ class Mapa:
                 plataforma = Sprite(pt_origem, surf, todos_sprites)
                 lista_plataformas[area.name].extend([plataforma, l_buffer, r_buffer])
                 origens.remove(pt_origem)
-# region Reformular distribuição
-# talvez usar plataformas pequenas como iniciais e restringi-las às bordas
 
