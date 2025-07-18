@@ -8,7 +8,7 @@ from Personagem_Principal import *
 
 mapa = Mapa()
 jogador = Principal(mapa.posição, todos_sprites)
-tarta = Inimigo(mapa.posição, "Tartaruga",(), todos_sprites)
+tarta = Inimigo("Tartaruga",lista_plataformas["1"][0], todos_sprites)
 
 while True:
     #* tick
