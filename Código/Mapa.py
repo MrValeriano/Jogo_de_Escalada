@@ -145,4 +145,5 @@ class Mapa:
                 plataforma = Sprite(pt_origem, surf, todos_sprites)
                 lista_plataformas[area.name].extend([plataforma, l_buffer, r_buffer])
                 origens.remove(pt_origem)
-
+        #* geração de inimigos
+        
