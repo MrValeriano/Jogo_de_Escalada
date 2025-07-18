@@ -6,7 +6,9 @@ class Principal(pygame.sprite.Sprite):
         super().__init__(*groups)
         self.image = pygame.image.load("Grafismos/Personagem_Principal/Idle/pixil-frame-0.png")
         self.rect = self.image.get_frect(center = pos)
-        self.direction = vector()
+        self.dire = vector()
+        self.facing = "right"
+        self.frame
     
     def movimentação(self, dt):
         self.rect.center += self.direction * 500 * dt
