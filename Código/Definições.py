@@ -4,6 +4,9 @@ from os.path import join
 from pygame.math import Vector2 as vector
 import random as rd
 
+def importar_pasta():
+    pass
+
 pygame.init()
 
 SCREEN_WIDTH = 1080
