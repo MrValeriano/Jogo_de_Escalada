@@ -22,7 +22,7 @@ class Principal(pygame.sprite.Sprite):
                 "esquerda": importar_pasta("Grafismos","Personagem_Principal","Hang_Cycle","Esquerda")
             }
         }
-        self.acção = "pendurado"
+        self.acção = "parado"
         self.lado = "direita"
         self.indice_frame = 0
         self.image = self.frames[self.acção][self.lado][self.indice_frame]
