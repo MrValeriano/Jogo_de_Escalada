@@ -5,7 +5,10 @@ class Principal(pygame.sprite.Sprite):
     def __init__(self, pos, *groups):
         super().__init__(*groups)
         self.frames = {
-            "parado": importar_pasta("..","Grafismos","Personagem_Principal","Idle"),
+            "parado": {
+                "direita": importar_pasta("..","Grafismos","Personagem_Principal","Idle","Direita"),
+                "esquerda": importar_pasta("..","Grafismos","Personagem_Principal","Idle","Esquerda")
+            },
             
         }
         self.image = pygame.image.load("Grafismos/Personagem_Principal/Idle/pixil-frame-0.png")
