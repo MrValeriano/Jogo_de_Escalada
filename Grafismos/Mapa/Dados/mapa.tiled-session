@@ -44,8 +44,8 @@
             "scale": 1,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 565.5,
-                "y": 1010.5
+                "x": 528,
+                "y": 33600
             }
         },
         "Mapa.tmx#fundo": {
@@ -67,8 +67,8 @@
             "scale": 0.5,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 1153,
-                "y": 768
+                "x": 1152,
+                "y": 769
             }
         },
         "Tutorial.tmx#fundo": {
