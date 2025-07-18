@@ -1,11 +1,18 @@
 import pygame
 from pytmx.util_pygame import load_pygame
 from os.path import join
+from os import walk
 from pygame.math import Vector2 as vector
 import random as rd
 
-def importar_pasta():
-    pass
+def importar_pasta(*path):
+    frames = []
+    for pasta, subpasta, imagens in walk(join(*path)):
+        for nome in sorted(imagens, key = lambda name: int(name.split(".")[0])):
+            fullpath = join(pasta, nome)
+            surf = pygame.image.load(fullpath).convert_alpha()
+            frames.append(surf)
+    return frames
 
 pygame.init()
 
