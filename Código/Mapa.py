@@ -161,5 +161,5 @@ class Mapa:
                 for pto_x in range(topleft[0], rightlimit, TILE_SIZE):
                     pts_moedas.append((pto_x + (TILE_SIZE/2), pto_y))
             for pt in pts_moedas:
-                moeda = Itens("Moeda", pt, todos_sprites)
-                if area.name == "1": print(moeda.rect.centery)
+                Itens("Moeda", pt, todos_sprites)
+            if area.name == "1": print(len(pts_moedas))
