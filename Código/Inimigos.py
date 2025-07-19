@@ -1,7 +1,7 @@
 from Definições import *
 
 class Inimigo(pygame.sprite.Sprite):
-    def __init__(self, tipo, âncora, *groups):
+    def __init__(self, tipo, âncora, mapa, *groups):
         super().__init__(*groups)
         self.âncora = âncora
         self.tipo = tipo
@@ -30,26 +30,30 @@ class Inimigo(pygame.sprite.Sprite):
             # para tartaruga: dentro da plataforma de âncora
             # para vespa: dentro da área de jogo
             if self.tipo == "Tartaruga":
-                self.limite_área = [self.âncora.rect.right, self.âncora.rect.right]
+                self.limite_área = [self.âncora.rect.left, self.âncora.rect.right]
+                self.velocidade = 1
+            elif self.tipo == "Vespa":
+                self.limite_área = [self.âncora.rect.left, self.âncora.rect.right]
+                self.velocidade = 1
             self.acção = rd.sample(list(self.frames.keys()), 1)[0]
-            if self.rect.right >= self.âncora.rect.right:
+            if self.rect.right >= self.limite_área[1]:
                 self.lado = "esquerda"
-            elif self.rect.left <= self.âncora.rect.left:
+            elif self.rect.left <= self.limite_área[0]:
                 self.lado = "direita"
         if self.acção == "andar":
             if self.lado == "direita":
                 self.direção.x += 1
-                if self.rect.right >= self.âncora.rect.right:
-                    self.rect.right == self.âncora.rect.right
+                if self.rect.right >= self.limite_área[1]:
+                    self.rect.right == self.limite_área[1]
                     self.direção = vector()
             elif self.lado == "esquerda":
                 self.direção.x -= 1
-                if self.rect.left <= self.âncora.rect.left:
-                    self.rect.left == self.âncora.rect.left
+                if self.rect.left <= self.limite_área[0]:
+                    self.rect.left == self.limite_área[0]
                     self.direção = vector()
         else:
             self.direção = vector()
-        self.rect.center += self.direção * 1 * dt
+        self.rect.center += self.direção * self.velocidade * dt
 
     def animação(self, dt):
         self.indice_frame += ANIMATION_SPEED * dt
