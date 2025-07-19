@@ -66,6 +66,7 @@ class Inimigo(pygame.sprite.Sprite):
         if self.tipo == "Tartaruga":
             self.rect.center += self.direção * self.velocidade * dt
         elif self.tipo == "Vespa":
+            if int(dt) >= 1: dt = 0.01
             self.rect.centerx += self.passo * self.velocidade * dt
 
     def animação(self, dt):
