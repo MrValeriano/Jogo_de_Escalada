@@ -4,6 +4,7 @@ class Inimigo(pygame.sprite.Sprite):
     def __init__(self, tipo, âncora, *groups):
         super().__init__(*groups)
         self.âncora = âncora
+        self.tipo = tipo
         self.frames = {
             "parado": {
                 "direita": importar_pasta("Grafismos","Inimigos",tipo,"Idle","Direita"),
@@ -25,7 +26,11 @@ class Inimigo(pygame.sprite.Sprite):
     def actividade(self, dt):
         #* esperar o fim da acção anterior
         if int(self.indice_frame) == 0:
-            #* escolha aleatória de acção dentro da plataforma de âncora
+            #* escolha aleatória de acção
+            # para tartaruga: dentro da plataforma de âncora
+            # para vespa: dentro da área de jogo
+            if self.tipo == "Tartaruga":
+                self.limite_área = [self.âncora.rect.right, self.âncora.rect.right]
             self.acção = rd.sample(list(self.frames.keys()), 1)[0]
             if self.rect.right >= self.âncora.rect.right:
                 self.lado = "esquerda"
