@@ -44,6 +44,7 @@ class Mapa:
         }
     
     def setup(self, tmx_mapa, pos_inicial_jog):
+        lista_rects = {}
         #* fundo
         for layer in ["Fundo", "Paredes"]:
             for x, y, surf in tmx_mapa.get_layer_by_name(layer).tiles():
@@ -63,6 +64,7 @@ class Mapa:
             int(tmx_mapa.get_layer_by_name("Área_de_Jogo")[0].x)+int(tmx_mapa.get_layer_by_name("Área_de_Jogo")[0].width)]
         #* plataformas base de cada nível - fixas no fundo de cada nível, em ambos os lados
         for area in tmx_mapa.get_layer_by_name("Níveis"):
+            lista_rects.update({area.name:[]})
             lista_plataformas.update({area.name:[]})
             if area.name == "1": continue
             if area.name in HANDMADE_LEVELS: continue
@@ -73,6 +75,7 @@ class Mapa:
                 else:
                     coords = (((area.x + area.width) - surf.width), ((area.y + area.height) - surf.height))
                 plataforma = Sprite(coords, surf, todos_sprites)
+                lista_rects[area.name].append(plataforma)
                 lista_plataformas[area.name].append(plataforma)
         #* plataformas aleatórias de cada nível
         for area in tmx_mapa.get_layer_by_name("Níveis"):
@@ -123,7 +126,8 @@ class Mapa:
                     break
                 índice += 1
                 plataforma = Sprite(pt_origem, surf, todos_sprites)
-                lista_plataformas[area.name].extend([plataforma, l_buffer, r_buffer])
+                lista_rects[area.name].extend([plataforma, l_buffer, r_buffer])
+                lista_plataformas[area.name].append(plataforma)
                 origens.remove(pt_origem)
             # preencher o espaço restante com plataformas
             n_plataformas = rd.randint(freq[0], freq[1])
@@ -143,14 +147,15 @@ class Mapa:
                     if rect.right > rightlimit: continue
                     l_buffer = pygame.rect.Rect(rect.right,rect.top, int(TILE_SIZE/2), TILE_SIZE)
                     r_buffer = pygame.rect.Rect((rect.left-int(TILE_SIZE/2)),rect.top, int(TILE_SIZE/2), TILE_SIZE)
-                    if rect.collidelist(lista_plataformas[area.name]) != -1: continue
+                    if rect.collidelist(lista_rects[area.name]) != -1: continue
                     break
                 if desistencia: continue
                 plataforma = Sprite(pt_origem, surf, todos_sprites)
-                lista_plataformas[area.name].extend([plataforma, l_buffer, r_buffer])
+                lista_rects[area.name].extend([plataforma, l_buffer, r_buffer])
+                lista_plataformas[area.name].append(plataforma)
                 origens.remove(pt_origem)
         #* geração aleatória de inimigos/obstáculos
-        
+        print(lista_plataformas["1"])
         #* geração aleatória de moedas
         for area in tmx_mapa.get_layer_by_name("Níveis"):
             if area.name in HANDMADE_LEVELS: continue
@@ -164,7 +169,7 @@ class Mapa:
                 prob = 1
             # definir pontos possíveis de origem
             pts_moedas = []
-            alturas = list(set([i.rect.topleft[1] for i in lista_plataformas[area.name] if hasattr(i, "rect")]))
+            alturas = list(set([i.rect.topleft[1] for i in lista_plataformas[area.name]]))
             alturas.sort()
             for pto_y in alturas:
                 for pto_x in range(topleft[0], rightlimit, TILE_SIZE):
