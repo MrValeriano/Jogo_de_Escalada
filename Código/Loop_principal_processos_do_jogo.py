@@ -9,7 +9,7 @@ from Personagem_Principal import *
 mapa = Mapa()
 jogador = Principal(mapa.posição, todos_sprites)
 tarta = Inimigo("Tartaruga",lista_plataformas["1"][0], todos_sprites)
-
+print(área_de_jogo)
 while True:
     #* tick
     dt = clock.tick()/2000

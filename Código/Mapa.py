@@ -18,6 +18,7 @@ class TodosSprites(pygame.sprite.Group):
 
 todos_sprites = TodosSprites()
 fronteiras = []
+área_de_jogo = 0
 lista_plataformas = {}
 
 class Sprite(pygame.sprite.Sprite):
@@ -57,6 +58,10 @@ class Mapa:
         for area in tmx_mapa.get_layer_by_name("Bordas_Colisão"):
             rect = pygame.Rect(area.x, area.y, area.width, area.height)
             fronteiras.append(rect)
+        área_de_jogo = [int(tmx_mapa.get_layer_by_name("Área_de_Jogo")[0].x),
+                        int(tmx_mapa.get_layer_by_name("Área_de_Jogo")[0].y),
+                        int(tmx_mapa.get_layer_by_name("Área_de_Jogo")[0].width),
+                        int(tmx_mapa.get_layer_by_name("Área_de_Jogo")[0].height)]
         #* plataformas base de cada nível - fixas no fundo de cada nível, em ambos os lados
         for area in tmx_mapa.get_layer_by_name("Níveis"):
             lista_plataformas.update({area.name:[]})
