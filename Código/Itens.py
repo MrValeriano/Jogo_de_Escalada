@@ -1,7 +1,7 @@
 from Definições import *
 
 class Itens(pygame.sprite.Sprite):
-    def __init__(self, tipo, âncora, *groups):
+    def __init__(self, tipo, âncora, único, *groups):
         super().__init__(*groups)
         self.âncora = âncora
         self.frames = importar_pasta("Grafismos", "Itens", tipo)
