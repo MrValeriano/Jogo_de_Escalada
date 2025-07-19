@@ -18,15 +18,15 @@ class Itens(pygame.sprite.Sprite):
     def flutuar(self, dt):
         if self.direção == "cima":
             self.movimento.y -= 1
-        elif self.direção == "baixo":
+            if self.rect.centery <= self.ymax_min[1]:
+                self.direção = "baixo"
+                self.movimento = vector()
+        if self.direção == "baixo":
             self.movimento.y += 1
-        if self.rect.centery >= self.ymax_min[0]:
-            self.direção = "cima"
-            self.movimento = vector()
-        elif self.rect.centery <= self.ymax_min[1]:
-            self.direção = "baixo"
-            self.movimento = vector()
-        self.rect.center += self.movimento * dt
+            if self.rect.centery >= self.ymax_min[0]:
+                self.direção = "cima"
+                self.movimento = vector()
+        self.rect.center += self.movimento * 0.5 * dt
     
     def animação(self, dt):
         self.indice_frame += ANIMATION_SPEED * dt
