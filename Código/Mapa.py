@@ -1,5 +1,6 @@
 from Definições import *
 from Personagem_Principal import *
+from Itens import *
 
 #* Para todos os processos relativos ao mapa do jogo e a itens representados no mesmo
 
@@ -153,8 +154,12 @@ class Mapa:
         #* geração de itens
         for area in tmx_mapa.get_layer_by_name("Níveis"):
             if area.name in HANDMADE_LEVELS: continue
-            pts_itens = []
-            for plat in lista_plataformas[area.name]:
-                pts_itens.extend([plat.rect.x, plat.rect.centerx, plat.rect.x+plat.rect.width])
-            if area.name == "1": print(pts_itens)
-                    
+            pts_moedas = []
+            alturas = list(set([i.rect.topleft[1] for i in lista_plataformas[area.name] if hasattr(i, "rect")]))
+            alturas.sort()
+            for pto_y in alturas:
+                for pto_x in range(topleft[0], rightlimit, TILE_SIZE):
+                    pts_moedas.append((pto_x + (TILE_SIZE/2), pto_y))
+            for pt in pts_moedas:
+                moeda = Itens("Moeda", pt, todos_sprites)
+                if area.name == "1": print(moeda.rect.centery)
