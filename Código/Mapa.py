@@ -150,3 +150,11 @@ class Mapa:
                 origens.remove(pt_origem)
         #* geração de inimigos/obstáculos
         
+        #* geração de itens
+        for area in tmx_mapa.get_layer_by_name("Níveis"):
+            if area.name in HANDMADE_LEVELS: continue
+            pts_itens = []
+            for plat in lista_plataformas[area.name]:
+                pts_itens.extend([plat.rect.x, plat.rect.centerx, plat.rect.x+plat.rect.width])
+            if area.name == "1": print(pts_itens)
+                    
