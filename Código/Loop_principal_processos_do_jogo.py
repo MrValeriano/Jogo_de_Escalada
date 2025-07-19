@@ -8,9 +8,11 @@ from Personagem_Principal import *
 
 mapa = Mapa()
 jogador = Principal(mapa.posição, todos_sprites)
-tarta = Inimigo("Tartaruga",lista_plataformas["1"][0], mapa, todos_sprites)
-vespa = Inimigo("Vespa",lista_plataformas["1"][3], mapa, todos_sprites)
-# print(AREA_DE_JOGO)
+Inimigo("Tartaruga",lista_plataformas["1"][0], mapa, todos_sprites)
+Inimigo("Vespa",lista_plataformas["1"][3], mapa, todos_sprites)
+Itens("Moeda", lista_plataformas["1"][6], todos_sprites)
+Itens("Moeda", lista_plataformas["1"][9], todos_sprites)
+
 while True:
     #* tick
     dt = clock.tick()/2000

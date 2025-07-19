@@ -52,14 +52,12 @@ class Inimigo(pygame.sprite.Sprite):
                 self.direção.x += 1
                 self.passo = 1
                 if self.rect.right >= self.limite_área[1]:
-                    self.rect.right == self.limite_área[1]
                     self.direção = vector()
                     self.passo = 0
             elif self.lado == "esquerda":
                 self.direção.x -= 1
                 self.passo = -1
                 if self.rect.left <= self.limite_área[0]:
-                    self.rect.left == self.limite_área[0]
                     self.direção = vector()
                     self.passo = 0
         else:
