@@ -20,14 +20,15 @@ class Inimigo(pygame.sprite.Sprite):
         self.lado = "direita"
         self.indice_frame = 0
         self.image = self.frames[self.acção][self.lado][self.indice_frame]
-        self.pos = (self.âncora.rect.midtop[0], self.âncora.rect.midtop[1] - (self.image.height / 2))
+        if tipo == "Tartaruga":
+            self.freq_actividades = ["andar", "parado"]
+            self.pos = (self.âncora.rect.midtop[0], self.âncora.rect.midtop[1] - (self.image.height / 2))
+        elif tipo == "Vespa":
+            self.freq_actividades = ["andar", "andar", "andar", "parado"]
+            self.pos = (self.âncora.rect.midtop[0], self.âncora.rect.midtop[1] - (3*self.image.height/2))
         self.rect = self.image.get_frect(center = self.pos)
         self.direção = vector()
         self.passo = 0
-        if tipo == "Tartaruga":
-            self.freq_actividades = ["andar", "parado"]
-        elif tipo == "Vespa":
-            self.freq_actividades = ["andar", "andar", "andar", "parado"]
     
     def actividade(self, dt):
         #* esperar o fim da acção anterior
