@@ -57,10 +57,9 @@ class Mapa:
         for area in tmx_mapa.get_layer_by_name("Bordas_Colisão"):
             rect = pygame.Rect(area.x, area.y, area.width, area.height)
             fronteiras.append(rect)
-        self.área_de_jogo = [int(tmx_mapa.get_layer_by_name("Área_de_Jogo")[0].x),
-                             int(tmx_mapa.get_layer_by_name("Área_de_Jogo")[0].y),
-                             int(tmx_mapa.get_layer_by_name("Área_de_Jogo")[0].width),
-                             int(tmx_mapa.get_layer_by_name("Área_de_Jogo")[0].height)]
+        self.área_de_jogo = [
+            int(tmx_mapa.get_layer_by_name("Área_de_Jogo")[0].x),
+            int(tmx_mapa.get_layer_by_name("Área_de_Jogo")[0].x)+int(tmx_mapa.get_layer_by_name("Área_de_Jogo")[0].width)]
         #* plataformas base de cada nível - fixas no fundo de cada nível, em ambos os lados
         for area in tmx_mapa.get_layer_by_name("Níveis"):
             lista_plataformas.update({area.name:[]})
