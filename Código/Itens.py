@@ -17,6 +17,7 @@ class Itens(pygame.sprite.Sprite):
         self.direção = "cima"
         self.acção = "não brilhar"
         self.freq = ["brilhar"]*3 + ["não brilhar"]*7
+        self.rect.centery = self.rect.centery + rd.choice(range(-5, 5))
     
     def flutuar(self, dt):
         if self.direção == "cima":
