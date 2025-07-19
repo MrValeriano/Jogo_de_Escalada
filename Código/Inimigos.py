@@ -44,7 +44,7 @@ class Inimigo(pygame.sprite.Sprite):
                     self.direção = vector()
         else:
             self.direção = vector()
-        self.rect.center += self.direção * 50 * dt
+        self.rect.center += self.direção * 1 * dt
 
     def animação(self, dt):
         self.indice_frame += ANIMATION_SPEED * dt
