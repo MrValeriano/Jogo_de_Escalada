@@ -160,6 +160,7 @@ class Mapa:
             for pto_y in alturas:
                 for pto_x in range(topleft[0], rightlimit, TILE_SIZE):
                     pts_moedas.append((pto_x + (TILE_SIZE/2), pto_y))
-            for pt in pts_moedas:
-                Itens("Moeda", pt, todos_sprites)
+            for pt in range(len(pts_moedas)):
+                Itens("Moeda", pts_moedas[pt], todos_sprites)
+                if pt == 10: break
             if area.name == "1": print(len(pts_moedas))
