@@ -149,18 +149,28 @@ class Mapa:
                 plataforma = Sprite(pt_origem, surf, todos_sprites)
                 lista_plataformas[area.name].extend([plataforma, l_buffer, r_buffer])
                 origens.remove(pt_origem)
-        #* geração de inimigos/obstáculos
+        #* geração aleatória de inimigos/obstáculos
         
-        #* geração de itens
+        #* geração aleatória de moedas
         for area in tmx_mapa.get_layer_by_name("Níveis"):
             if area.name in HANDMADE_LEVELS: continue
+            if area.name < HANDMADE_LEVELS[0]:
+                prob = 6
+            elif area.name < HANDMADE_LEVELS[1]:
+                prob = 4
+            elif area.name < HANDMADE_LEVELS[2]:
+                prob = 2
+            elif area.name < HANDMADE_LEVELS[3]:
+                prob = 1
+            # definir pontos possíveis de origem
             pts_moedas = []
             alturas = list(set([i.rect.topleft[1] for i in lista_plataformas[area.name] if hasattr(i, "rect")]))
             alturas.sort()
             for pto_y in alturas:
                 for pto_x in range(topleft[0], rightlimit, TILE_SIZE):
                     pts_moedas.append((pto_x + (TILE_SIZE/2), pto_y))
-            for pt in range(len(pts_moedas)):
-                Itens("Moeda", pts_moedas[pt], todos_sprites)
-                if pt == 10: break
-            if area.name == "1": print(len(pts_moedas))
+            # escolher quais serão usados para gerar moedas
+            for pt in pts_moedas:
+                if rd.sample(["sim", "não"], 1, counts=[prob, 200-prob])[0] == "sim":
+                    pts_moedas.remove(pt)
+                    Itens("Moeda", pt, todos_sprites)
