@@ -22,7 +22,7 @@ class Inimigo(pygame.sprite.Sprite):
         self.image = self.frames[self.acção][self.lado][self.indice_frame]
         self.pos = (self.âncora.rect.midtop[0], self.âncora.rect.midtop[1] - (self.image.height / 2))
         self.rect = self.image.get_frect(center = self.pos)
-        # self.direção = vector()
+        self.direção = vector()
         self.passo = 0
         if tipo == "Tartaruga":
             self.freq_actividades = ["andar", "parado"]
@@ -37,11 +37,10 @@ class Inimigo(pygame.sprite.Sprite):
             # para vespa: dentro da área de jogo
             if self.tipo == "Tartaruga":
                 self.limite_área = [self.âncora.rect.left, self.âncora.rect.right]
-                self.velocidade = 1
+                self.velocidade = 2
             elif self.tipo == "Vespa":
-                print(self.rect.center, self.rect.center[0] + 3)
                 self.limite_área = [self.mapa.área_de_jogo[0]+(TILE_SIZE/2), self.mapa.área_de_jogo[1]-(TILE_SIZE/2)]
-                self.velocidade = 20
+                self.velocidade = 1000
             self.acção = rd.sample(self.freq_actividades, 1)[0]
             if self.rect.right >= self.limite_área[1]:
                 self.lado = "esquerda"
@@ -49,24 +48,26 @@ class Inimigo(pygame.sprite.Sprite):
                 self.lado = "direita"
         if self.acção == "andar":
             if self.lado == "direita":
-                # self.direção.x += 1
+                self.direção.x += 1
                 self.passo = 1
                 if self.rect.right >= self.limite_área[1]:
                     self.rect.right == self.limite_área[1]
-                    # self.direção = vector()
+                    self.direção = vector()
                     self.passo = 0
             elif self.lado == "esquerda":
-                # self.direção.x -= 1
+                self.direção.x -= 1
                 self.passo = -1
                 if self.rect.left <= self.limite_área[0]:
                     self.rect.left == self.limite_área[0]
-                    # self.direção = vector()
+                    self.direção = vector()
                     self.passo = 0
         else:
-            # self.direção = vector()
+            self.direção = vector()
             self.passo = 0
-        # self.rect.center += self.direção * self.velocidade * dt
-        self.rect.centerx += self.passo * self.velocidade * dt
+        if self.tipo == "Tartaruga":
+            self.rect.center += self.direção * self.velocidade * dt
+        elif self.tipo == "Vespa":
+            self.rect.centerx += self.passo * self.velocidade * dt
 
     def animação(self, dt):
         self.indice_frame += ANIMATION_SPEED * dt
