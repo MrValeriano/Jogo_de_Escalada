@@ -43,7 +43,9 @@ class Principal(pygame.sprite.Sprite):
         print(self.rect.collidelist(self.mapa.lista_objectos["Moeda"]))
 
     def update(self, dt):
-        self.direção = input_jogador()
-        self.interação()
+        actividade = input_jogador()
+        self.direção = actividade[0]
+        if actividade == "collect":
+            self.interação()
         self.movimentação(dt)
         self.animação(dt)
