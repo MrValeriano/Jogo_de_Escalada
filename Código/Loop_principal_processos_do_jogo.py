@@ -8,8 +8,8 @@ from Personagem_Principal import *
 
 mapa = Mapa()
 jogador = Principal(mapa.posição, todos_sprites)
-Inimigo("Tartaruga",mapa.lista_plataformas["1"][0], mapa, "1", todos_sprites)
-Inimigo("Vespa",mapa.lista_plataformas["1"][5], mapa, "1", todos_sprites)
+# Inimigo("Tartaruga",mapa.lista_plataformas["1"][0], mapa, "1", todos_sprites)
+# Inimigo("Vespa",mapa.lista_plataformas["1"][5], mapa, "1", todos_sprites)
 # Itens("Moeda", lista_plataformas["1"][6], todos_sprites)
 # Itens("Moeda", lista_plataformas["1"][9], todos_sprites)
 
