@@ -31,6 +31,11 @@ class Mapa:
     def __init__(self):
         self.importar_grafismos()
         self.lista_plataformas = {}
+        self.lista_objectos = {
+            "Moeda":[],
+            "Tartaruga":[],
+            "Vespa":[]
+        }
         self.setup(self.mapas_tmx["Mapa"], "Início")
     
     def importar_grafismos(self):
@@ -169,7 +174,8 @@ class Mapa:
             for plat in self.lista_plataformas[area.name]:
                 if rd.sample(["sim", "não"], 1, counts=[prob, 100-prob])[0] == "sim":
                     tipo = rd.sample(["Vespa", "Tartaruga"], 1, counts=[50, 50])[0]
-                    Inimigo(tipo, plat, self, "1", todos_sprites)
+                    objecto = Inimigo(tipo, plat, self, "1", todos_sprites)
+                    self.lista_objectos[tipo].append(objecto)
         #* geração aleatória de moedas
         for area in tmx_mapa.get_layer_by_name("Níveis"):
             if area.name in HANDMADE_LEVELS: continue
@@ -192,4 +198,5 @@ class Mapa:
             for pt in pts_moedas:
                 if rd.sample(["sim", "não"], 1, counts=[prob, 200-prob])[0] == "sim":
                     pts_moedas.remove(pt)
-                    Itens("Moeda", pt, todos_sprites)
+                    objecto = Itens("Moeda", pt, todos_sprites)
+                    self.lista_objectos["Moeda"].append(objecto)
