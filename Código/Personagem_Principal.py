@@ -30,7 +30,7 @@ class Principal(pygame.sprite.Sprite):
         self.rect = self.image.get_frect(center = self.mapa.posição)
         self.direção = vector()
         self.inventário = {
-            "Moeda": 0,
+            "Moedas": 0,
             "Itens": [],
             "Vidas": 3
         }
@@ -48,8 +48,12 @@ class Principal(pygame.sprite.Sprite):
         print(self.rect.collidelist(self.mapa.lista_objectos["Moeda"]))
     
     def collisão(self):
-        if self.rect.collidelist(self.mapa.lista_objectos["Moeda"]):
-            
+        if self.rect.collidelist(self.mapa.lista_objectos["Moeda"]) > -1:
+            moeda = self.rect.collidelist(self.mapa.lista_objectos["Moeda"])
+            if self.mapa.lista_objectos["Moeda"][moeda].alive():
+                self.mapa.lista_objectos["Moeda"][moeda].kill()
+                self.inventário["Moedas"] += 1
+                print(self.inventário)
 
     def update(self, dt):
         actividade = input_jogador()
@@ -57,4 +61,5 @@ class Principal(pygame.sprite.Sprite):
         if actividade[1] == "collect":
             self.interação()
         self.movimentação(dt)
+        self.collisão()
         self.animação(dt)
