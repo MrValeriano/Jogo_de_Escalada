@@ -53,7 +53,6 @@ class Principal(pygame.sprite.Sprite):
             if self.mapa.lista_objectos["Moeda"][moeda].alive():
                 self.mapa.lista_objectos["Moeda"][moeda].kill()
                 self.inventário["Moedas"] += 1
-                print(self.inventário)
 
     def update(self, dt):
         actividade = input_jogador()
