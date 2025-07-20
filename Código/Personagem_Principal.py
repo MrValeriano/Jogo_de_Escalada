@@ -29,6 +29,11 @@ class Principal(pygame.sprite.Sprite):
         self.mapa = mapa
         self.rect = self.image.get_frect(center = self.mapa.posição)
         self.direção = vector()
+        self.inventário = {
+            "Moeda": 0,
+            "Itens": [],
+            "Vidas": 3
+        }
     
     def movimentação(self, dt):
         self.rect.center += self.direção * 500 * dt
@@ -40,7 +45,7 @@ class Principal(pygame.sprite.Sprite):
         self.image = self.frames[self.acção][self.lado][int(self.indice_frame)]
     
     def interação(self):
-        print(self.rect.collidelist(self.mapa.lista_objectos["Moeda"]))
+        if (self.rect.collidelist(self.mapa.lista_objectos["Moeda"]))
 
     def update(self, dt):
         actividade = input_jogador()
