@@ -7,7 +7,7 @@ from Loop_de_gestao_de_eventos import event_loop
 from Personagem_Principal import *
 
 mapa = Mapa()
-jogador = Principal(mapa.posição, todos_sprites)
+jogador = Principal(mapa, todos_sprites)
 
 while True:
     #* tick
