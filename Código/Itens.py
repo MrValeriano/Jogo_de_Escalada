@@ -42,6 +42,9 @@ class Itens(pygame.sprite.Sprite):
             self.image = self.frames[int(self.indice_frame)]
         else:
             self.image = self.frames[0]
+    
+    # def recolha(self):
+    #     if self.rect.colliderect(jogador)
 
     def update(self, dt):
         self.flutuar(dt)
