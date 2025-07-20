@@ -2,7 +2,7 @@ from Definições import *
 from Processamento_do_input_do_jogador import input_jogador
 
 class Principal(pygame.sprite.Sprite):
-    def __init__(self, pos, *groups):
+    def __init__(self, mapa, *groups):
         super().__init__(*groups)
         self.frames = {
             "parado": {
@@ -26,7 +26,8 @@ class Principal(pygame.sprite.Sprite):
         self.lado = "direita"
         self.indice_frame = 0
         self.image = self.frames[self.acção][self.lado][self.indice_frame]
-        self.rect = self.image.get_frect(center = pos)
+        self.mapa = mapa
+        self.rect = self.image.get_frect(center = self.mapa.posição)
         self.direção = vector()
     
     def movimentação(self, dt):
