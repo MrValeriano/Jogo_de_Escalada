@@ -39,8 +39,8 @@ class Principal(pygame.sprite.Sprite):
             self.indice_frame = 0
         self.image = self.frames[self.acção][self.lado][int(self.indice_frame)]
     
-    def interação(self):pass
-        # print(self.rect.collidelist(self.mapa.lista_objectos["Moeda"]))
+    def interação(self):
+        print(self.rect.collidelist(self.mapa.lista_objectos["Moeda"]))
 
     def update(self, dt):
         self.direção = input_jogador()
