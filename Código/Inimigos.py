@@ -26,7 +26,7 @@ class Inimigo(pygame.sprite.Sprite):
             self.pos = (self.âncora.rect.midtop[0], self.âncora.rect.midtop[1] - (self.image.height / 2))
         elif tipo == "Vespa":
             self.freq_actividades = ["andar", "andar", "andar", "parado"]
-            self.pos = (self.âncora.rect.midtop[0], self.âncora.rect.midtop[1] - (3*self.image.height/2))
+            self.pos = (self.âncora.rect.midtop[0], self.âncora.rect.midtop[1] - (8 * self.image.height / 7))
         self.rect = self.image.get_frect(center = self.pos)
         self.direção = vector()
         self.passo = 0
