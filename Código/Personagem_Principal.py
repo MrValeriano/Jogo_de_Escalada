@@ -49,18 +49,19 @@ class Principal(pygame.sprite.Sprite):
         if self.dano == True:
             self.frames_invencibilidade += ANIMATION_SPEED * dt
             self.tempo_invencibilidade += dt
-            print(self.tempo_invencibilidade)
             if int(self.frames_invencibilidade) % 4 == 0:
                 self.image.set_alpha(0)
             else:
                 self.image.set_alpha(255)
             if int(self.tempo_invencibilidade) >= 3:
                 self.dano = False
+                self.image.set_alpha(255)
         else:
             self.tempo_invencibilidade = 0
             self.frames_invencibilidade = 0
     
     def interação(self):
+        print(clock.get_time())
         print(self.rect.collidelist(self.mapa.lista_objectos["Moeda"]))
     
     def collisão(self):
@@ -75,6 +76,7 @@ class Principal(pygame.sprite.Sprite):
         if self.rect.collidelist(self.mapa.lista_objectos["Tartaruga"]) > -1:
             if self.dano == False:
                 self.dano = True
+        
 
     def update(self, dt):
         actividade = input_jogador()
