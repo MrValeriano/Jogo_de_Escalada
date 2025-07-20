@@ -12,6 +12,6 @@ def input_jogador():
             input_vector.y -= 1
         if keys[pygame.K_s]:
             input_vector.y += 1
-        if keys[pygame.K_SPACE]:
-            other_action = "collect"
+        # if keys[pygame.K_SPACE]:
+        #     other_action = "collect"
         return [input_vector, other_action]
