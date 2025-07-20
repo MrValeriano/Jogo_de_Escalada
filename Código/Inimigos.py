@@ -69,8 +69,8 @@ class Inimigo(pygame.sprite.Sprite):
         elif self.tipo == "Vespa":
             if int(dt) >= 1: dt = 0.01
             self.rect.centerx += self.passo * self.velocidade * dt
-            if self.rect.collidelist(self.mapa.lista_plataformas[self.nível]):
-                print("COLLISION")
+            # if self.rect.collidelist(self.mapa.lista_plataformas[self.nível]):
+            #     print("COLLISION")
 
     def animação(self, dt):
         self.indice_frame += ANIMATION_SPEED * dt
