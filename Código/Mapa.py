@@ -19,6 +19,7 @@ class TodosSprites(pygame.sprite.Group):
             self.display_surf.blit(sprite.image, sprite.rect.topleft + self.offset)
 
 todos_sprites = TodosSprites()
+sprites_colisão = pygame.sprite.Group()
 fronteiras = []
 
 class Sprite(pygame.sprite.Sprite):
@@ -54,7 +55,9 @@ class Mapa:
         #* fundo
         for layer in ["Fundo", "Paredes"]:
             for x, y, surf in tmx_mapa.get_layer_by_name(layer).tiles():
-                Sprite((x * TILE_SIZE, y * TILE_SIZE), surf, todos_sprites)
+                Sprite((x * TILE_SIZE, y * TILE_SIZE),
+                       surf,
+                       todos_sprites if layer == "Fundo" else (todos_sprites, sprites_colisão))
         #* entidades
         for obj in tmx_mapa.get_layer_by_name("Entidades"):
             if obj.name == "Jogador" and obj.properties["Posição"] == pos_inicial_jog:
@@ -80,7 +83,7 @@ class Mapa:
                     coords = (area.x, ((area.y + area.height) - surf.height))
                 else:
                     coords = (((area.x + area.width) - surf.width), ((area.y + area.height) - surf.height))
-                plataforma = Sprite(coords, surf, todos_sprites)
+                plataforma = Sprite(coords, surf, (todos_sprites, sprites_colisão))
                 lista_rects[area.name].append(plataforma)
                 self.lista_plataformas[area.name].append(plataforma)
         #* plataformas aleatórias de cada nível
@@ -131,7 +134,7 @@ class Mapa:
                     r_buffer = pygame.rect.Rect((rect.left-int(TILE_SIZE/2)),rect.top, int(TILE_SIZE/2), TILE_SIZE)
                     break
                 índice += 1
-                plataforma = Sprite(pt_origem, surf, todos_sprites)
+                plataforma = Sprite(pt_origem, surf, (todos_sprites, sprites_colisão))
                 lista_rects[area.name].extend([plataforma, l_buffer, r_buffer])
                 self.lista_plataformas[area.name].append(plataforma)
                 origens.remove(pt_origem)
@@ -156,7 +159,7 @@ class Mapa:
                     if rect.collidelist(lista_rects[area.name]) != -1: continue
                     break
                 if desistencia: continue
-                plataforma = Sprite(pt_origem, surf, todos_sprites)
+                plataforma = Sprite(pt_origem, surf, (todos_sprites, sprites_colisão))
                 lista_rects[area.name].extend([plataforma, l_buffer, r_buffer])
                 self.lista_plataformas[area.name].append(plataforma)
                 origens.remove(pt_origem)
@@ -174,7 +177,7 @@ class Mapa:
             for plat in self.lista_plataformas[area.name]:
                 if rd.sample(["sim", "não"], 1, counts=[prob, 100-prob])[0] == "sim":
                     tipo = rd.sample(["Vespa", "Tartaruga"], 1, counts=[50, 50])[0]
-                    objecto = Inimigo(tipo, plat, self, "1", todos_sprites)
+                    objecto = Inimigo(tipo, plat, self, "1", (todos_sprites, sprites_colisão))
                     self.lista_objectos[tipo].append(objecto)
         #* geração aleatória de moedas
         for area in tmx_mapa.get_layer_by_name("Níveis"):
