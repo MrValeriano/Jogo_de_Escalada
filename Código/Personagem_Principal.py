@@ -32,6 +32,7 @@ class Principal(pygame.sprite.Sprite):
         self.mapa = mapa
         self.rect = self.image.get_frect(center = self.mapa.posição)
         self.direção = vector()
+        self.relógio_interno = pygame.time.Clock()
         self.inventário = {
             "Moedas": 0,
             "Itens": [],
@@ -48,41 +49,50 @@ class Principal(pygame.sprite.Sprite):
         self.image = self.frames[self.acção][self.lado][int(self.indice_frame)]
         if self.dano == True:
             self.frames_invencibilidade += ANIMATION_SPEED * dt
-            self.tempo_invencibilidade += dt
             if int(self.frames_invencibilidade) % 4 == 0:
                 self.image.set_alpha(0)
             else:
                 self.image.set_alpha(255)
-            if int(self.tempo_invencibilidade) >= 3:
-                self.dano = False
-                self.image.set_alpha(255)
         else:
-            self.tempo_invencibilidade = 0
             self.frames_invencibilidade = 0
+            self.image.set_alpha(255)
     
     def interação(self):
-        print(clock.get_time())
-        print(self.rect.collidelist(self.mapa.lista_objectos["Moeda"]))
+        self.rect.collidelist(self.mapa.lista_objectos["Moeda"])
     
-    def collisão(self):
+    def collisão_entidades(self):
+        print("1",self.inventário["Vidas"])
         if self.rect.collidelist(self.mapa.lista_objectos["Moeda"]) > -1:
             moeda = self.rect.collidelist(self.mapa.lista_objectos["Moeda"])
             if self.mapa.lista_objectos["Moeda"][moeda].alive():
                 self.mapa.lista_objectos["Moeda"][moeda].kill()
                 self.inventário["Moedas"] += 1
-        if self.rect.collidelist(self.mapa.lista_objectos["Vespa"]) > -1:
-            if self.dano == False:
-                self.dano = True
-        if self.rect.collidelist(self.mapa.lista_objectos["Tartaruga"]) > -1:
-            if self.dano == False:
-                self.dano = True
-        
+        if self.dano == False:
+            if self.rect.collidelist(self.mapa.lista_objectos["Vespa"]) > -1:
+                if self.dano == False:
+                    self.dano = True
+                    self.inventário["Vidas"] -= 1
+            if self.rect.collidelist(self.mapa.lista_objectos["Tartaruga"]) > -1:
+                if self.dano == False:
+                    self.dano = True
+                    self.inventário["Vidas"] -= 1
+        print("2",self.inventário["Vidas"])
+    
+    def verificar_estado(self):
+        if self.dano == True:
+            self.tempo_invencibilidade += self.relógio_interno.tick()/1000
+            if int(self.tempo_invencibilidade) >= 3:
+                self.tempo_invencibilidade = 0
+                self.dano = False
+        if self.inventário["Vidas"] == 0:
+            print("GAME OVER")
 
     def update(self, dt):
+        self.verificar_estado()
         actividade = input_jogador()
         self.direção = actividade[0]
         if actividade[1] == "collect":
             self.interação()
         self.movimentação(dt)
-        self.collisão()
+        self.collisão_entidades()
         self.animação(dt)
