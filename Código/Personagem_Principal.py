@@ -45,7 +45,11 @@ class Principal(pygame.sprite.Sprite):
         self.image = self.frames[self.acção][self.lado][int(self.indice_frame)]
     
     def interação(self):
-        if (self.rect.collidelist(self.mapa.lista_objectos["Moeda"]))
+        print(self.rect.collidelist(self.mapa.lista_objectos["Moeda"]))
+    
+    def collisão(self):
+        if self.rect.collidelist(self.mapa.lista_objectos["Moeda"]):
+            
 
     def update(self, dt):
         actividade = input_jogador()
