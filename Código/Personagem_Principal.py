@@ -37,8 +37,12 @@ class Principal(pygame.sprite.Sprite):
         if int(self.indice_frame) >= len(self.frames[self.acção][self.lado]):
             self.indice_frame = 0
         self.image = self.frames[self.acção][self.lado][int(self.indice_frame)]
+    
+    def interação(self):
+        print(self.rect.collidelist())
 
     def update(self, dt):
         self.direção = input_jogador()
+        self.interação()
         self.movimentação(dt)
         self.animação(dt)
