@@ -1,6 +1,7 @@
 from Definições import *
 from Personagem_Principal import *
 from Itens import *
+from Inimigos import *
 
 #* Para todos os processos relativos ao mapa do jogo e a itens representados no mesmo
 
@@ -155,7 +156,20 @@ class Mapa:
                 self.lista_plataformas[area.name].append(plataforma)
                 origens.remove(pt_origem)
         #* geração aleatória de inimigos/obstáculos
-        print(self.lista_plataformas["1"])
+        for area in tmx_mapa.get_layer_by_name("Níveis"):
+            if area.name in HANDMADE_LEVELS: continue
+            if area.name < HANDMADE_LEVELS[0]:
+                prob = 2
+            elif area.name < HANDMADE_LEVELS[1]:
+                prob = 3
+            elif area.name < HANDMADE_LEVELS[2]:
+                prob = 4
+            elif area.name < HANDMADE_LEVELS[3]:
+                prob = 5
+            for plat in self.lista_plataformas[area.name]:
+                if rd.sample(["sim", "não"], 1, counts=[prob, 6-prob])[0] == "sim":
+                    tipo = rd.choice(["Vespa", "Tartaruga"])
+                    Inimigo(tipo, plat, self, "1", todos_sprites)
         #* geração aleatória de moedas
         for area in tmx_mapa.get_layer_by_name("Níveis"):
             if area.name in HANDMADE_LEVELS: continue
