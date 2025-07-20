@@ -45,7 +45,7 @@ class Principal(pygame.sprite.Sprite):
     def update(self, dt):
         actividade = input_jogador()
         self.direção = actividade[0]
-        if actividade == "collect":
+        if actividade[1] == "collect":
             self.interação()
         self.movimentação(dt)
         self.animação(dt)
