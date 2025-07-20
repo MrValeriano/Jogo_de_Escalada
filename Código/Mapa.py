@@ -19,7 +19,6 @@ class TodosSprites(pygame.sprite.Group):
 
 todos_sprites = TodosSprites()
 fronteiras = []
-lista_plataformas = {}
 
 class Sprite(pygame.sprite.Sprite):
     def __init__(self, pos, surf, *groups):
@@ -30,6 +29,7 @@ class Sprite(pygame.sprite.Sprite):
 class Mapa:
     def __init__(self):
         self.importar_grafismos()
+        self.lista_plataformas = {}
         self.setup(self.mapas_tmx["Mapa"], "Início")
     
     def importar_grafismos(self):
@@ -65,7 +65,7 @@ class Mapa:
         #* plataformas base de cada nível - fixas no fundo de cada nível, em ambos os lados
         for area in tmx_mapa.get_layer_by_name("Níveis"):
             lista_rects.update({area.name:[]})
-            lista_plataformas.update({area.name:[]})
+            self.lista_plataformas.update({area.name:[]})
             if area.name == "1": continue
             if area.name in HANDMADE_LEVELS: continue
             surf = self.plataformas_surf["Pequena"]
@@ -76,7 +76,7 @@ class Mapa:
                     coords = (((area.x + area.width) - surf.width), ((area.y + area.height) - surf.height))
                 plataforma = Sprite(coords, surf, todos_sprites)
                 lista_rects[area.name].append(plataforma)
-                lista_plataformas[area.name].append(plataforma)
+                self.lista_plataformas[area.name].append(plataforma)
         #* plataformas aleatórias de cada nível
         for area in tmx_mapa.get_layer_by_name("Níveis"):
             if area.name in HANDMADE_LEVELS: continue
@@ -127,7 +127,7 @@ class Mapa:
                 índice += 1
                 plataforma = Sprite(pt_origem, surf, todos_sprites)
                 lista_rects[area.name].extend([plataforma, l_buffer, r_buffer])
-                lista_plataformas[area.name].append(plataforma)
+                self.lista_plataformas[area.name].append(plataforma)
                 origens.remove(pt_origem)
             # preencher o espaço restante com plataformas
             n_plataformas = rd.randint(freq[0], freq[1])
@@ -152,10 +152,10 @@ class Mapa:
                 if desistencia: continue
                 plataforma = Sprite(pt_origem, surf, todos_sprites)
                 lista_rects[area.name].extend([plataforma, l_buffer, r_buffer])
-                lista_plataformas[area.name].append(plataforma)
+                self.lista_plataformas[area.name].append(plataforma)
                 origens.remove(pt_origem)
         #* geração aleatória de inimigos/obstáculos
-        print(lista_plataformas["1"])
+        print(self.lista_plataformas["1"])
         #* geração aleatória de moedas
         for area in tmx_mapa.get_layer_by_name("Níveis"):
             if area.name in HANDMADE_LEVELS: continue
@@ -169,7 +169,7 @@ class Mapa:
                 prob = 1
             # definir pontos possíveis de origem
             pts_moedas = []
-            alturas = list(set([i.rect.topleft[1] for i in lista_plataformas[area.name]]))
+            alturas = list(set([i.rect.topleft[1] for i in self.lista_plataformas[area.name]]))
             alturas.sort()
             for pto_y in alturas:
                 for pto_x in range(topleft[0], rightlimit, TILE_SIZE):
