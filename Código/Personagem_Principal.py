@@ -57,11 +57,11 @@ class Principal(pygame.sprite.Sprite):
             self.frames_invencibilidade = 0
             self.image.set_alpha(255)
     
-    def interação(self):
+    def interacção(self):
         self.rect.collidelist(self.mapa.lista_objectos["Moeda"])
+        print(self.inventário)
     
     def collisão_entidades(self):
-        print("1",self.inventário["Vidas"])
         if self.rect.collidelist(self.mapa.lista_objectos["Moeda"]) > -1:
             moeda = self.rect.collidelist(self.mapa.lista_objectos["Moeda"])
             if self.mapa.lista_objectos["Moeda"][moeda].alive():
@@ -76,7 +76,6 @@ class Principal(pygame.sprite.Sprite):
                 if self.dano == False:
                     self.dano = True
                     self.inventário["Vidas"] -= 1
-        print("2",self.inventário["Vidas"])
     
     def verificar_estado(self):
         if self.dano == True:
@@ -89,10 +88,7 @@ class Principal(pygame.sprite.Sprite):
 
     def update(self, dt):
         self.verificar_estado()
-        actividade = input_jogador()
-        self.direção = actividade[0]
-        if actividade[1] == "collect":
-            self.interação()
+        input_jogador(self)
         self.movimentação(dt)
         self.collisão_entidades()
         self.animação(dt)
