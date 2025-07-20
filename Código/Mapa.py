@@ -159,16 +159,16 @@ class Mapa:
         for area in tmx_mapa.get_layer_by_name("Níveis"):
             if area.name in HANDMADE_LEVELS: continue
             if area.name < HANDMADE_LEVELS[0]:
-                prob = 2
+                prob = 1
             elif area.name < HANDMADE_LEVELS[1]:
-                prob = 3
+                prob = 2
             elif area.name < HANDMADE_LEVELS[2]:
-                prob = 4
+                prob = 3
             elif area.name < HANDMADE_LEVELS[3]:
-                prob = 5
+                prob = 4
             for plat in self.lista_plataformas[area.name]:
                 if rd.sample(["sim", "não"], 1, counts=[prob, 6-prob])[0] == "sim":
-                    tipo = rd.choice(["Vespa", "Tartaruga"])
+                    tipo = rd.choice(["Vespa", "Tartaruga", "Tartaruga", "Tartaruga"])
                     Inimigo(tipo, plat, self, "1", todos_sprites)
         #* geração aleatória de moedas
         for area in tmx_mapa.get_layer_by_name("Níveis"):
