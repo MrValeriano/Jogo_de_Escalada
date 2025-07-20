@@ -4,10 +4,11 @@ class Itens(pygame.sprite.Sprite):
     def __init__(self, tipo, âncora, *groups):
         super().__init__(*groups)
         self.âncora = âncora
-        self.frames = importar_pasta("Grafismos", "Itens", tipo)
+        self.tipo = tipo
+        self.frames = importar_pasta("Grafismos", "Itens", self.tipo)
         self.indice_frame = 0
         self.image = self.frames[self.indice_frame]
-        if tipo == "Moeda":
+        if self.tipo == "Moeda":
             self.pos = (self.âncora[0], self.âncora[1] - self.image.height)
         else:
             self.pos = (self.âncora.rect.midtop[0], self.âncora.rect.midtop[1] - self.image.height)
