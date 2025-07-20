@@ -40,7 +40,14 @@ class Principal(pygame.sprite.Sprite):
         }
     
     def movimentação(self, dt):
-        self.rect.center += self.direção * 500 * dt
+        self.rect.centerx += self.direção.x * 500 * dt
+        self.colisão_mapa("horizontal")
+        self.rect.centery += self.direção.y * 500 * dt
+        self.colisão_mapa("vertical")
+    
+    def colisão_mapa(self, eixo):
+        for sprite in self.mapa.sprites_colisão:
+            print(sprite)
 
     def animação(self, dt):
         self.indice_frame += ANIMATION_SPEED * dt
