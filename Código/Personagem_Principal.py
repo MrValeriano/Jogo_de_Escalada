@@ -1,5 +1,5 @@
 from Definições import *
-from Processamento_do_input_do_jogador import input_jogador
+from Processamento_do_input_do_jogador import *
 
 class Principal(pygame.sprite.Sprite):
     def __init__(self, mapa, *groups):
