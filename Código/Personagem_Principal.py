@@ -33,6 +33,8 @@ class Principal(pygame.sprite.Sprite):
         self.rect = self.image.get_frect(center = self.mapa.posição)
         self.rect_anterior = self.rect.copy()
         self.direção = vector()
+        self.velocidade = 500
+        self.gravidade = 500
         self.relógio_interno = pygame.time.Clock()
         self.inventário = {
             "Moedas": 0,
@@ -41,18 +43,23 @@ class Principal(pygame.sprite.Sprite):
         }
     
     def movimentação(self, dt):
-        self.rect.centerx += self.direção.x * 500 * dt
+        #* horizontal
+        self.rect.centerx += self.direção.x * self.velocidade * dt
         self.colisão_mapa("horizontal")
-        self.rect.centery += self.direção.y * 500 * dt
+        #* vertical
+        self.direção.y += self.gravidade / 2 * dt
+        self.rect.centery += self.direção.y
+        # repetição de linha necessária para simular aceleração de gravidade em vez de velocidade constante
+        self.direção.y += self.gravidade / 2 * dt
         self.colisão_mapa("vertical")
     
     def colisão_mapa(self, eixo):
         for sprite in self.mapa.sprites_colisão:
             if sprite.rect.colliderect(self.rect):
                 if eixo == "horizontal":
-                    if self.rect.left <= sprite.rect.right:
+                    if self.rect.left <= sprite.rect.right and self.rect_anterior.left >= sprite.rect_anterior.right:
                         self.rect.left = sprite.rect.right
-                    if self.rect.right >= sprite.rect.left:
+                    if self.rect.right >= sprite.rect.left and self.rect_anterior.right <= sprite.rect_anterior.left:
                         self.rect.right = sprite.rect.left
         # print(self.rect.collidelist(self.mapa.sprites_colisão.sprites()))
         pass
