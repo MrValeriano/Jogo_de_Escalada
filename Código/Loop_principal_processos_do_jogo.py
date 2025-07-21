@@ -14,7 +14,7 @@ jogador = Principal(mapa, todos_sprites)
 # print(isinstance(list(todos_sprites.spritedict.keys())[-1], Principal))
 while True:
     #* tick
-    dt = clock.tick()/2000
+    dt = clock.tick()/1000
     #* eventos
     event_loop()
     #* representações no ecrã
