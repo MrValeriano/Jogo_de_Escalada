@@ -1426,7 +1426,7 @@
 12,13,13,13,13,13,13,13,13,13,14
 </data>
  </layer>
- <objectgroup id="6" name="Bordas_Colisão" visible="0">
+ <objectgroup id="6" name="Bordas_Colisão">
   <object id="32" name="Top" x="0" y="0" width="1056" height="24"/>
   <object id="33" name="Left" x="0" y="24" width="12" height="67152"/>
   <object id="34" name="Right" x="1044" y="24" width="12" height="67152"/>
