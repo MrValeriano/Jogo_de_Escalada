@@ -33,10 +33,10 @@ class Principal(pygame.sprite.Sprite):
         self.rect = self.image.get_frect(center = self.mapa.posição)
         self.rect_anterior = self.rect.copy()
         self.direção = vector()
-        self.velocidade = 500
-        self.gravidade = 1000
+        self.velocidade = 200
+        self.gravidade = 1300
         self.em_salto = False
-        self.altura_salto = 1000
+        self.altura_salto = 900
         self.relógio_interno = pygame.time.Clock()
         self.inventário = {
             "Moedas": 0,
@@ -56,6 +56,7 @@ class Principal(pygame.sprite.Sprite):
         self.colisão_mapa("vertical")
         if self.em_salto:
             self.direção.y = -self.altura_salto
+            self.em_salto = False
     
     def colisão_mapa(self, eixo):
         for sprite in self.mapa.sprites_colisão:
