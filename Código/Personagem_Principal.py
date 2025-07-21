@@ -34,7 +34,7 @@ class Principal(pygame.sprite.Sprite):
         self.rect_anterior = self.rect.copy()
         self.direção = vector()
         self.velocidade = 500
-        self.gravidade = 500
+        self.gravidade = 10
         self.relógio_interno = pygame.time.Clock()
         self.inventário = {
             "Moedas": 0,
@@ -66,6 +66,7 @@ class Principal(pygame.sprite.Sprite):
                         self.rect.top = sprite.rect.bottom
                     if self.rect.bottom >= sprite.rect.top and self.rect_anterior.bottom <= sprite.rect_anterior.top:
                         self.rect.bottom = sprite.rect.top
+                    self.direção.y = 0
         # print(self.rect.collidelist(self.mapa.sprites_colisão.sprites()))
         pass
 
