@@ -56,8 +56,14 @@ class Principal(pygame.sprite.Sprite):
         self.direção.y += self.gravidade / 2 * dt
         self.colisão_mapa("vertical")
         if self.saltar:
-            self.direção.y = -self.altura_salto
+            if self.no_chão:
+                self.direção.y = -self.altura_salto
             self.saltar = False
+    
+    def ver_contacto(self):
+        rect_chão = pygame.Rect(self.rect.bottomleft, (self.rect.width, 2))
+        rects_colisão = [sprite.rect for sprite in self.mapa.sprites_colisão]
+        self.no_chão = True if rect_chão.collidelist(rects_colisão) >= 0 else False
     
     def colisão_mapa(self, eixo):
         for sprite in self.mapa.sprites_colisão:
@@ -125,5 +131,6 @@ class Principal(pygame.sprite.Sprite):
         self.verificar_estado()
         input_jogador(self)
         self.movimentação(dt)
+        self.ver_contacto()
         self.collisão_entidades()
         self.animação(dt)
