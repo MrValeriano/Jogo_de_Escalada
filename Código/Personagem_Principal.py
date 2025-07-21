@@ -61,6 +61,11 @@ class Principal(pygame.sprite.Sprite):
                         self.rect.left = sprite.rect.right
                     if self.rect.right >= sprite.rect.left and self.rect_anterior.right <= sprite.rect_anterior.left:
                         self.rect.right = sprite.rect.left
+                elif eixo == "vertical":
+                    if self.rect.top <= sprite.rect.bottom and self.rect_anterior.top >= sprite.rect_anterior.bottom:
+                        self.rect.top = sprite.rect.bottom
+                    if self.rect.bottom >= sprite.rect.top and self.rect_anterior.bottom <= sprite.rect_anterior.top:
+                        self.rect.bottom = sprite.rect.top
         # print(self.rect.collidelist(self.mapa.sprites_colisão.sprites()))
         pass
 
