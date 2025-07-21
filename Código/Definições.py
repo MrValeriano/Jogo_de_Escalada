@@ -14,7 +14,14 @@ def importar_pasta(*path):
             frames.append(surf)
     return frames
 
-pygame.init()
+def iniciador():
+    pygame.init()
+    pygame.display.set_caption('Jogo de Escalada')
+    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+
+    clock = pygame.time.Clock()
+    
+    return clock, screen
 
 SCREEN_WIDTH = 1080
 SCREEN_HEIGHT = 720
@@ -22,7 +29,3 @@ TILE_SIZE = 96
 ANIMATION_SPEED = 20
 HANDMADE_LEVELS = ["25", "50", "75", "100"]
 EMPTY_EDGES = [12, 12]
-pygame.display.set_caption('Jogo de Escalada')
-screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-
-clock = pygame.time.Clock()
