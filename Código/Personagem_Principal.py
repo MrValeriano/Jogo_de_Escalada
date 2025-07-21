@@ -48,10 +48,11 @@ class Principal(pygame.sprite.Sprite):
     def colisão_mapa(self, eixo):
         for sprite in self.mapa.sprites_colisão:
             if sprite.rect.colliderect(self.rect):
-                sprite.image.fill("red")
                 if eixo == "horizontal":
                     if self.rect.left <= sprite.rect.right:
                         self.rect.left = sprite.rect.right
+                    if self.rect.right >= sprite.rect.left:
+                        self.rect.right = sprite.rect.left
         # print(self.rect.collidelist(self.mapa.sprites_colisão.sprites()))
         pass
 
