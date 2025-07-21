@@ -36,7 +36,7 @@ class Principal(pygame.sprite.Sprite):
         self.velocidade = 200
         self.gravidade = 1400
         self.saltar = False
-        self.altura_salto = 700
+        self.altura_salto = 800
         self.no_chão = False
         self.relógio_interno = pygame.time.Clock()
         self.inventário = {
@@ -79,10 +79,9 @@ class Principal(pygame.sprite.Sprite):
                     if self.rect.bottom >= sprite.rect.top and self.rect_anterior.bottom <= sprite.rect_anterior.top:
                         self.rect.bottom = sprite.rect.top
                     self.direção.y = 0
-        # print(self.rect.collidelist(self.mapa.sprites_colisão.sprites()))
-        pass
 
     def animação(self, dt):
+        if self.no_chão == False: self.acção = "salto"
         self.indice_frame += ANIMATION_SPEED * dt
         if int(self.indice_frame) >= len(self.frames[self.acção][self.lado]):
             self.indice_frame = 0
