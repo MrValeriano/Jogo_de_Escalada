@@ -21,4 +21,4 @@ def input_jogador(jogador):
         else: jogador.acção = "parado"
         if keys[pygame.K_SPACE]:
             jogador.interacção()
-        jogador.direção = input_vector
+        jogador.direção.x = input_vector.normalize().x if input_vector else input_vector.x
