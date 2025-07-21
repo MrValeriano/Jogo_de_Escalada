@@ -34,7 +34,7 @@ class Principal(pygame.sprite.Sprite):
         self.rect_anterior = self.rect.copy()
         self.direção = vector()
         self.velocidade = 500
-        self.gravidade = 10
+        self.gravidade = 1000
         self.relógio_interno = pygame.time.Clock()
         self.inventário = {
             "Moedas": 0,
