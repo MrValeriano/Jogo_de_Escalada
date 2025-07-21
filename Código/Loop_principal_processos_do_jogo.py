@@ -7,7 +7,7 @@ from Loop_de_gestao_de_eventos import event_loop
 from Personagem_Principal import *
 
 mapa = Mapa()
-print(clock.tick())
+clock.tick()
 jogador = Principal(mapa, todos_sprites)
 # todos_sprites.sprites().reverse()
 # print(dir(todos_sprites.sprites()[-1]))
