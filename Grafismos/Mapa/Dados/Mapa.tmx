@@ -1435,7 +1435,7 @@
  <objectgroup id="7" name="Área_de_Jogo" visible="0">
   <object id="37" name="Play Area" x="12" y="24" width="1032" height="67152"/>
  </objectgroup>
- <objectgroup id="8" name="Níveis" visible="0">
+ <objectgroup id="8" name="Níveis">
   <object id="124" name="1" x="12" y="66505" width="1032" height="671"/>
   <object id="125" name="2" x="12" y="65834" width="1032" height="671"/>
   <object id="126" name="3" x="12" y="65163" width="1032" height="671"/>
