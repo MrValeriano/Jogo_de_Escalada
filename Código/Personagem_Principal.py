@@ -54,11 +54,11 @@ class Principal(pygame.sprite.Sprite):
         self.rect.centery += self.direção.y * dt
         # repetição de linha necessária para simular aceleração de gravidade em vez de velocidade constante
         self.direção.y += self.gravidade / 2 * dt
-        self.colisão_mapa("vertical")
         if self.saltar:
             if self.no_chão:
                 self.direção.y = -self.altura_salto
             self.saltar = False
+        self.colisão_mapa("vertical")
     
     def ver_contacto(self):
         rect_chão = pygame.Rect(self.rect.bottomleft, (self.rect.width, 2))
