@@ -1,6 +1,6 @@
 from Definições import *
 
-def input_jogador(jogador):
+def input_jogador_debugging(jogador):
         keys = pygame.key.get_pressed()
         input_vector = vector()
         other_action = "None"
@@ -21,4 +21,26 @@ def input_jogador(jogador):
         else: jogador.acção = "parado"
         if keys[pygame.K_SPACE]:
             jogador.interacção()
+        jogador.direção = input_vector.normalize() if input_vector else input_vector
+
+def input_jogador(jogador):
+        keys = pygame.key.get_pressed()
+        input_vector = vector()
+        other_action = "None"
+        if any([keys[pygame.K_a], keys[pygame.K_d]]):
+            if keys[pygame.K_a]:
+                jogador.lado = "esquerda"
+                jogador.acção = "andar"
+                input_vector.x -= 1
+            if keys[pygame.K_d]:
+                jogador.lado = "direita"
+                jogador.acção = "andar"
+                input_vector.x += 1
+        else: jogador.acção = "parado"
         jogador.direção.x = input_vector.normalize().x if input_vector else input_vector.x
+        if keys[pygame.K_w]:
+                jogador.acção = "salto"
+                input_vector.y -= jogador.gravidade * 2
+        jogador.direção.y = input_vector.normalize().y if input_vector else input_vector.y
+        if keys[pygame.K_SPACE]:
+            jogador.interacção()
