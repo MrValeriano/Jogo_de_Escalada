@@ -40,7 +40,6 @@ def input_jogador(jogador):
         jogador.direção.x = input_vector.normalize().x if input_vector else input_vector.x
         if keys[pygame.K_w]:
                 jogador.acção = "salto"
-                input_vector.y -= jogador.gravidade * 2
-        jogador.direção.y = input_vector.normalize().y if input_vector else input_vector.y
+                jogador.em_salto = True
         if keys[pygame.K_SPACE]:
             jogador.interacção()
