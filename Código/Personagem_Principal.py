@@ -33,7 +33,7 @@ class Principal(pygame.sprite.Sprite):
         self.rect = self.image.get_frect(center = self.mapa.posição)
         self.rect_anterior = self.rect.copy()
         self.direção = vector()
-        self.velocidade = 200
+        self.velocidade = 400
         self.gravidade = 1400
         self.saltar = False
         self.altura_salto = 800
