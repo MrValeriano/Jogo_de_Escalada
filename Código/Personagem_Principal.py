@@ -46,8 +46,13 @@ class Principal(pygame.sprite.Sprite):
         self.colisão_mapa("vertical")
     
     def colisão_mapa(self, eixo):
-        for sprite in self.mapa.sprites_colisão:
-            print(sprite)
+        # for sprite in self.mapa.sprites_colisão:
+        #     if sprite.rect.colliderect(self.rect):
+        #         if eixo == "horizontal":
+        #             if self.rect.left <= sprite.rect.right:
+        #                 self.rect.left = sprite.rect.right
+        #                 print(sprite)
+        pass
 
     def animação(self, dt):
         self.indice_frame += ANIMATION_SPEED * dt
