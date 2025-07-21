@@ -52,16 +52,6 @@ class Mapa:
     
     def setup(self, tmx_mapa, pos_inicial_jog):
         lista_rects = {}
-        #* fundo
-        for layer in ["Fundo", "Paredes"]:
-            for x, y, surf in tmx_mapa.get_layer_by_name(layer).tiles():
-                Sprite((x * TILE_SIZE, y * TILE_SIZE), surf, todos_sprites)
-        #* entidades
-        for obj in tmx_mapa.get_layer_by_name("Entidades"):
-            if obj.name == "Jogador" and obj.properties["Posição"] == pos_inicial_jog:
-                self.posição = (obj.x, obj.y)
-            else:
-                self.fim_do_jogo = Sprite((obj.x, obj.y), obj.image, todos_sprites)
         #* fronteiras
         for area in tmx_mapa.get_layer_by_name("Bordas_Colisão"):
             rect = pygame.Rect(area.x, area.y, area.width, area.height)
@@ -72,6 +62,16 @@ class Mapa:
         self.área_de_jogo = [
             int(tmx_mapa.get_layer_by_name("Área_de_Jogo")[0].x),
             int(tmx_mapa.get_layer_by_name("Área_de_Jogo")[0].x)+int(tmx_mapa.get_layer_by_name("Área_de_Jogo")[0].width)]
+        #* fundo
+        for layer in ["Fundo", "Paredes"]:
+            for x, y, surf in tmx_mapa.get_layer_by_name(layer).tiles():
+                Sprite((x * TILE_SIZE, y * TILE_SIZE), surf, todos_sprites)
+        #* entidades
+        for obj in tmx_mapa.get_layer_by_name("Entidades"):
+            if obj.name == "Jogador" and obj.properties["Posição"] == pos_inicial_jog:
+                self.posição = (obj.x, obj.y)
+            else:
+                self.fim_do_jogo = Sprite((obj.x, obj.y), obj.image, todos_sprites)
         #* plataformas base de cada nível - fixas no fundo de cada nível, em ambos os lados
         for area in tmx_mapa.get_layer_by_name("Níveis"):
             lista_rects.update({area.name:[]})
