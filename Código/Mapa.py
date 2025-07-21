@@ -179,7 +179,7 @@ class Mapa:
             for plat in self.lista_plataformas[area.name]:
                 if rd.sample(["sim", "não"], 1, counts=[prob, 100-prob])[0] == "sim":
                     tipo = rd.sample(["Vespa", "Tartaruga"], 1, counts=[50, 50])[0]
-                    objecto = Inimigo(tipo, plat, self, "1", (todos_sprites, self.sprites_colisão))
+                    objecto = Inimigo(tipo, plat, self, "1", todos_sprites)
                     self.lista_objectos[tipo].append(objecto)
         #* geração aleatória de moedas
         for area in tmx_mapa.get_layer_by_name("Níveis"):
