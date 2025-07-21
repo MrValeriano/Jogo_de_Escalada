@@ -35,6 +35,7 @@ class Principal(pygame.sprite.Sprite):
         self.direção = vector()
         self.velocidade = 500
         self.gravidade = 1000
+        self.em_salto = False
         self.relógio_interno = pygame.time.Clock()
         self.inventário = {
             "Moedas": 0,
@@ -52,6 +53,7 @@ class Principal(pygame.sprite.Sprite):
         # repetição de linha necessária para simular aceleração de gravidade em vez de velocidade constante
         self.direção.y += self.gravidade / 2 * dt
         self.colisão_mapa("vertical")
+        if self.acção == ""
     
     def colisão_mapa(self, eixo):
         for sprite in self.mapa.sprites_colisão:
