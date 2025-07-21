@@ -31,6 +31,7 @@ class Principal(pygame.sprite.Sprite):
         self.image = self.frames[self.acção][self.lado][self.indice_frame]
         self.mapa = mapa
         self.rect = self.image.get_frect(center = self.mapa.posição)
+        self.rect_anterior = self.rect.copy()
         self.direção = vector()
         self.relógio_interno = pygame.time.Clock()
         self.inventário = {
@@ -101,6 +102,7 @@ class Principal(pygame.sprite.Sprite):
             print("GAME OVER")
 
     def update(self, dt):
+        self.rect_anterior = self.rect.copy()
         self.verificar_estado()
         input_jogador(self)
         self.movimentação(dt)
