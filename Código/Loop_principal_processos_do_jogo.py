@@ -11,6 +11,7 @@ jogador = Principal(mapa, todos_sprites)
 # todos_sprites.sprites().reverse()
 # print(dir(todos_sprites.sprites()[-1]))
 # print(isinstance(list(todos_sprites.spritedict.keys())[-1], Principal))
+print(dir(mapa.sprites_colisão.sprites()[0].image))
 
 while True:
     #* tick
