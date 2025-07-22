@@ -14,6 +14,31 @@ def importar_pasta(*path):
             frames.append(surf)
     return frames
 
+class Timer:
+    def __init__(self, duração, fun = None, repetir = False):
+        self.duração = duração
+        self.função = fun
+        self.início = 0
+        self.activo = False
+        self.repetir = repetir
+        
+    def activar(self):
+        self.activo = True
+        self.início = pygame.time.get_ticks()
+    
+    def desactivar(self):
+        self.activo = False
+        self.início = 0
+        if self.repetir:
+            self.activar()
+    
+    def actualizar(self):
+        tempo_actual = pygame.time.get_ticks()
+        if tempo_actual - self.início >= self.duração:
+            if self.função and self.início != 0:
+                self.função()
+            self.desactivar()
+
 pygame.init()
 
 SCREEN_WIDTH = 1080
