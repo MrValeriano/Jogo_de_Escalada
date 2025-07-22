@@ -5,6 +5,8 @@ from os import walk
 from pygame.math import Vector2 as vector
 import random as rd
 
+DEBUGGING = True
+
 def importar_pasta(*path):
     frames = []
     for pasta, subpasta, imagens in walk(join(*path)):
