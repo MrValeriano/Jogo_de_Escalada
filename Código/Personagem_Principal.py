@@ -105,6 +105,7 @@ class Principal(pygame.sprite.Sprite):
     def interacção(self):
         self.rect.collidelist(self.mapa.lista_objectos["Moeda"])
         print(self.inventário)
+        print(self.rect.centerx)
     
     def collisão_entidades(self, dt):
         if self.rect.collidelist(self.mapa.lista_objectos["Moeda"]) > -1:
@@ -122,8 +123,7 @@ class Principal(pygame.sprite.Sprite):
                     self.inventário["Vidas"] -= 1
                     self.bounce_away = True
                     self.bounce(dt,inimigos[qual])
-                    self.colisão_mapa("vertical")
-                    self.colisão_mapa("horizontal")
+                    print(self.rect.centerx)
     
     def bounce(self, dt, sprite):
         dist = vector()
@@ -131,14 +131,11 @@ class Principal(pygame.sprite.Sprite):
         dist.y -= 400
         self.direção = dist
         self.rect.centerx += self.direção.x * self.velocidade * dt
-        
-        pass
+        self.saltar = True
     
     def verificar_estado(self):
         if not self.ignorar_input.activo:
             input_jogador(self)
-        # else:
-        #     self.direção = vector()
         
         if self.inventário["Vidas"] == 0:
             print("GAME OVER")
