@@ -1,7 +1,7 @@
 from Definições import *
 
-def input_jogador(jogador, debugging = False):
-    if debugging:
+def input_jogador(jogador):
+    if DEBUGGING:
         keys = pygame.key.get_pressed()
         input_vector = vector()
         other_action = "None"

@@ -52,20 +52,23 @@ class Principal(pygame.sprite.Sprite):
         }
     
     def movimentação(self, dt):
-        #* horizontal
-        self.rect.centerx += self.direção.x * self.velocidade * dt
-        self.colisão_mapa("horizontal")
-        #* vertical
-        self.direção.y += self.gravidade / 2 * dt
-        self.rect.centery += self.direção.y * dt
-        # repetição de linha necessária para simular aceleração de gravidade em vez de velocidade constante
-        self.direção.y += self.gravidade / 2 * dt
-        self.colisão_mapa("vertical")
-        if self.saltar:
-            if self.no_chão:
-                self.direção.y = -self.altura_salto
-            self.saltar = False
-            self.altura_salto = 800
+        if DEBUGGING:
+            self.rect.center += self.direção * self.velocidade * dt
+        else:
+            #* horizontal
+            self.rect.centerx += self.direção.x * self.velocidade * dt
+            self.colisão_mapa("horizontal")
+            #* vertical
+            self.direção.y += self.gravidade / 2 * dt
+            self.rect.centery += self.direção.y * dt
+            # repetição de linha necessária para simular aceleração de gravidade em vez de velocidade constante
+            self.direção.y += self.gravidade / 2 * dt
+            self.colisão_mapa("vertical")
+            if self.saltar:
+                if self.no_chão:
+                    self.direção.y = -self.altura_salto
+                self.saltar = False
+                self.altura_salto = 800
     
     def ver_contacto(self):
         rect_chão = pygame.Rect(self.rect.bottomleft, (self.rect.width, 2))

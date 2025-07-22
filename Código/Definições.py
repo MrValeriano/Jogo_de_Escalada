@@ -48,7 +48,7 @@ ANIMATION_SPEED = 10
 HANDMADE_LEVELS = ["25", "50", "75", "100"]
 EMPTY_EDGES = [12, 12]
 
-DEBUGGING = False
+DEBUGGING = True
 
 # Activação do package pygame
 pygame.init()
