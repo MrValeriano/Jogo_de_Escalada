@@ -134,7 +134,9 @@ class Principal(pygame.sprite.Sprite):
         self.direção = dist.normalize()
         self.rect.centerx += self.direção.x * self.velocidade * dt
         self.saltar = True
+        self.no_chão = True
         self.altura_salto /= 2
+        self.colisão_mapa("horizontal")
     
     def verificar_estado(self):
         if not self.ignorar_input.activo:
