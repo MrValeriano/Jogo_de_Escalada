@@ -79,5 +79,6 @@ class Inimigo(pygame.sprite.Sprite):
         self.image = self.frames[self.acção][self.lado][int(self.indice_frame)]
 
     def update(self, dt):
-        self.actividade(dt)
+        if not DEBUGGING:
+            self.actividade(dt)
         self.animação(dt)
