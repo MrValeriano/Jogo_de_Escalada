@@ -1,6 +1,7 @@
 from Definições import *
 
-def input_jogador_debugging(jogador):
+def input_jogador(jogador, debugging = False):
+    if debugging:
         keys = pygame.key.get_pressed()
         input_vector = vector()
         other_action = "None"
@@ -22,8 +23,8 @@ def input_jogador_debugging(jogador):
         if keys[pygame.K_SPACE]:
             jogador.interacção()
         jogador.direção = input_vector.normalize() if input_vector else input_vector
-
-def input_jogador(jogador):
+        
+    else:
         keys = pygame.key.get_pressed()
         input_vector = vector()
         other_action = "None"
