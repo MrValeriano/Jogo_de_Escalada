@@ -113,16 +113,17 @@ class Principal(pygame.sprite.Sprite):
             if self.mapa.lista_objectos["Moeda"][moeda].alive():
                 self.mapa.lista_objectos["Moeda"][moeda].kill()
                 self.inventário["Moedas"] += 1
-        if not self.invencibilidade.activo:
-            inimigos = self.mapa.lista_objectos["Vespa"] + self.mapa.lista_objectos["Tartaruga"]
-            if self.rect.collidelist(inimigos) > -1:
-                qual = self.rect.collidelist(inimigos)
-                if inimigos[qual].alive():
-                    self.invencibilidade.activar()
-                    self.ignorar_input.activar()
-                    self.inventário["Vidas"] -= 1
-                    self.bounce_away = True
-                    self.bounce(dt,inimigos[qual])
+        if not DEBUGGING:
+            if not self.invencibilidade.activo:
+                inimigos = self.mapa.lista_objectos["Vespa"] + self.mapa.lista_objectos["Tartaruga"]
+                if self.rect.collidelist(inimigos) > -1:
+                    qual = self.rect.collidelist(inimigos)
+                    if inimigos[qual].alive():
+                        self.invencibilidade.activar()
+                        self.ignorar_input.activar()
+                        self.inventário["Vidas"] -= 1
+                        self.bounce_away = True
+                        self.bounce(dt,inimigos[qual])
     
     def bounce(self, dt, sprite):
         dist = vector()
