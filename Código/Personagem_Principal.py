@@ -42,6 +42,7 @@ class Principal(pygame.sprite.Sprite):
         self.no_chão = False
         # timers
         self.invencibilidade = Timer(3000)
+        self.ignorar_input = Timer(500)
         # inventário
         self.inventário = {
             "Moedas": 0,
@@ -104,28 +105,46 @@ class Principal(pygame.sprite.Sprite):
         self.rect.collidelist(self.mapa.lista_objectos["Moeda"])
         print(self.inventário)
     
-    def collisão_entidades(self):
+    def collisão_entidades(self, dt):
         if self.rect.collidelist(self.mapa.lista_objectos["Moeda"]) > -1:
             moeda = self.rect.collidelist(self.mapa.lista_objectos["Moeda"])
             if self.mapa.lista_objectos["Moeda"][moeda].alive():
                 self.mapa.lista_objectos["Moeda"][moeda].kill()
                 self.inventário["Moedas"] += 1
         if not self.invencibilidade.activo:
-            if any([self.rect.collidelist(self.mapa.lista_objectos["Vespa"]) > -1,
-                   self.rect.collidelist(self.mapa.lista_objectos["Tartaruga"]) > -1]):
-                self.invencibilidade.activar()
-                self.inventário["Vidas"] -= 1
+            inimigos = self.mapa.lista_objectos["Vespa"] + self.mapa.lista_objectos["Tartaruga"]
+            if self.rect.collidelist(inimigos) > -1:
+                qual = self.rect.collidelist(inimigos)
+                if inimigos[qual].alive():
+                    self.invencibilidade.activar()
+                    self.ignorar_input.activar()
+                    self.inventário["Vidas"] -= 1
+                    # self.bounce_away(dt, inimigos[qual])
+    
+    def bounce_away(self, dt, sprite):
+        dist = vector()
+        dist.x = self.rect.centerx - sprite.rect.centerx
+        dist.y = -400
+        self.direção = dist
+        # self.rect.centerx += self.direção.x * self.velocidade * dt
+        
+        pass
     
     def verificar_estado(self):
+        if not self.ignorar_input.activo:
+            input_jogador(self)
+        else:
+            self.direção = vector()
+        
         if self.inventário["Vidas"] == 0:
             print("GAME OVER")
 
     def update(self, dt):
         self.rect_anterior = self.rect.copy()
         self.invencibilidade.actualizar()
+        self.ignorar_input.actualizar()
         self.verificar_estado()
-        input_jogador(self)
         self.movimentação(dt)
         self.ver_contacto()
-        self.collisão_entidades()
+        self.collisão_entidades(dt)
         self.animação(dt)
