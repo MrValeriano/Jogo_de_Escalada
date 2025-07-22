@@ -9,9 +9,7 @@ from Personagem_Principal import *
 mapa = Mapa()
 clock.tick()
 jogador = Principal(mapa, todos_sprites)
-# todos_sprites.sprites().reverse()
-# print(dir(todos_sprites.sprites()[-1]))
-# print(isinstance(list(todos_sprites.spritedict.keys())[-1], Principal))
+
 while True:
     #* tick
     dt = clock.tick()/1000
