@@ -65,6 +65,7 @@ class Principal(pygame.sprite.Sprite):
             if self.no_chão:
                 self.direção.y = -self.altura_salto
             self.saltar = False
+            self.altura_salto = 800
     
     def ver_contacto(self):
         rect_chão = pygame.Rect(self.rect.bottomleft, (self.rect.width, 2))
@@ -105,7 +106,6 @@ class Principal(pygame.sprite.Sprite):
     def interacção(self):
         self.rect.collidelist(self.mapa.lista_objectos["Moeda"])
         print(self.inventário)
-        print(self.rect.centerx)
     
     def collisão_entidades(self, dt):
         if self.rect.collidelist(self.mapa.lista_objectos["Moeda"]) > -1:
@@ -123,15 +123,14 @@ class Principal(pygame.sprite.Sprite):
                     self.inventário["Vidas"] -= 1
                     self.bounce_away = True
                     self.bounce(dt,inimigos[qual])
-                    print(self.rect.centerx)
     
     def bounce(self, dt, sprite):
         dist = vector()
         dist.x += self.rect.centerx - sprite.rect.centerx
-        dist.y -= 400
-        self.direção = dist
+        self.direção = dist.normalize()
         self.rect.centerx += self.direção.x * self.velocidade * dt
         self.saltar = True
+        self.altura_salto /= 2
     
     def verificar_estado(self):
         if not self.ignorar_input.activo:
