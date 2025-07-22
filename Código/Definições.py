@@ -47,7 +47,8 @@ TILE_SIZE = 96
 ANIMATION_SPEED = 10
 HANDMADE_LEVELS = ["25", "50", "75", "100"]
 EMPTY_EDGES = [12, 12]
-DEBUGGING = True
+
+DEBUGGING = False
 
 # Activação do package pygame
 pygame.init()
