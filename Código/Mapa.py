@@ -201,7 +201,7 @@ class Mapa:
                     pts_moedas.append((pto_x + (TILE_SIZE/2), pto_y))
             # escolher quais serão usados para gerar moedas
             for pt in pts_moedas:
-                if rd.sample(["sim", "não"], 1, counts=[prob, 200-prob])[0] == "sim":
+                if rd.sample(["sim", "não"], 1, counts=[prob, 100-prob])[0] == "sim":
                     pts_moedas.remove(pt)
                     objecto = Itens("Moeda", pt, todos_sprites)
                     self.lista_objectos["Moeda"].append(objecto)
