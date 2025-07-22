@@ -40,6 +40,7 @@ class Principal(pygame.sprite.Sprite):
         self.saltar = False
         self.altura_salto = 800
         self.no_chão = False
+        self.bounce_away = False
         # timers
         self.invencibilidade = Timer(3000)
         self.ignorar_input = Timer(500)
@@ -119,22 +120,25 @@ class Principal(pygame.sprite.Sprite):
                     self.invencibilidade.activar()
                     self.ignorar_input.activar()
                     self.inventário["Vidas"] -= 1
-                    # self.bounce_away(dt, inimigos[qual])
+                    self.bounce_away = True
+                    self.bounce(dt,inimigos[qual])
+                    self.colisão_mapa("vertical")
+                    self.colisão_mapa("horizontal")
     
-    def bounce_away(self, dt, sprite):
+    def bounce(self, dt, sprite):
         dist = vector()
-        dist.x = self.rect.centerx - sprite.rect.centerx
-        dist.y = -400
+        dist.x += self.rect.centerx - sprite.rect.centerx
+        dist.y -= 400
         self.direção = dist
-        # self.rect.centerx += self.direção.x * self.velocidade * dt
+        self.rect.centerx += self.direção.x * self.velocidade * dt
         
         pass
     
     def verificar_estado(self):
         if not self.ignorar_input.activo:
             input_jogador(self)
-        else:
-            self.direção = vector()
+        # else:
+        #     self.direção = vector()
         
         if self.inventário["Vidas"] == 0:
             print("GAME OVER")
