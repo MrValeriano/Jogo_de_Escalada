@@ -5,8 +5,7 @@ from os import walk
 from pygame.math import Vector2 as vector
 import random as rd
 
-DEBUGGING = True
-
+# Funções e classes auxiliares
 def importar_pasta(*path):
     frames = []
     for pasta, subpasta, imagens in walk(join(*path)):
@@ -41,15 +40,18 @@ class Timer:
                 self.função()
             self.desactivar()
 
-pygame.init()
-
+# Constantes
 SCREEN_WIDTH = 1080
 SCREEN_HEIGHT = 720
 TILE_SIZE = 96
 ANIMATION_SPEED = 10
 HANDMADE_LEVELS = ["25", "50", "75", "100"]
 EMPTY_EDGES = [12, 12]
+DEBUGGING = True
+
+# Activação do package pygame
+pygame.init()
+
 pygame.display.set_caption('Jogo de Escalada')
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-
 clock = pygame.time.Clock()
