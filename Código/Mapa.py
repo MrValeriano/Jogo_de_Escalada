@@ -92,7 +92,7 @@ class Mapa:
         for area in tmx_mapa.get_layer_by_name("Níveis"):
             if area.name in HANDMADE_LEVELS: continue
             # definir tamanho e limites da área útil para a geração de plataformas
-            area_util = (int((area.width // TILE_SIZE) * TILE_SIZE),
+            area_util = (int((area.width // TILE_SIZE) * TILE_SIZE) - int(TILE_SIZE),
                          int((area.height // TILE_SIZE) * TILE_SIZE))
             topleft = (int(area.x + ((area.width - area_util[0]) / 2)), int(area.y + TILE_SIZE))
             rightlimit = topleft[0] + area_util[0]
