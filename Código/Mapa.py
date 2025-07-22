@@ -168,14 +168,20 @@ class Mapa:
         #* geração aleatória de inimigos/obstáculos
         for area in tmx_mapa.get_layer_by_name("Níveis"):
             if area.name in HANDMADE_LEVELS: continue
-            if area.name < HANDMADE_LEVELS[0]:
-                prob = 10
-            elif area.name < HANDMADE_LEVELS[1]:
-                prob = 20
-            elif area.name < HANDMADE_LEVELS[2]:
-                prob = 40
-            elif area.name < HANDMADE_LEVELS[3]:
-                prob = 60
+            if DEBUGGING:
+                if area.name < HANDMADE_LEVELS[0]:
+                    prob = 100
+                else:
+                    prob = 0
+            else:
+                if area.name < HANDMADE_LEVELS[0]:
+                    prob = 10
+                elif area.name < HANDMADE_LEVELS[1]:
+                    prob = 20
+                elif area.name < HANDMADE_LEVELS[2]:
+                    prob = 40
+                elif area.name < HANDMADE_LEVELS[3]:
+                    prob = 60
             for plat in self.lista_plataformas[area.name]:
                 if rd.sample(["sim", "não"], 1, counts=[prob, 100-prob])[0] == "sim":
                     tipo = rd.sample(["Vespa", "Tartaruga"], 1, counts=[50, 50])[0]
