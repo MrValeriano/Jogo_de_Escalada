@@ -32,7 +32,8 @@ class Principal(pygame.sprite.Sprite):
         # referências
         self.mapa = mapa
         self.rect = self.image.get_frect(center = self.mapa.posição)
-        self.rect_anterior = self.rect.copy()
+        self.hitbox = self.rect.inflate(-16, 0)
+        self.rect_anterior = self.hitbox.copy()
         # movimentos
         self.direção = vector()
         self.velocidade = 400
@@ -56,11 +57,11 @@ class Principal(pygame.sprite.Sprite):
             self.rect.center += self.direção * self.velocidade * dt
         else:
             #* horizontal
-            self.rect.centerx += self.direção.x * self.velocidade * dt
+            self.hitbox.centerx += self.direção.x * self.velocidade * dt
             self.colisão_mapa("horizontal")
             #* vertical
             self.direção.y += self.gravidade / 2 * dt
-            self.rect.centery += self.direção.y * dt
+            self.hitbox.centery += self.direção.y * dt
             # repetição de linha necessária para simular aceleração de gravidade em vez de velocidade constante
             self.direção.y += self.gravidade / 2 * dt
             self.colisão_mapa("vertical")
@@ -69,25 +70,26 @@ class Principal(pygame.sprite.Sprite):
                     self.direção.y = -self.altura_salto
                 self.saltar = False
                 self.altura_salto = 800
+            self.rect.center = self.hitbox.center
     
     def ver_contacto(self):
-        rect_chão = pygame.Rect(self.rect.bottomleft, (self.rect.width, 2))
+        rect_chão = pygame.Rect(self.hitbox.bottomleft, (self.hitbox.width, 2))
         rects_colisão = [sprite.rect for sprite in self.mapa.sprites_colisão]
         self.no_chão = True if rect_chão.collidelist(rects_colisão) >= 0 else False
     
     def colisão_mapa(self, eixo):
         for sprite in self.mapa.sprites_colisão:
-            if sprite.rect.colliderect(self.rect):
+            if sprite.rect.colliderect(self.hitbox):
                 if eixo == "horizontal":
-                    if self.rect.left <= sprite.rect.right and self.rect_anterior.left >= sprite.rect_anterior.right:
-                        self.rect.left = sprite.rect.right
-                    if self.rect.right >= sprite.rect.left and self.rect_anterior.right <= sprite.rect_anterior.left:
-                        self.rect.right = sprite.rect.left
+                    if self.hitbox.left <= sprite.rect.right and self.rect_anterior.left >= sprite.rect_anterior.right:
+                        self.hitbox.left = sprite.rect.right
+                    if self.hitbox.right >= sprite.rect.left and self.rect_anterior.right <= sprite.rect_anterior.left:
+                        self.hitbox.right = sprite.rect.left
                 elif eixo == "vertical":
-                    if self.rect.top <= sprite.rect.bottom and self.rect_anterior.top >= sprite.rect_anterior.bottom:
-                        self.rect.top = sprite.rect.bottom
-                    if self.rect.bottom >= sprite.rect.top and self.rect_anterior.bottom <= sprite.rect_anterior.top:
-                        self.rect.bottom = sprite.rect.top
+                    if self.hitbox.top <= sprite.rect.bottom and self.rect_anterior.top >= sprite.rect_anterior.bottom:
+                        self.hitbox.top = sprite.rect.bottom
+                    if self.hitbox.bottom >= sprite.rect.top and self.rect_anterior.bottom <= sprite.rect_anterior.top:
+                        self.hitbox.bottom = sprite.rect.top
                     self.direção.y = 0
 
     def animação(self, dt):
@@ -111,16 +113,16 @@ class Principal(pygame.sprite.Sprite):
         print(self.inventário)
     
     def collisão_entidades(self, dt):
-        if self.rect.collidelist(self.mapa.lista_objectos["Moeda"]) > -1:
-            moeda = self.rect.collidelist(self.mapa.lista_objectos["Moeda"])
+        if self.hitbox.collidelist(self.mapa.lista_objectos["Moeda"]) > -1:
+            moeda = self.hitbox.collidelist(self.mapa.lista_objectos["Moeda"])
             if self.mapa.lista_objectos["Moeda"][moeda].alive():
                 self.mapa.lista_objectos["Moeda"][moeda].kill()
                 self.inventário["Moedas"] += 1
         if not DEBUGGING:
             if not self.invencibilidade.activo:
                 inimigos = self.mapa.lista_objectos["Vespa"] + self.mapa.lista_objectos["Tartaruga"]
-                if self.rect.collidelist(inimigos) > -1:
-                    qual = self.rect.collidelist(inimigos)
+                if self.hitbox.collidelist(inimigos) > -1:
+                    qual = self.hitbox.collidelist(inimigos)
                     if inimigos[qual].alive():
                         self.invencibilidade.activar()
                         self.ignorar_input.activar()
@@ -130,9 +132,9 @@ class Principal(pygame.sprite.Sprite):
     
     def bounce(self, dt, sprite):
         dist = vector()
-        dist.x += self.rect.centerx - sprite.rect.centerx
+        dist.x += self.hitbox.centerx - sprite.rect.centerx
         self.direção = dist.normalize()
-        self.rect.centerx += self.direção.x * self.velocidade * dt
+        self.hitbox.centerx += self.direção.x * self.velocidade * dt
         self.saltar = True
         self.no_chão = True
         self.altura_salto /= 2
@@ -146,7 +148,7 @@ class Principal(pygame.sprite.Sprite):
             print("GAME OVER")
 
     def update(self, dt):
-        self.rect_anterior = self.rect.copy()
+        self.rect_anterior = self.hitbox.copy()
         self.invencibilidade.actualizar()
         self.ignorar_input.actualizar()
         self.verificar_estado()
