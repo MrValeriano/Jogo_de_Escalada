@@ -33,17 +33,21 @@ class Inimigo(pygame.sprite.Sprite):
     
     def actividade(self, dt):
         #* esperar o fim da acção anterior
-        if int(self.indice_frame) == 0:
+        if self.indice_frame == 0:
             #* escolha aleatória de acção
             # para tartaruga: dentro da plataforma de âncora
             # para vespa: dentro da área de jogo
             if self.tipo == "Tartaruga":
                 self.limite_área = [self.âncora.rect.left, self.âncora.rect.right]
                 self.velocidade = 2
+                if self.acção == "parado":
+                    self.acção = "andar"
+                else:
+                    self.acção = "parado"
             elif self.tipo == "Vespa":
                 self.limite_área = [self.mapa.área_de_jogo[0]+(TILE_SIZE/2), self.mapa.área_de_jogo[1]-(TILE_SIZE/2)]
                 self.velocidade = 1000
-            self.acção = rd.sample(self.freq_actividades, 1)[0]
+                self.acção = rd.sample(self.freq_actividades, 1)[0]
             if self.rect.right >= self.limite_área[1]:
                 self.lado = "esquerda"
             elif self.rect.left <= self.limite_área[0]:
@@ -69,11 +73,12 @@ class Inimigo(pygame.sprite.Sprite):
         elif self.tipo == "Vespa":
             if int(dt) >= 1: dt = 0.01
             self.rect.centerx += self.passo * self.velocidade * dt
-            # if self.rect.collidelist(self.mapa.lista_plataformas[self.nível]):
-            #     print("COLLISION")
 
     def animação(self, dt):
-        self.indice_frame += ANIMATION_SPEED * dt
+        if self.tipo == "Vespa":
+            self.indice_frame += ANIMATION_SPEED * dt
+        else:
+            self.indice_frame += 3*ANIMATION_SPEED/4 * dt
         if int(self.indice_frame) >= len(self.frames[self.acção][self.lado]):
             self.indice_frame = 0
         self.image = self.frames[self.acção][self.lado][int(self.indice_frame)]
