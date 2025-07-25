@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="11" height="8" tilewidth="96" tileheight="96" infinite="0" nextlayerid="7" nextobjectid="8">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="11" height="8" tilewidth="96" tileheight="96" infinite="0" nextlayerid="9" nextobjectid="9">
  <tileset firstgid="1" name="fundo" tilewidth="96" tileheight="96" tilecount="10" columns="2">
   <image source="../fundo_tiles.png" width="192" height="480"/>
  </tileset>
@@ -39,6 +39,27 @@
 4,4,4,4,4,4,4,4,4,4,4
 </data>
  </layer>
+ <objectgroup id="3" name="Bordas_Colisão">
+  <object id="1" name="Top" x="12" y="0" width="1032" height="24"/>
+  <object id="2" name="Left" x="0" y="0" width="12" height="768"/>
+  <object id="3" name="Right" x="1044" y="0" width="12" height="768"/>
+  <object id="4" name="Bottom" x="12" y="744" width="1032" height="24"/>
+ </objectgroup>
+ <objectgroup id="4" name="Área_de_Jogo">
+  <object id="6" name="Play Area" x="12" y="24" width="1032" height="720"/>
+ </objectgroup>
+ <objectgroup id="7" name="Handmade">
+  <object id="8" gid="23" x="44" y="745" width="104" height="131"/>
+ </objectgroup>
+ <objectgroup id="8" name="Níveis"/>
+ <objectgroup id="5" name="Entidades">
+  <object id="7" name="Jogador" x="96" y="696">
+   <properties>
+    <property name="Posição" value="Loja"/>
+   </properties>
+   <point/>
+  </object>
+ </objectgroup>
  <layer id="2" name="Paredes" width="11" height="8">
   <data encoding="csv">
 18,17,17,17,17,17,17,17,17,17,16,
@@ -51,21 +72,4 @@
 12,13,13,13,13,13,13,13,13,13,14
 </data>
  </layer>
- <objectgroup id="3" name="Bordas_Colisão">
-  <object id="1" name="Top" x="12" y="0" width="1032" height="24"/>
-  <object id="2" name="Left" x="0" y="0" width="12" height="768"/>
-  <object id="3" name="Right" x="1044" y="0" width="12" height="768"/>
-  <object id="4" name="Bottom" x="12" y="744" width="1032" height="24"/>
- </objectgroup>
- <objectgroup id="4" name="Área_de_Jogo">
-  <object id="6" name="Play Area" x="12" y="24" width="1032" height="720"/>
- </objectgroup>
- <objectgroup id="5" name="Entidades">
-  <object id="7" name="Jogador" x="96" y="672">
-   <properties>
-    <property name="Posição" value="Loja"/>
-   </properties>
-   <point/>
-  </object>
- </objectgroup>
 </map>

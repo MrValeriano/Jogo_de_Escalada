@@ -55,11 +55,15 @@
             "scaleInEditor": 1
         },
         "Loja.tmx": {
-            "scale": 1,
+            "expandedObjectLayers": [
+                5,
+                3
+            ],
+            "scale": 5.5,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 515.5,
-                "y": 394.5
+                "x": 114.81818181818181,
+                "y": 702.6363636363636
             }
         },
         "Loja.tmx#fundo": {
@@ -69,6 +73,7 @@
             "scaleInDock": 1
         },
         "Loja.tmx#plataformas": {
+            "dynamicWrapping": true,
             "scaleInDock": 1
         },
         "Loja.tmx#portas": {
@@ -79,11 +84,11 @@
                 9,
                 10
             ],
-            "scale": 0.75,
+            "scale": 1,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 528,
-                "y": 66800
+                "x": 531,
+                "y": 50739
             }
         },
         "Mapa.tmx#fundo": {

@@ -1475,7 +1475,7 @@
   <object id="361" gid="21" x="12" y="50663" width="192" height="32"/>
   <object id="362" gid="21" x="852" y="50663" width="192" height="32"/>
   <object id="363" gid="20" x="336" y="50567" width="384" height="32"/>
-  <object id="364" gid="23" x="720" y="67176" width="104" height="131"/>
+  <object id="364" name="Porta_fechada" gid="23" x="720" y="67176" width="104" height="131"/>
  </objectgroup>
  <objectgroup id="8" name="Níveis" visible="0">
   <object id="124" name="1" x="12" y="66505" width="1032" height="671"/>
