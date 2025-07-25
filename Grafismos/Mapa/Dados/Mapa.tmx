@@ -18,6 +18,15 @@
    <image source="../Plataforma_pequena.png" width="192" height="32"/>
   </tile>
  </tileset>
+ <tileset firstgid="22" name="portas" tilewidth="104" tileheight="131" tilecount="2" columns="0">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="0" type="porta">
+   <image source="../Porta_aberta.png" width="104" height="131"/>
+  </tile>
+  <tile id="1" type="porta">
+   <image source="../Porta_fechada.png" width="104" height="131"/>
+  </tile>
+ </tileset>
  <layer id="1" name="Fundo" width="11" height="700">
   <data encoding="csv">
 1,1,1,1,1,1,1,1,1,1,1,
