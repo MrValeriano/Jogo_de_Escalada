@@ -49,6 +49,7 @@
             }
         },
         "Mapa.tmx#fundo": {
+            "dynamicWrapping": false,
             "scaleInDock": 0.33,
             "scaleInEditor": 1
         },
