@@ -41,11 +41,11 @@
             "expandedObjectLayers": [
                 9
             ],
-            "scale": 3,
-            "selectedLayer": 2,
+            "scale": 0.75,
+            "selectedLayer": 4,
             "viewCenter": {
-                "x": 484.16666666666663,
-                "y": 50183.5
+                "x": 618,
+                "y": 34026
             }
         },
         "Mapa.tmx#fundo": {
@@ -61,6 +61,9 @@
             "dynamicWrapping": true,
             "scaleInDock": 1,
             "scaleInEditor": 1
+        },
+        "Mapa.tmx#portas": {
+            "scaleInDock": 1
         },
         "Tutorial.tmx": {
             "expandedObjectLayers": [
