@@ -72,7 +72,7 @@ class Mapa:
             if obj.name == "Jogador" and obj.properties["Posição"] == pos_inicial_jog:
                 self.posição = (obj.x, obj.y)
             else:
-                self.fim_do_jogo = Sprite((obj.x, obj.y), obj.image, todos_sprites)
+                self.fim_do_jogo = Sprite((obj.x, obj.y), obj.image, (todos_sprites, self.sprites_colisão))
         #* plataformas base de cada nível - fixas no fundo de cada nível, em ambos os lados
         for area in tmx_mapa.get_layer_by_name("Níveis"):
             lista_rects.update({area.name:[]})
