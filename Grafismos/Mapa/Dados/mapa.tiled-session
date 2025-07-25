@@ -41,11 +41,11 @@
             "expandedObjectLayers": [
                 9
             ],
-            "scale": 0.5,
-            "selectedLayer": 1,
+            "scale": 3,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 461,
-                "y": 66581
+                "x": 484.16666666666663,
+                "y": 50183.5
             }
         },
         "Mapa.tmx#fundo": {
@@ -58,7 +58,8 @@
         },
         "Mapa.tmx#plataformas": {
             "dynamicWrapping": true,
-            "scaleInDock": 1
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         },
         "Tutorial.tmx": {
             "expandedObjectLayers": [
