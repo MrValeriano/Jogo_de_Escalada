@@ -39,13 +39,14 @@
         },
         "Mapa.tmx": {
             "expandedObjectLayers": [
-                9
+                9,
+                10
             ],
-            "scale": 0.75,
+            "scale": 1,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 618,
-                "y": 34026
+                "x": 1018,
+                "y": 33751
             }
         },
         "Mapa.tmx#fundo": {
@@ -63,6 +64,7 @@
             "scaleInEditor": 1
         },
         "Mapa.tmx#portas": {
+            "dynamicWrapping": true,
             "scaleInDock": 1
         },
         "Tutorial.tmx": {
@@ -72,8 +74,8 @@
             "scale": 0.5,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 1153,
-                "y": 767
+                "x": 1152,
+                "y": 769
             }
         },
         "Tutorial.tmx#fundo": {
@@ -126,9 +128,9 @@
     ],
     "project": "mapa.tiled-project",
     "recentFiles": [
-        "portas.tsx",
         "Tutorial.tmx",
         "Mapa.tmx",
+        "portas.tsx",
         "plataformas.tsx",
         "C:/Users/jessi/OneDrive/Documents/GitHub/Jogo_de_Escalada/Grafismos/Mapa/paredes_tiles_teste.tsx",
         "paredes.tsx",
