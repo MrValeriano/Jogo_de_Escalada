@@ -103,6 +103,10 @@
             "dynamicWrapping": true,
             "scaleInDock": 1,
             "scaleInEditor": 1
+        },
+        "portas.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         }
     },
     "last.externalTilesetPath": "C:/Users/jessi/OneDrive/Documents/GitHub/Jogo_de_Escalada/Grafismos/Mapa/Dados",
@@ -119,6 +123,7 @@
     ],
     "project": "mapa.tiled-project",
     "recentFiles": [
+        "portas.tsx",
         "Tutorial.tmx",
         "Mapa.tmx",
         "plataformas.tsx",
