@@ -58,18 +58,19 @@
             "expandedObjectLayers": [
                 7,
                 5,
-                3,
-                4
+                3
             ],
             "scale": 1,
-            "selectedLayer": 2,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 378.5,
-                "y": 417.5
+                "x": 532.5,
+                "y": 380.5
             }
         },
         "Loja.tmx#Expositor": {
-            "dynamicWrapping": true
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         },
         "Loja.tmx#fundo": {
             "dynamicWrapping": false,
@@ -85,7 +86,8 @@
             "scaleInEditor": 1
         },
         "Loja.tmx#portas": {
-            "scaleInDock": 1
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         },
         "Mapa.tmx": {
             "expandedObjectLayers": [
@@ -129,6 +131,7 @@
             }
         },
         "Tutorial.tmx#fundo": {
+            "dynamicWrapping": false,
             "scaleInDock": 1,
             "scaleInEditor": 1.5
         },
