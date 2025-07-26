@@ -5,12 +5,12 @@ class NPC(pygame.sprite.Sprite):
         super().__init__(*groups)
         self.frames = {
             "parado": {
-                "direita": importar_pasta("Grafismos","Personagem_Principal","Idle","Direita"),
-                "esquerda": importar_pasta("Grafismos","Personagem_Principal","Idle","Esquerda")
+                "direita": importar_pasta("Grafismos","Vendedor","Idle","Direita"),
+                "esquerda": importar_pasta("Grafismos","Vendedor","Idle","Esquerda")
             },
             "falar": {
-                "direita": importar_pasta("Grafismos","Personagem_Principal","Walk_Cycle","Direita"),
-                "esquerda": importar_pasta("Grafismos","Personagem_Principal","Walk_Cycle","Esquerda")
+                "direita": importar_pasta("Grafismos","Vendedor","Talking","Direita"),
+                "esquerda": importar_pasta("Grafismos","Vendedor","Talking","Esquerda")
             }
         }
         self.acção = "parado"
