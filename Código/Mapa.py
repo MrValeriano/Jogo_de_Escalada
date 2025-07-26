@@ -36,7 +36,6 @@ class Porta(Sprite):
 
 class Mapa:
     def __init__(self):
-        self.importar_grafismos()
         self.lista_plataformas = {}
         self.sprites_colisão = pygame.sprite.Group()
         self.sprites_transição = pygame.sprite.Group()
@@ -45,6 +44,13 @@ class Mapa:
             "Tartaruga":[],
             "Vespa":[]
         }
+        self.alvo_transição = None
+        self.fade_mode = "in"
+        self.fade_surf = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT))
+        self.progresso_fade = 0
+        self.direção_fade = -1
+        self.velocidade_fade = 600
+        self.importar_grafismos()
         self.setup("Mapa", "Início")
     
     def importar_grafismos(self):
@@ -62,7 +68,15 @@ class Mapa:
     def check_transição(self, personagem: Principal):
         sprites = [sprite for sprite in self.sprites_transição if sprite.rect.colliderect(personagem.hitbox)]
         if sprites:
-            print("PORTA!")
+            self.alvo_transição = sprites[0].target
+            self.fade_mode = "out"
+    
+    #* Pintar ecrã de preto para esconder o processo de transição
+    def fade(self, dt):
+        if self.fade_mode == "out":
+            self.progresso_fade += self.velocidade_fade * dt
+        self.fade_surf.set_alpha(self.progresso_fade)
+        screen.blit(self.fade_surf, (0, 0))
     
     def setup(self, nome_mapa, pos_inicial_jog):
         tmx_mapa = self.mapas_tmx[nome_mapa]
