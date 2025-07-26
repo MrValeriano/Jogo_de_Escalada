@@ -42,6 +42,7 @@ class Principal(pygame.sprite.Sprite):
         self.altura_salto = 800
         self.no_chão = False
         self.bounce_away = False
+        self.interagir = False
         # timers
         self.invencibilidade = Timer(3000)
         self.ignorar_input = Timer(500)
@@ -109,7 +110,6 @@ class Principal(pygame.sprite.Sprite):
             self.image.set_alpha(255)
     
     def interacção(self):
-        self.rect.collidelist(self.mapa.lista_objectos["Moeda"])
         print(self.inventário)
     
     def collisão_entidades(self, dt):
