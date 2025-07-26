@@ -6,18 +6,20 @@ class Itens(pygame.sprite.Sprite):
         self.âncora = âncora
         self.tipo = tipo
         self.frames = importar_pasta("Grafismos", "Itens", self.tipo)
-        self.indice_frame = 0
-        self.image = self.frames[self.indice_frame]
         if self.tipo == "Moeda":
             self.pos = (self.âncora[0], self.âncora[1] - self.image.height)
+            self.indice_frame = 0
+            self.acção = "não brilhar"
         else:
             # self.pos = (self.âncora.rect.midtop[0], self.âncora.rect.midtop[1] - self.image.height)
             self.pos = (self.âncora[0], self.âncora[1] - self.image.height)
+            self.indice_frame = rd.choice(range(len(self.frames)))
+            self.acção = "brilhar"
+        self.image = self.frames[self.indice_frame]
         self.rect = self.image.get_frect(center = self.pos)
         self.ymax_min = [self.rect.centery + 5, self.rect.centery - 5]
         self.movimento = vector()
         self.direção = "cima"
-        self.acção = "não brilhar"
         self.freq = ["brilhar"]*3 + ["não brilhar"]*7
         if self.tipo == "Moeda":
             self.rect.centery = self.rect.centery + rd.choice(range(-5, 5))
@@ -46,9 +48,6 @@ class Itens(pygame.sprite.Sprite):
         else:
             self.image = self.frames[0]
     
-    # def recolha(self):
-    #     if self.rect.colliderect(jogador)
-
     def update(self, dt):
         if self.tipo == "Moeda":
             self.flutuar(dt)
