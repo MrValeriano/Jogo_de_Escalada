@@ -21,8 +21,7 @@ while True:
     mapa.check_transição(jogador)
     todos_sprites.update(dt)
     #* representações no ecrã
-    todos_sprites.draw(jogador.rect.center)
+    todos_sprites.draw(jogador)
     
     mapa.fade(dt, jogador)
-    print(jogador.rect.center, dt)
     pygame.display.update()

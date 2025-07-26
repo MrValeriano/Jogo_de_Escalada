@@ -48,7 +48,7 @@
   <object id="4" name="Bottom" x="12" y="360" width="1032" height="24"/>
  </objectgroup>
  <objectgroup id="4" name="Área_de_Jogo" visible="0">
-  <object id="6" name="Play Area" x="12" y="24" width="1032" height="624"/>
+  <object id="6" name="Play Area" x="12" y="24" width="1032" height="336"/>
  </objectgroup>
  <objectgroup id="7" name="Handmade">
   <object id="8" gid="23" x="44" y="361" width="104" height="131">

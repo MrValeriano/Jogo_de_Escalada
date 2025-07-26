@@ -12,18 +12,23 @@ class TodosSprites(pygame.sprite.Group):
         self.display_surf = pygame.display.get_surface()
         self.offset = vector()
         
-    def draw(self, player_center):
+    def draw(self, player):
+        player_center = player.rect.center
+        map_name = player.mapa.name
         if DEBUGGING:
             self.offset.x = -(player_center[0] - SCREEN_HEIGHT / 2)
         else:
             self.offset.x = EMPTY_EDGES[0]
-        self.offset.y = -(player_center[1] - SCREEN_HEIGHT / 2)
-        
+        if "Loja" not in map_name:
+            self.offset.y = -(player_center[1] - SCREEN_HEIGHT / 2)
+        else:
+            self.offset.y = player.mapa.altura / 2
         for sprite in self:
             self.display_surf.blit(sprite.image, sprite.rect.topleft + self.offset)
 
 todos_sprites = TodosSprites()
 fronteiras = []
+itens_por_loja = {"Loja 1": [], "Loja 2": [], "Loja 3": []}
 
 class Sprite(pygame.sprite.Sprite):
     def __init__(self, pos, surf, *groups):
@@ -39,6 +44,7 @@ class Porta(Sprite):
 
 class Mapa:
     def __init__(self):
+        self.name = ""
         self.lista_plataformas = {}
         self.sprites_colisão = pygame.sprite.Group()
         self.sprites_transição = pygame.sprite.Group()
@@ -70,11 +76,15 @@ class Mapa:
             "Grande": pygame.image.load(join('Grafismos','Mapa','Plataforma_grande.png'))
         }
         
-    def distribuir_itens(self):
-        for loja in range(3):
+    def distribuir_itens(self, nome, personagem):
+        if len(itens_por_loja[nome]) == 0:
             for i in range(2):
-                item = rd.choice(EQUIPAVEIS)
-    
+                while True:
+                    item = rd.choice([j for j in EQUIPAVEIS if j != personagem.inventário["Item"]])
+                    if item in itens_por_loja[nome]: continue
+                    itens_por_loja[nome].append(item)
+                    break
+
     def check_transição(self, personagem):
         sprites = [sprite for sprite in self.sprites_transição if sprite.rect.colliderect(personagem.hitbox)]
         if sprites:
@@ -90,6 +100,8 @@ class Mapa:
         if self.fade_mode == "out":
             self.progresso_fade += self.velocidade_fade * dt
             if self.progresso_fade >= 255:
+                if "Loja" in self.alvo_transição[0]:
+                    self.distribuir_itens(self.alvo_transição[0], player)
                 self.setup(self.alvo_transição[0], self.alvo_transição[1])
                 todos_sprites.add(player)
                 player.hitbox.center = self.posição
@@ -101,7 +113,6 @@ class Mapa:
         screen.blit(self.fade_surf, (0, 0))
     
     def setup(self, nome_mapa, pos_inicial_jog):
-        print(nome_mapa)
         #* limpar mapa para transição
         for grupo in (todos_sprites, self.sprites_colisão, self.sprites_transição):
             grupo.empty()
@@ -112,6 +123,7 @@ class Mapa:
         #     "Vespa":[]
         # }
         #* iniciar
+        self.name = nome_mapa
         tmx_mapa = self.mapas_tmx[nome_mapa]
         lista_rects = {}
         #* fronteiras
@@ -124,6 +136,8 @@ class Mapa:
         self.área_de_jogo = [
             int(tmx_mapa.get_layer_by_name("Área_de_Jogo")[0].x),
             int(tmx_mapa.get_layer_by_name("Área_de_Jogo")[0].x)+int(tmx_mapa.get_layer_by_name("Área_de_Jogo")[0].width)]
+        área = tmx_mapa.get_layer_by_name("Área_de_Jogo")[0]
+        self.altura = área.height
         #* fundo
         for layer in ["Fundo", "Paredes"]:
             for x, y, surf in tmx_mapa.get_layer_by_name(layer).tiles():
@@ -287,4 +301,6 @@ class Mapa:
                 elif obj.properties['type'] == "porta":
                     Porta((obj.x, obj.y), obj.image, (obj.properties["Ligação"], obj.properties["Posição"]),
                           (todos_sprites, self.sprites_transição))
-        print("Done")
+                elif obj.properties['type'] == "expositor":
+                    Sprite((obj.x, obj.y+obj.height), obj.image, todos_sprites)
+                

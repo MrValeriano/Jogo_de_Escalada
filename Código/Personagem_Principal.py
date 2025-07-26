@@ -113,7 +113,6 @@ class Principal(pygame.sprite.Sprite):
         if self.interagir:
             if self.rect.collidelist(self.mapa.sprites_transição.sprites()) > -1:
                 qual = self.rect.collidelist(self.mapa.sprites_transição.sprites())
-                print(self.mapa.sprites_transição.sprites()[qual])
     
     def collisão_entidades(self, dt):
         if self.hitbox.collidelist(self.mapa.lista_objectos["Moeda"]) > -1:

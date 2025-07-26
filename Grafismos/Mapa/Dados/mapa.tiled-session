@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "Mapa.tmx",
+    "activeFile": "Loja1.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -92,14 +92,16 @@
         },
         "Loja1.tmx": {
             "expandedObjectLayers": [
+                3,
+                4,
                 7,
                 5
             ],
-            "scale": 1.1587121212121212,
-            "selectedLayer": 5,
+            "scale": 1.5,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 527.7410918600849,
-                "y": 192.02353710362863
+                "x": 586.3333333333333,
+                "y": 209.66666666666663
             }
         },
         "Loja1.tmx#Expositor": {
@@ -119,14 +121,15 @@
         },
         "Loja2.tmx": {
             "expandedObjectLayers": [
+                4,
                 7,
                 5
             ],
             "scale": 1.1587121212121212,
-            "selectedLayer": 3,
+            "selectedLayer": 2,
             "viewCenter": {
                 "x": 527.7410918600849,
-                "y": 192.02353710362863
+                "y": 336.14906832298135
             }
         },
         "Loja2.tmx#Expositor": {
@@ -146,14 +149,15 @@
         },
         "Loja3.tmx": {
             "expandedObjectLayers": [
+                4,
                 7,
                 5
             ],
             "scale": 1.1587121212121212,
-            "selectedLayer": 3,
+            "selectedLayer": 2,
             "viewCenter": {
                 "x": 527.7410918600849,
-                "y": 192.02353710362863
+                "y": 336.14906832298135
             }
         },
         "Loja3.tmx#Expositor": {
@@ -180,7 +184,7 @@
             "selectedLayer": 4,
             "viewCenter": {
                 "x": 527.5,
-                "y": -0.5
+                "y": 385.5
             }
         },
         "Mapa.tmx#fundo": {
@@ -267,21 +271,25 @@
     "map.width": 12,
     "openFiles": [
         "Mapa.tmx",
-        "Tutorial.tmx"
+        "Tutorial.tmx",
+        "Loja1.tmx",
+        "Loja2.tmx",
+        "Loja3.tmx"
     ],
     "project": "mapa.tiled-project",
     "recentFiles": [
+        "Mapa.tmx",
+        "Tutorial.tmx",
+        "Loja3.tmx",
+        "Loja2.tmx",
+        "Loja1.tmx",
         "Loja.tmx",
         "expositor.tsx",
-        "Tutorial.tmx",
-        "Mapa.tmx",
         "portas.tsx",
         "plataformas.tsx",
         "C:/Users/jessi/OneDrive/Documents/GitHub/Jogo_de_Escalada/Grafismos/Mapa/paredes_tiles_teste.tsx",
         "paredes.tsx",
-        "fundo.tsx",
-        "C:/Users/jessi/OneDrive/Ambiente de Trabalho/João/Projectos Python/Data/tmx/overworld.tmx",
-        "personagem_para_referencia_tamanho.tsx"
+        "fundo.tsx"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
