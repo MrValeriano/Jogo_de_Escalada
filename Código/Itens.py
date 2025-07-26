@@ -49,3 +49,5 @@ class Itens(pygame.sprite.Sprite):
     def update(self, dt):
         self.flutuar(dt)
         self.animação(dt)
+
+EQUIPAVEIS = ["Apicultor", "Calças", "Chicote"]
