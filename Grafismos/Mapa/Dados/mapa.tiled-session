@@ -56,14 +56,16 @@
         },
         "Loja.tmx": {
             "expandedObjectLayers": [
+                7,
                 5,
-                3
+                3,
+                4
             ],
             "scale": 1,
-            "selectedLayer": 5,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 474.5,
-                "y": 423.5
+                "x": 378.5,
+                "y": 417.5
             }
         },
         "Loja.tmx#fundo": {
