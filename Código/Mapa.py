@@ -39,8 +39,7 @@ class Mapa:
         self.importar_grafismos()
         self.lista_plataformas = {}
         self.sprites_colisão = pygame.sprite.Group()
-        # self.ligações = {}
-        # self.lojas = {}
+        self.sprites_transição = pygame.sprite.Group()
         self.lista_objectos = {
             "Moeda":[],
             "Tartaruga":[],
@@ -60,8 +59,10 @@ class Mapa:
             "Grande": pygame.image.load(join('Grafismos','Mapa','Plataforma_grande.png'))
         }
     
-    def transição(self):
-        pass
+    def check_transição(self, personagem: Principal):
+        sprites = [sprite for sprite in self.sprites_transição if sprite.rect.colliderect(personagem.hitbox)]
+        if sprites:
+            print("PORTA!")
     
     def setup(self, nome_mapa, pos_inicial_jog):
         tmx_mapa = self.mapas_tmx[nome_mapa]
@@ -237,4 +238,4 @@ class Mapa:
                 if obj.properties['type'] == "plataforma":
                     Sprite((obj.x, obj.y), obj.image, (todos_sprites, self.sprites_colisão))
                 elif obj.properties['type'] == "porta":
-                    Porta((obj.x, obj.y), obj.image, obj.properties["L"], todos_sprites)
+                    Porta((obj.x, obj.y), obj.image, obj.properties["Ligação"], (todos_sprites, self.sprites_transição))
