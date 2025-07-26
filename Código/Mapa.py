@@ -34,6 +34,7 @@ class Mapa:
         self.importar_grafismos()
         self.lista_plataformas = {}
         self.sprites_colisão = pygame.sprite.Group()
+        self.ligações = {}
         self.lista_objectos = {
             "Moeda":[],
             "Tartaruga":[],
