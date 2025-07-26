@@ -17,9 +17,10 @@ class Itens(pygame.sprite.Sprite):
         self.ymax_min = [self.rect.centery + 5, self.rect.centery - 5]
         self.movimento = vector()
         self.direção = "cima"
-        self.acção = "não brilhar" if self.tipo == "Moeda" else "brilhar"
+        self.acção = "não brilhar"
         self.freq = ["brilhar"]*3 + ["não brilhar"]*7
-        self.rect.centery = self.rect.centery + rd.choice(range(-5, 5))
+        if self.tipo == "Moeda":
+            self.rect.centery = self.rect.centery + rd.choice(range(-5, 5))
     
     def flutuar(self, dt):
         if self.direção == "cima":
@@ -38,7 +39,8 @@ class Itens(pygame.sprite.Sprite):
         self.indice_frame += ANIMATION_SPEED * dt
         if int(self.indice_frame) >= len(self.frames):
             self.indice_frame = 0
-            self.acção = rd.sample(self.freq,1)[0]
+            if self.tipo == "Moeda":
+                self.acção = rd.sample(self.freq,1)[0]
         if self.acção == "brilhar":
             self.image = self.frames[int(self.indice_frame)]
         else:
