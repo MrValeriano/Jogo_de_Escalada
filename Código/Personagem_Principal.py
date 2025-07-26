@@ -156,4 +156,3 @@ class Principal(pygame.sprite.Sprite):
         self.ver_contacto()
         self.collisão_entidades(dt)
         self.animação(dt)
-        print(self.interagir)
