@@ -2,6 +2,7 @@ from Definições import *
 from Personagem_Principal import *
 from Itens import *
 from Inimigos import *
+from NPCs import *
 
 #* Para todos os processos relativos ao mapa do jogo e a itens representados no mesmo
 
@@ -73,7 +74,7 @@ class Mapa:
             if obj.name == "Jogador" and obj.properties["Posição"] == pos_inicial_jog:
                 self.posição = (obj.x, obj.y)
             elif obj.name == "Vendedor":
-                self.vendedor =
+                self.vendedor = NPC((obj.x, obj.y), todos_sprites)
             else:
                 self.fim_do_jogo = Sprite((obj.x, obj.y), obj.image, (todos_sprites, self.sprites_colisão))
         #* plataformas base de cada nível - fixas no fundo de cada nível, em ambos os lados
