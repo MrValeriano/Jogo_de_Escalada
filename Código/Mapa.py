@@ -34,8 +34,8 @@ class Mapa:
         self.importar_grafismos()
         self.lista_plataformas = {}
         self.sprites_colisão = pygame.sprite.Group()
-        self.ligações = {}
-        self.itens_loja = {}
+        # self.ligações = {}
+        # self.lojas = {}
         self.lista_objectos = {
             "Moeda":[],
             "Tartaruga":[],
@@ -54,6 +54,9 @@ class Mapa:
             "Média": pygame.image.load(join('Grafismos','Mapa','Plataforma_media.png')),
             "Grande": pygame.image.load(join('Grafismos','Mapa','Plataforma_grande.png'))
         }
+    
+    def transição(self):
+        pass
     
     def setup(self, nome_mapa, pos_inicial_jog):
         tmx_mapa = self.mapas_tmx[nome_mapa]
