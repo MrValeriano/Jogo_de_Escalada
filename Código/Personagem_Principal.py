@@ -48,7 +48,7 @@ class Principal(pygame.sprite.Sprite):
         # inventário
         self.inventário = {
             "Moedas": 0,
-            "Itens": [],
+            "Item": "",
             "Vidas": 3
         }
     
