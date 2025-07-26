@@ -68,6 +68,9 @@
                 "y": 417.5
             }
         },
+        "Loja.tmx#Expositor": {
+            "dynamicWrapping": true
+        },
         "Loja.tmx#fundo": {
             "dynamicWrapping": false,
             "scaleInDock": 1

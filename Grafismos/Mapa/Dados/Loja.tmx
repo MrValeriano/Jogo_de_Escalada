@@ -27,6 +27,12 @@
    <image source="../Porta_fechada.png" width="104" height="131"/>
   </tile>
  </tileset>
+ <tileset firstgid="24" name="Expositor" tilewidth="144" tileheight="48" tilecount="1" columns="0">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="0">
+   <image source="../Expositor.png" width="144" height="48"/>
+  </tile>
+ </tileset>
  <layer id="1" name="Fundo" width="11" height="7">
   <data encoding="csv">
 1,1,1,1,1,1,1,1,1,1,1,
