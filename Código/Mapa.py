@@ -223,4 +223,6 @@ class Mapa:
                     objecto = Itens("Moeda", pt, todos_sprites)
                     self.lista_objectos["Moeda"].append(objecto)
         for obj in tmx_mapa.get_layer_by_name("Handmade"):
-            
+            if len(obj.properties.keys()) > 0:
+                if obj.properties['type'] == "plataforma":
+                    Sprite((obj.x, obj.y), obj.image, (todos_sprites, self.sprites_colisão))
