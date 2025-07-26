@@ -16,6 +16,7 @@ while True:
     dt = clock.tick()/1000
     #* eventos
     event_loop()
+    mapa.check_transição(jogador)
     #* representações no ecrã
     todos_sprites.update(dt)
     screen.fill('black')
