@@ -1457,21 +1457,33 @@
   <object id="334" gid="21" x="12" y="34297" width="192" height="32"/>
   <object id="336" gid="21" x="852" y="34297" width="192" height="32"/>
   <object id="337" gid="19" x="240" y="34080" width="576" height="32"/>
-  <object id="338" gid="23" x="476" y="34049" width="104" height="131"/>
+  <object id="338" gid="23" x="476" y="34049" width="104" height="131">
+   <properties>
+    <property name="Ligação" value="Loja 2"/>
+   </properties>
+  </object>
   <object id="340" gid="21" x="12" y="33888" width="192" height="32"/>
   <object id="341" gid="21" x="852" y="33888" width="192" height="32"/>
   <object id="342" gid="20" x="336" y="33792" width="384" height="32"/>
   <object id="350" gid="21" x="12" y="17522" width="192" height="32"/>
   <object id="351" gid="21" x="852" y="17522" width="192" height="32"/>
   <object id="352" gid="19" x="240" y="17305" width="576" height="32"/>
-  <object id="353" gid="23" x="476" y="17274" width="104" height="131"/>
+  <object id="353" gid="23" x="476" y="17274" width="104" height="131">
+   <properties>
+    <property name="Ligação" value="Loja 3"/>
+   </properties>
+  </object>
   <object id="354" gid="21" x="12" y="17114" width="192" height="32"/>
   <object id="355" gid="21" x="852" y="17114" width="192" height="32"/>
   <object id="356" gid="20" x="336" y="17017" width="384" height="32"/>
   <object id="357" gid="21" x="12" y="51072" width="192" height="32"/>
   <object id="358" gid="21" x="852" y="51072" width="192" height="32"/>
   <object id="359" gid="19" x="240" y="50855" width="576" height="32"/>
-  <object id="360" gid="23" x="476" y="50824" width="104" height="131"/>
+  <object id="360" gid="23" x="476" y="50824" width="104" height="131">
+   <properties>
+    <property name="Ligação" value="Loja 1"/>
+   </properties>
+  </object>
   <object id="361" gid="21" x="12" y="50663" width="192" height="32"/>
   <object id="362" gid="21" x="852" y="50663" width="192" height="32"/>
   <object id="363" gid="20" x="336" y="50567" width="384" height="32"/>
