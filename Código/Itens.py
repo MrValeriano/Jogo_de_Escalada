@@ -7,15 +7,16 @@ class Itens(pygame.sprite.Sprite):
         self.tipo = tipo
         self.frames = importar_pasta("Grafismos", "Itens", self.tipo)
         if self.tipo == "Moeda":
-            self.pos = (self.âncora[0], self.âncora[1] - self.image.height)
             self.indice_frame = 0
             self.acção = "não brilhar"
+            self.image = self.frames[self.indice_frame]
+            self.pos = (self.âncora[0], self.âncora[1] - self.image.height)
         else:
             # self.pos = (self.âncora.rect.midtop[0], self.âncora.rect.midtop[1] - self.image.height)
-            self.pos = (self.âncora[0], self.âncora[1] - self.image.height)
             self.indice_frame = rd.choice(range(len(self.frames)))
             self.acção = "brilhar"
-        self.image = self.frames[self.indice_frame]
+            self.image = self.frames[self.indice_frame]
+            self.pos = (self.âncora[0], self.âncora[1] - self.image.height)
         self.rect = self.image.get_frect(center = self.pos)
         self.ymax_min = [self.rect.centery + 5, self.rect.centery - 5]
         self.movimento = vector()

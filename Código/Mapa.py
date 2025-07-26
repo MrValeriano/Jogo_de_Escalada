@@ -80,7 +80,7 @@ class Mapa:
             for obj in tmx_mapa.get_layer_by_name("Entidades"):
                 if obj.name == "Jogador" and obj.properties["Posição"] == pos_inicial_jog:
                     self.posição = (obj.x, obj.y)
-                else:
+                elif obj.name != "Jogador":
                     self.fim_do_jogo = Sprite((obj.x, obj.y), obj.image, (todos_sprites, self.sprites_colisão))
         else:
             for obj in tmx_mapa.get_layer_by_name("Entidades"):
