@@ -59,22 +59,24 @@
                 5,
                 3
             ],
-            "scale": 5.5,
-            "selectedLayer": 4,
+            "scale": 1,
+            "selectedLayer": 5,
             "viewCenter": {
-                "x": 114.81818181818181,
-                "y": 702.6363636363636
+                "x": 474.5,
+                "y": 423.5
             }
         },
         "Loja.tmx#fundo": {
             "scaleInDock": 1
         },
         "Loja.tmx#paredes": {
+            "dynamicWrapping": false,
             "scaleInDock": 1
         },
         "Loja.tmx#plataformas": {
             "dynamicWrapping": true,
-            "scaleInDock": 1
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         },
         "Loja.tmx#portas": {
             "scaleInDock": 1
