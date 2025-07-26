@@ -39,7 +39,7 @@ class Mapa:
             "Tartaruga":[],
             "Vespa":[]
         }
-        self.setup(self.mapas_tmx["Mapa"], "Início")
+        self.setup("Mapa", "Início")
     
     def importar_grafismos(self):
         self.mapas_tmx = {
@@ -53,7 +53,8 @@ class Mapa:
             "Grande": pygame.image.load(join('Grafismos','Mapa','Plataforma_grande.png'))
         }
     
-    def setup(self, tmx_mapa, pos_inicial_jog):
+    def setup(self, nome_mapa, pos_inicial_jog):
+        tmx_mapa = self.mapas_tmx[nome_mapa]
         lista_rects = {}
         #* fronteiras
         for area in tmx_mapa.get_layer_by_name("Bordas_Colisão"):
@@ -70,13 +71,19 @@ class Mapa:
             for x, y, surf in tmx_mapa.get_layer_by_name(layer).tiles():
                 Sprite((x * TILE_SIZE, y * TILE_SIZE), surf, todos_sprites)
         #* entidades
-        for obj in tmx_mapa.get_layer_by_name("Entidades"):
-            if obj.name == "Jogador" and obj.properties["Posição"] == pos_inicial_jog:
-                self.posição = (obj.x, obj.y)
-            elif obj.name == "Vendedor":
-                self.vendedor = NPC((obj.x, obj.y), todos_sprites)
-            else:
-                self.fim_do_jogo = Sprite((obj.x, obj.y), obj.image, (todos_sprites, self.sprites_colisão))
+        if nome_mapa == "Mapa":
+            for obj in tmx_mapa.get_layer_by_name("Entidades"):
+                if obj.name == "Jogador" and obj.properties["Posição"] == pos_inicial_jog:
+                    self.posição = (obj.x, obj.y)
+                else:
+                    self.fim_do_jogo = Sprite((obj.x, obj.y), obj.image, (todos_sprites, self.sprites_colisão))
+        else:
+            for obj in tmx_mapa.get_layer_by_name("Entidades"):
+                if obj.name == "Jogador" and obj.properties["Posição"] == pos_inicial_jog:
+                    self.posição = (obj.x, obj.y)
+                elif obj.name == "Vendedor":
+                    self.vendedor = NPC((obj.x, obj.y), todos_sprites)
+        
         #* plataformas base de cada nível - fixas no fundo de cada nível, em ambos os lados
         for area in tmx_mapa.get_layer_by_name("Níveis"):
             lista_rects.update({area.name:[]})
@@ -215,3 +222,5 @@ class Mapa:
                     pts_moedas.remove(pt)
                     objecto = Itens("Moeda", pt, todos_sprites)
                     self.lista_objectos["Moeda"].append(objecto)
+        for obj in tmx_mapa.get_layer_by_name("Handmade"):
+            
