@@ -56,15 +56,15 @@
         },
         "Loja.tmx": {
             "expandedObjectLayers": [
-                7,
-                5,
                 3,
-                4
+                4,
+                7,
+                5
             ],
             "scale": 1.1587121212121212,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 529.467146126185,
+                "x": 96.22752533507679,
                 "y": 311.9843085975809
             }
         },
@@ -96,10 +96,10 @@
                 10
             ],
             "scale": 1,
-            "selectedLayer": 4,
+            "selectedLayer": 6,
             "viewCenter": {
-                "x": 885,
-                "y": 66991
+                "x": 527.5,
+                "y": 17225.5
             }
         },
         "Mapa.tmx#fundo": {
@@ -128,8 +128,8 @@
             "scale": 0.5,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 1152,
-                "y": 766
+                "x": 1151,
+                "y": 765
             }
         },
         "Tutorial.tmx#fundo": {
