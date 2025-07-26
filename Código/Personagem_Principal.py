@@ -36,7 +36,7 @@ class Principal(pygame.sprite.Sprite):
         self.rect_anterior = self.hitbox.copy()
         # movimentos
         self.direção = vector()
-        self.velocidade = 400
+        self.velocidade = 400 if not DEBUGGING else 1200
         self.gravidade = 1400
         self.saltar = False
         self.altura_salto = 800
@@ -111,8 +111,9 @@ class Principal(pygame.sprite.Sprite):
     
     def interacção(self):
         if self.interagir:
-            
-            print(self.inventário)
+            if self.rect.collidelist(self.mapa.sprites_transição.sprites()) > -1:
+                qual = self.rect.collidelist(self.mapa.sprites_transição.sprites())
+                print(self.mapa.sprites_transição.sprites()[qual])
     
     def collisão_entidades(self, dt):
         if self.hitbox.collidelist(self.mapa.lista_objectos["Moeda"]) > -1:
@@ -150,6 +151,8 @@ class Principal(pygame.sprite.Sprite):
             print("GAME OVER")
 
     def update(self, dt):
+        if dt >= 1:
+            dt = 0.05
         self.rect_anterior = self.hitbox.copy()
         self.invencibilidade.actualizar()
         self.ignorar_input.actualizar()

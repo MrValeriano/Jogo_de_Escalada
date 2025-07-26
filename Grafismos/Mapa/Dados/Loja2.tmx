@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="11" height="4" tilewidth="96" tileheight="96" infinite="0" nextlayerid="9" nextobjectid="17">
+ <tileset firstgid="1" name="fundo" tilewidth="96" tileheight="96" tilecount="10" columns="2">
+  <image source="../fundo_tiles.png" width="192" height="480"/>
+ </tileset>
+ <tileset firstgid="11" name="paredes" tilewidth="96" tileheight="96" tilecount="8" columns="2">
+  <image source="../paredes_tiles.png" width="192" height="384"/>
+ </tileset>
+ <tileset firstgid="19" name="plataformas" tilewidth="576" tileheight="48" tilecount="3" columns="0">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="0">
+   <image source="../Plataforma_grande.png" width="576" height="32"/>
+  </tile>
+  <tile id="1">
+   <image source="../Plataforma_media.png" width="384" height="32"/>
+  </tile>
+  <tile id="2">
+   <image source="../Plataforma_pequena.png" width="192" height="32"/>
+  </tile>
+ </tileset>
+ <tileset firstgid="22" name="portas" tilewidth="104" tileheight="131" tilecount="2" columns="0" objectalignment="bottomleft">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="0" type="porta">
+   <image source="../Porta_aberta.png" width="104" height="131"/>
+  </tile>
+  <tile id="1" type="porta">
+   <image source="../Porta_fechada.png" width="104" height="131"/>
+  </tile>
+ </tileset>
+ <tileset firstgid="24" name="Expositor" class="expositor" tilewidth="144" tileheight="48" tilecount="1" columns="0" objectalignment="topleft">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="0" type="expositor">
+   <image source="../Expositor.png" width="144" height="48"/>
+  </tile>
+ </tileset>
+ <layer id="1" name="Fundo" width="11" height="4">
+  <data encoding="csv">
+1,1,1,1,1,1,1,1,1,1,1,
+8,8,8,8,8,8,8,8,8,8,8,
+3,3,3,3,3,3,3,3,3,3,3,
+9,9,9,9,9,9,9,9,9,9,9
+</data>
+ </layer>
+ <objectgroup id="3" name="Bordas_Colisão">
+  <object id="1" name="Top" x="12" y="0" width="1032" height="24"/>
+  <object id="2" name="Left" x="0" y="0" width="12" height="384"/>
+  <object id="3" name="Right" x="1044" y="0" width="12" height="384"/>
+  <object id="4" name="Bottom" x="12" y="360" width="1032" height="24"/>
+ </objectgroup>
+ <objectgroup id="4" name="Área_de_Jogo" visible="0">
+  <object id="6" name="Play Area" x="12" y="24" width="1032" height="624"/>
+ </objectgroup>
+ <objectgroup id="7" name="Handmade">
+  <object id="8" gid="23" x="44" y="361" width="104" height="131">
+   <properties>
+    <property name="Ligação" value="Mapa"/>
+    <property name="Posição" value="Loja 2"/>
+   </properties>
+  </object>
+  <object id="10" gid="24" x="192" y="312" width="144" height="48"/>
+  <object id="11" gid="24" x="864" y="312" width="144" height="48"/>
+  <object id="12" gid="24" x="432" y="312" width="144" height="48"/>
+  <object id="13" name="Item" x="264" y="312">
+   <point/>
+  </object>
+  <object id="14" name="Item" x="504" y="312">
+   <point/>
+  </object>
+  <object id="15" name="Coração" x="936" y="312">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="8" name="Níveis"/>
+ <objectgroup id="5" name="Entidades">
+  <object id="7" name="Jogador" x="96" y="312">
+   <properties>
+    <property name="Posição" value="Entrada"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="9" name="Vendedor" x="720" y="302">
+   <point/>
+  </object>
+ </objectgroup>
+ <layer id="2" name="Paredes" width="11" height="4">
+  <data encoding="csv">
+18,17,17,17,17,17,17,17,17,17,16,
+11,0,0,0,0,0,0,0,0,0,15,
+11,0,0,0,0,0,0,0,0,0,15,
+12,13,13,13,13,13,13,13,13,13,14
+</data>
+ </layer>
+</map>

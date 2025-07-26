@@ -9,7 +9,7 @@ from Personagem_Principal import *
 
 mapa = Mapa()
 clock.tick()
-jogador = Principal(mapa, todos_sprites)
+jogador = Principal(mapa, todos_sprites)        
 
 while True:
     #* tick
@@ -23,5 +23,6 @@ while True:
     #* representações no ecrã
     todos_sprites.draw(jogador.rect.center)
     
-    mapa.fade(dt)
+    mapa.fade(dt, jogador)
+    print(jogador.rect.center, dt)
     pygame.display.update()

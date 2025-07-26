@@ -54,6 +54,7 @@
   <object id="8" gid="23" x="44" y="361" width="104" height="131">
    <properties>
     <property name="Ligação" value="Mapa"/>
+    <property name="Posição" value="Início"/>
    </properties>
   </object>
   <object id="10" gid="24" x="192" y="312" width="144" height="48"/>
@@ -73,7 +74,7 @@
  <objectgroup id="5" name="Entidades">
   <object id="7" name="Jogador" x="96" y="312">
    <properties>
-    <property name="Posição" value="Loja"/>
+    <property name="Posição" value="Entrada"/>
    </properties>
    <point/>
   </object>

@@ -13,7 +13,10 @@ class TodosSprites(pygame.sprite.Group):
         self.offset = vector()
         
     def draw(self, player_center):
-        self.offset.x = EMPTY_EDGES[0]
+        if DEBUGGING:
+            self.offset.x = -(player_center[0] - SCREEN_HEIGHT / 2)
+        else:
+            self.offset.x = EMPTY_EDGES[0]
         self.offset.y = -(player_center[1] - SCREEN_HEIGHT / 2)
         
         for sprite in self:
@@ -57,31 +60,58 @@ class Mapa:
         self.mapas_tmx = {
             "Mapa": load_pygame(join('Grafismos','Mapa','Dados','Mapa.tmx')),
             "Tutorial": load_pygame(join('Grafismos','Mapa','Dados','Tutorial.tmx')),
-            "Loja": load_pygame(join('Grafismos','Mapa','Dados','Loja.tmx'))
+            "Loja 1": load_pygame(join('Grafismos','Mapa','Dados','Loja1.tmx')),
+            "Loja 2": load_pygame(join('Grafismos','Mapa','Dados','Loja2.tmx')),
+            "Loja 3": load_pygame(join('Grafismos','Mapa','Dados','Loja3.tmx'))
         }
         self.plataformas_surf = {
             "Pequena": pygame.image.load(join('Grafismos','Mapa','Plataforma_pequena.png')),
             "Média": pygame.image.load(join('Grafismos','Mapa','Plataforma_media.png')),
             "Grande": pygame.image.load(join('Grafismos','Mapa','Plataforma_grande.png'))
         }
+        
+    def distribuir_itens(self):
+        for loja in range(3):
+            for i in range(2):
+                item = rd.choice(EQUIPAVEIS)
     
-    def check_transição(self, personagem: Principal):
+    def check_transição(self, personagem):
         sprites = [sprite for sprite in self.sprites_transição if sprite.rect.colliderect(personagem.hitbox)]
         if sprites:
-            self.alvo_transição = sprites[0].target
-            self.fade_mode = "out"
+            if personagem.interagir:
+                self.alvo_transição = sprites[0].target
+                self.fade_mode = "out"
     
     #* Pintar ecrã de preto para esconder o processo de transição
-    def fade(self, dt):
+    def fade(self, dt, player):
+        if self.fade_mode == "in":
+            self.progresso_fade -= self.velocidade_fade * dt
+            
         if self.fade_mode == "out":
             self.progresso_fade += self.velocidade_fade * dt
             if self.progresso_fade >= 255:
                 self.setup(self.alvo_transição[0], self.alvo_transição[1])
-            
+                todos_sprites.add(player)
+                player.hitbox.center = self.posição
+                self.fade_mode = "in"
+                self.alvo_transição = None
+        
+        self.progresso_fade = max(0, min(self.progresso_fade, 255))
         self.fade_surf.set_alpha(self.progresso_fade)
         screen.blit(self.fade_surf, (0, 0))
     
     def setup(self, nome_mapa, pos_inicial_jog):
+        print(nome_mapa)
+        #* limpar mapa para transição
+        for grupo in (todos_sprites, self.sprites_colisão, self.sprites_transição):
+            grupo.empty()
+        # self.lista_plataformas = {}
+        # self.lista_objectos = {
+        #     "Moeda":[],
+        #     "Tartaruga":[],
+        #     "Vespa":[]
+        # }
+        #* iniciar
         tmx_mapa = self.mapas_tmx[nome_mapa]
         lista_rects = {}
         #* fronteiras
@@ -255,4 +285,6 @@ class Mapa:
                 if obj.properties['type'] == "plataforma":
                     Sprite((obj.x, obj.y), obj.image, (todos_sprites, self.sprites_colisão))
                 elif obj.properties['type'] == "porta":
-                    Porta((obj.x, obj.y), obj.image, obj.properties["Ligação"], (todos_sprites, self.sprites_transição))
+                    Porta((obj.x, obj.y), obj.image, (obj.properties["Ligação"], obj.properties["Posição"]),
+                          (todos_sprites, self.sprites_transição))
+        print("Done")

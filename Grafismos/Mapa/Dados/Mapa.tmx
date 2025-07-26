@@ -1460,6 +1460,7 @@
   <object id="338" gid="23" x="476" y="34049" width="104" height="131">
    <properties>
     <property name="Ligação" value="Loja 2"/>
+    <property name="Posição" value="Entrada"/>
    </properties>
   </object>
   <object id="340" gid="21" x="12" y="33888" width="192" height="32"/>
@@ -1471,6 +1472,7 @@
   <object id="353" gid="23" x="476" y="17274" width="104" height="131">
    <properties>
     <property name="Ligação" value="Loja 3"/>
+    <property name="Posição" value="Entrada"/>
    </properties>
   </object>
   <object id="354" gid="21" x="12" y="17114" width="192" height="32"/>
@@ -1482,6 +1484,7 @@
   <object id="360" gid="23" x="476" y="50824" width="104" height="131">
    <properties>
     <property name="Ligação" value="Loja 1"/>
+    <property name="Posição" value="Entrada"/>
    </properties>
   </object>
   <object id="361" gid="21" x="12" y="50663" width="192" height="32"/>
@@ -1490,6 +1493,7 @@
   <object id="364" name="Porta_fechada" gid="23" x="720" y="67176" width="104" height="131">
    <properties>
     <property name="Ligação" value="Loja 1"/>
+    <property name="Posição" value="Entrada"/>
    </properties>
   </object>
  </objectgroup>
