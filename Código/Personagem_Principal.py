@@ -110,7 +110,9 @@ class Principal(pygame.sprite.Sprite):
             self.image.set_alpha(255)
     
     def interacção(self):
-        print(self.inventário)
+        if self.interagir:
+            
+            print(self.inventário)
     
     def collisão_entidades(self, dt):
         if self.hitbox.collidelist(self.mapa.lista_objectos["Moeda"]) > -1:
@@ -155,4 +157,5 @@ class Principal(pygame.sprite.Sprite):
         self.movimentação(dt)
         self.ver_contacto()
         self.collisão_entidades(dt)
+        self.interacção()
         self.animação(dt)
