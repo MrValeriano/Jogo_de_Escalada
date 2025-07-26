@@ -11,12 +11,13 @@ class Itens(pygame.sprite.Sprite):
         if self.tipo == "Moeda":
             self.pos = (self.âncora[0], self.âncora[1] - self.image.height)
         else:
-            self.pos = (self.âncora.rect.midtop[0], self.âncora.rect.midtop[1] - self.image.height)
+            # self.pos = (self.âncora.rect.midtop[0], self.âncora.rect.midtop[1] - self.image.height)
+            self.pos = (self.âncora[0], self.âncora[1] - self.image.height)
         self.rect = self.image.get_frect(center = self.pos)
         self.ymax_min = [self.rect.centery + 5, self.rect.centery - 5]
         self.movimento = vector()
         self.direção = "cima"
-        self.acção = "não brilhar"
+        self.acção = "não brilhar" if self.tipo == "Moeda" else "brilhar"
         self.freq = ["brilhar"]*3 + ["não brilhar"]*7
         self.rect.centery = self.rect.centery + rd.choice(range(-5, 5))
     
@@ -47,7 +48,8 @@ class Itens(pygame.sprite.Sprite):
     #     if self.rect.colliderect(jogador)
 
     def update(self, dt):
-        self.flutuar(dt)
+        if self.tipo == "Moeda":
+            self.flutuar(dt)
         self.animação(dt)
 
 EQUIPAVEIS = ["Apicultor", "Calças", "Chicote"]
