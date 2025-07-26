@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="11" height="700" tilewidth="96" tileheight="96" infinite="0" nextlayerid="11" nextobjectid="366">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="11" height="700" tilewidth="96" tileheight="96" infinite="0" nextlayerid="11" nextobjectid="370">
  <tileset firstgid="1" name="fundo" tilewidth="96" tileheight="96" tilecount="10" columns="2">
   <image source="../fundo_tiles.png" width="192" height="480"/>
  </tileset>
@@ -1587,5 +1587,23 @@
    <point/>
   </object>
   <object id="301" name="Plataforma_final" gid="19" x="192" y="240" width="672" height="48"/>
+  <object id="366" name="Jogador" x="528" y="50775">
+   <properties>
+    <property name="Posição" value="Loja 1"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="368" name="Jogador" x="528" y="34000">
+   <properties>
+    <property name="Posição" value="Loja 2"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="369" name="Jogador" x="528" y="17225">
+   <properties>
+    <property name="Posição" value="Loja 3"/>
+   </properties>
+   <point/>
+  </object>
  </objectgroup>
 </map>
