@@ -75,6 +75,9 @@ class Mapa:
     def fade(self, dt):
         if self.fade_mode == "out":
             self.progresso_fade += self.velocidade_fade * dt
+            if self.progresso_fade >= 255:
+                self.setup(self.alvo_transição[0], self.alvo_transição[1])
+            
         self.fade_surf.set_alpha(self.progresso_fade)
         screen.blit(self.fade_surf, (0, 0))
     
