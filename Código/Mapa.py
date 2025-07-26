@@ -231,3 +231,5 @@ class Mapa:
             if len(obj.properties.keys()) > 0:
                 if obj.properties['type'] == "plataforma":
                     Sprite((obj.x, obj.y), obj.image, (todos_sprites, self.sprites_colisão))
+                elif obj.properties['type'] == "porta":
+                    Sprite((obj.x, obj.y), obj.image, todos_sprites)
