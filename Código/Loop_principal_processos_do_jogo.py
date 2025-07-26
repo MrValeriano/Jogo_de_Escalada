@@ -23,4 +23,5 @@ while True:
     #* representações no ecrã
     todos_sprites.draw(jogador.rect.center)
     
+    mapa.fade(dt)
     pygame.display.update()
