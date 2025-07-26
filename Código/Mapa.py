@@ -43,7 +43,8 @@ class Mapa:
     def importar_grafismos(self):
         self.mapas_tmx = {
             "Mapa": load_pygame(join('Grafismos','Mapa','Dados','Mapa.tmx')),
-            "Tutorial": load_pygame(join('Grafismos','Mapa','Dados','Tutorial.tmx'))
+            "Tutorial": load_pygame(join('Grafismos','Mapa','Dados','Tutorial.tmx')),
+            "Loja": load_pygame(join('Grafismos','Mapa','Dados','Loja.tmx'))
         }
         self.plataformas_surf = {
             "Pequena": pygame.image.load(join('Grafismos','Mapa','Plataforma_pequena.png')),
@@ -71,6 +72,8 @@ class Mapa:
         for obj in tmx_mapa.get_layer_by_name("Entidades"):
             if obj.name == "Jogador" and obj.properties["Posição"] == pos_inicial_jog:
                 self.posição = (obj.x, obj.y)
+            elif obj.name == "Vendedor":
+                self.vendedor =
             else:
                 self.fim_do_jogo = Sprite((obj.x, obj.y), obj.image, (todos_sprites, self.sprites_colisão))
         #* plataformas base de cada nível - fixas no fundo de cada nível, em ambos os lados
