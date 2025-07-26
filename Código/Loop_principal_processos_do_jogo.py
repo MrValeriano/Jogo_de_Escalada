@@ -14,12 +14,13 @@ jogador = Principal(mapa, todos_sprites)
 while True:
     #* tick
     dt = clock.tick()/1000
+    screen.fill('black')
     #* eventos
     event_loop()
+    #* verificações & updates
     mapa.check_transição(jogador)
-    #* representações no ecrã
     todos_sprites.update(dt)
-    screen.fill('black')
+    #* representações no ecrã
     todos_sprites.draw(jogador.rect.center)
     
     pygame.display.update()
