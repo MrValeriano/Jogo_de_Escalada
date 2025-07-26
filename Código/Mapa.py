@@ -29,6 +29,11 @@ class Sprite(pygame.sprite.Sprite):
         self.rect = self.image.get_frect(topleft = pos)
         self.rect_anterior = self.rect.copy()
 
+class Porta(Sprite):
+    def __init__(self, pos, surf, conn, *groups):
+        super().__init__(pos, surf, *groups)
+        self.target = conn
+
 class Mapa:
     def __init__(self):
         self.importar_grafismos()
@@ -232,4 +237,4 @@ class Mapa:
                 if obj.properties['type'] == "plataforma":
                     Sprite((obj.x, obj.y), obj.image, (todos_sprites, self.sprites_colisão))
                 elif obj.properties['type'] == "porta":
-                    Sprite((obj.x, obj.y), obj.image, todos_sprites)
+                    Porta((obj.x, obj.y), obj.image, obj.properties["L"], todos_sprites)
