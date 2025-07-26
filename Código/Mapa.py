@@ -35,6 +35,7 @@ class Mapa:
         self.lista_plataformas = {}
         self.sprites_colisão = pygame.sprite.Group()
         self.ligações = {}
+        self.itens_loja = {}
         self.lista_objectos = {
             "Moeda":[],
             "Tartaruga":[],
