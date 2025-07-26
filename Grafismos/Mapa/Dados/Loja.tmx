@@ -27,7 +27,7 @@
    <image source="../Porta_fechada.png" width="104" height="131"/>
   </tile>
  </tileset>
- <tileset firstgid="24" name="Expositor" tilewidth="144" tileheight="48" tilecount="1" columns="0" objectalignment="topleft">
+ <tileset firstgid="24" name="Expositor" class="expositor" tilewidth="144" tileheight="48" tilecount="1" columns="0" objectalignment="topleft">
   <grid orientation="orthogonal" width="1" height="1"/>
   <tile id="0">
    <image source="../Expositor.png" width="144" height="48"/>
