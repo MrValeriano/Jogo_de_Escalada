@@ -47,6 +47,7 @@ class Principal(pygame.sprite.Sprite):
         self.invencibilidade = Timer(3000)
         self.ignorar_input = Timer(500)
         # inventário
+        self.max_vidas = 3
         self.inventário = {
             "Moedas": 0,
             "Item": "",
