@@ -52,17 +52,11 @@ def input_jogador(jogador):
         else:
             jogador.interagir = False
         #* Input via rato
-        mouse_pos = pygame.mouse.get_pos()
-        # y do jogador é sempre o meio do ecrã
-        # o ecrã é um rect que se move com o jogador no centro
-        offset = vector()
-        jogador_center = jogador.rect.center
-        offset.x = -EMPTY_EDGES[0]
-        if "Loja" not in jogador.mapa.name:
-            offset.y = (jogador_center[1] - SCREEN_HEIGHT / 2)
-        else:
-            offset.y = jogador.mapa.altura / 2
-        posição_real = mouse_pos + offset
+        # if not jogador.no_chão:
         if pygame.mouse.get_pressed()[0]:
-            pygame.draw.line(pygame.display.get_surface(), "red", posição_real, jogador.rect.center, 5)
-            print(jogador_center, posição_real)
+            jogador.pendurar = True
+            jogador.ponta_chicote = pygame.mouse.get_pos()
+        elif pygame.mouse.get_just_released()[0]:
+            jogador.pendurar = False
+        else:
+            jogador.pendurar = False

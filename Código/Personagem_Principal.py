@@ -69,11 +69,29 @@ class Principal(pygame.sprite.Sprite):
             # repetição de linha necessária para simular aceleração de gravidade em vez de velocidade constante
             self.direção.y += self.gravidade / 2 * dt
             self.colisão_mapa("vertical")
+            #* salto
             if self.saltar:
                 if self.no_chão:
                     self.direção.y = -self.altura_salto
                 self.saltar = False
                 self.altura_salto = 800
+            #* chicote
+            if self.pendurar:
+                # y do jogador é sempre o meio do ecrã
+                # o ecrã é um rect que se move com o jogador no centro
+                offset = vector()
+                offset.x = -EMPTY_EDGES[0]
+                if "Loja" not in self.mapa.name:
+                    offset.y = (self.hitbox.centery - SCREEN_HEIGHT / 2)
+                else:
+                    offset.y = self.mapa.altura / 2
+                self.posição_mapa = self.ponta_chicote + offset
+                if self.lado == "direita":
+                    self.mão_chicote = self.hitbox.midright
+                else:
+                    self.mão_chicote = self.hitbox.midleft
+                self.posição_ecrã = self.mão_chicote - offset
+                    # pygame.draw.line(pygame.display.get_surface(), "brown", posição_ecrã, self.ponta_chicote, 5)
             self.rect.center = self.hitbox.center
     
     def ver_contacto(self):
@@ -97,7 +115,11 @@ class Principal(pygame.sprite.Sprite):
                     self.direção.y = 0
 
     def animação(self, dt):
-        if self.no_chão == False: self.acção = "salto"
+        if not self.no_chão:
+            if self.pendurar:
+                self.acção = "pendurado"
+            else:
+                self.acção = "salto"
         self.indice_frame += ANIMATION_SPEED * dt
         if int(self.indice_frame) >= len(self.frames[self.acção][self.lado]):
             self.indice_frame = 0
@@ -111,10 +133,6 @@ class Principal(pygame.sprite.Sprite):
         else:
             self.frames_invencibilidade = 0
             self.image.set_alpha(255)
-    
-    def interacção(self):
-        if self.interagir:
-            print(self.inventário)
     
     def collisão_entidades(self, dt):
         if self.hitbox.collidelist(self.mapa.lista_objectos["Moeda"]) > -1:
@@ -166,5 +184,4 @@ class Principal(pygame.sprite.Sprite):
         self.movimentação(dt)
         self.ver_contacto()
         self.collisão_entidades(dt)
-        self.interacção()
         self.animação(dt)
