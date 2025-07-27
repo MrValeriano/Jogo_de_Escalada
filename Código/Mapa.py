@@ -131,7 +131,6 @@ class Mapa:
             rect = pygame.Rect(area.x, area.y, area.width, area.height)
             surf = pygame.Surface((area.width, area.height))
             Sprite((area.x, area.y), surf, (todos_sprites, self.sprites_colisão))
-            # print(surf)
             fronteiras.append(rect)
         self.área_de_jogo = [
             int(tmx_mapa.get_layer_by_name("Área_de_Jogo")[0].x),
@@ -294,6 +293,7 @@ class Mapa:
                     pts_moedas.remove(pt)
                     objecto = Itens("Moeda", pt, todos_sprites)
                     self.lista_objectos["Moeda"].append(objecto)
+        item_pos = []
         for obj in tmx_mapa.get_layer_by_name("Handmade"):
             if len(obj.properties.keys()) > 0:
                 if obj.properties['type'] == "plataforma":
@@ -302,5 +302,11 @@ class Mapa:
                     Porta((obj.x, obj.y), obj.image, (obj.properties["Ligação"], obj.properties["Posição"]),
                           (todos_sprites, self.sprites_transição))
                 elif obj.properties['type'] == "expositor":
-                    Sprite((obj.x, obj.y+obj.height), obj.image, todos_sprites)
-                
+                    Sprite((obj.x, obj.y + obj.height), obj.image, todos_sprites)
+            else:
+                if obj.name == "Item":
+                    item_pos.append((obj.x, obj.y))
+                elif obj.name == "Coração":
+                    Itens("Coração", (obj.x, obj.y), todos_sprites)
+        for i in range(len(item_pos)):
+            Itens(itens_por_loja[self.name][i], item_pos[i], todos_sprites)
