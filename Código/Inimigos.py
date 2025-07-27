@@ -18,7 +18,7 @@ class Inimigo(pygame.sprite.Sprite):
             }
         }
         self.acção = "parado"
-        self.lado = "direita"
+        self.lado = rd.choice(["esquerda", "direita"])
         self.indice_frame = 0
         self.image = self.frames[self.acção][self.lado][self.indice_frame]
         if tipo == "Tartaruga":
