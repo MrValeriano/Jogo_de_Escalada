@@ -50,3 +50,5 @@ def input_jogador(jogador):
             jogador.interagir = True
         else:
             jogador.interagir = False
+        if keys[pygame.MOUSEBUTTONDOWN]:
+            print("mouse button")
