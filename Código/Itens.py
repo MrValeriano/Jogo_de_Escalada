@@ -6,6 +6,7 @@ class Itens(pygame.sprite.Sprite):
         self.âncora = âncora
         self.tipo = tipo
         self.frames = importar_pasta("Grafismos", "Itens", self.tipo)
+        self.frames_esgotado = importar_pasta("Grafismos", "Itens", "Esgotados", self.tipo)
         if self.tipo == "Moeda":
             self.indice_frame = 0
             self.acção = "não brilhar"
