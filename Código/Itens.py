@@ -6,18 +6,18 @@ class Itens(pygame.sprite.Sprite):
         self.âncora = âncora
         self.tipo = tipo
         self.frames = importar_pasta("Grafismos", "Itens", self.tipo)
-        self.frames_esgotado = importar_pasta("Grafismos", "Itens", "Esgotados", self.tipo)
         if self.tipo == "Moeda":
             self.indice_frame = 0
             self.acção = "não brilhar"
             self.image = self.frames[self.indice_frame]
             self.pos = (self.âncora[0], self.âncora[1] - self.image.height)
         else:
-            # self.pos = (self.âncora.rect.midtop[0], self.âncora.rect.midtop[1] - self.image.height)
+            self.frames_esgotado = importar_pasta("Grafismos", "Itens", "Esgotados", self.tipo)
             self.indice_frame = rd.choice(range(len(self.frames)))
             self.acção = "brilhar"
             self.image = self.frames[self.indice_frame]
             self.pos = (self.âncora[0], self.âncora[1] - self.image.height / 2)
+        self.esgotado = False
         self.rect = self.image.get_frect(center = self.pos)
         self.ymax_min = [self.rect.centery + 5, self.rect.centery - 5]
         self.movimento = vector()
@@ -46,17 +46,30 @@ class Itens(pygame.sprite.Sprite):
             if self.tipo == "Moeda":
                 self.acção = rd.sample(self.freq,1)[0]
         if self.acção == "brilhar":
-            self.image = self.frames[int(self.indice_frame)]
+            if self.esgotado:
+                self.image = self.frames_esgotado[int(self.indice_frame)]
+            else:
+                self.image = self.frames[int(self.indice_frame)]
         else:
             self.image = self.frames[0]
     
     def compra(self):
         jogador = self.groups()[0].sprites()[-1]
+        if jogador.inventário["Item"] == self.tipo:
+            self.esgotado = True
+        else:
+            self.esgotado = False
         if self.rect.colliderect(jogador.rect):
-            if self.alive():
+            if not self.esgotado:
                 if jogador.interagir:
                     if jogador.inventário["Moedas"] >= Preços[self.tipo]:
-                        print("Buyable")
+                        if self.tipo == "Coração":
+                            jogador.inventário["Vidas"] += 1
+                        else:
+                            jogador.inventário["Item"] = self.tipo
+                        jogador.inventário["Moedas"] -= Preços[self.tipo]
+                        self.esgotado = True
+        
     
     def update(self, dt):
         if self.tipo == "Moeda":
