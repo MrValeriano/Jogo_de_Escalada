@@ -25,7 +25,7 @@ while True:
     todos_sprites.draw(jogador)
     
     if jogador.pendurar:
-        pygame.draw.line(pygame.display.get_surface(), "brown", jogador.posição_ecrã, jogador.ponta_chicote, 5)
+        pygame.draw.line(pygame.display.get_surface(), pygame.Color("#b07145"), jogador.posição_ecrã, jogador.ponta_chicote, 5)
     
     mapa.fade(dt, jogador)
     pygame.display.update()
