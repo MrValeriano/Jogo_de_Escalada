@@ -53,9 +53,13 @@ def input_jogador(jogador):
             jogador.interagir = False
         #* Input via rato
         mouse_pos = pygame.mouse.get_pos()
-        pos_real_rato = vector(mouse_pos)
-        pos_real_rato.y = jogador.hitbox.centery - mouse_pos[1]
+        # print(jogador.mapa.fronteiras[-1])
+        # pos_real_rato = vector(mouse_pos)
+        # pos_real_rato.y = jogador.hitbox.centery - mouse_pos[1]
+        # if pygame.mouse.get_pressed()[0]:
+        #     print(f"\nmouse_pos {mouse_pos}\npos_real_rato {pos_real_rato}\njogador.hitbox.center {jogador.hitbox.center}")
+        # if jogador.hitbox.collidepoint(mouse_pos):
+        #     print("colisao")
         if pygame.mouse.get_pressed()[0]:
-            print(f"\nmouse_pos {mouse_pos}\npos_real_rato {pos_real_rato}\njogador.hitbox.center {jogador.hitbox.center}")
-        if jogador.hitbox.collidepoint(mouse_pos):
-            print("colisao")
+            pygame.draw.line(pygame.display.get_surface(), "red", mouse_pos, jogador.rect.center, 5)
+            print(vector(jogador.mapa.fronteiras[0].bottomright))
