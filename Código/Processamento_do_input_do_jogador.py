@@ -28,6 +28,7 @@ def input_jogador(jogador):
         jogador.direção = input_vector.normalize() if input_vector else input_vector
         
     else:
+        #* Input via teclado
         keys = pygame.key.get_pressed()
         input_vector = vector()
         other_action = "None"
@@ -50,6 +51,9 @@ def input_jogador(jogador):
             jogador.interagir = True
         else:
             jogador.interagir = False
+        #* Input via rato
+        mouse_pos = pygame.mouse.get_pos()
         if pygame.mouse.get_pressed()[0]:
-            mouse_pos = pygame.mouse.get_pos()
             print(mouse_pos)
+        if jogador.hitbox.collidepoint(mouse_pos):
+            print("colisao")
