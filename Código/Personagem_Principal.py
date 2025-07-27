@@ -43,6 +43,8 @@ class Principal(pygame.sprite.Sprite):
         self.no_chão = False
         self.bounce_away = False
         self.interagir = False
+        self.pendurar = False
+        self.ponta_chicote = (0, 0)
         # timers
         self.invencibilidade = Timer(3000)
         self.ignorar_input = Timer(500)
