@@ -61,6 +61,7 @@ class Mapa:
         self.velocidade_fade = 600
         self.importar_grafismos()
         self.setup("Mapa", "Início")
+        self.fronteiras = fronteiras
     
     def importar_grafismos(self):
         self.mapas_tmx = {
