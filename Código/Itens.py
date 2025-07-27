@@ -55,7 +55,12 @@ class Itens(pygame.sprite.Sprite):
     
     def compra(self):
         jogador = self.groups()[0].sprites()[-1]
-        if jogador.inventário["Item"] == self.tipo:
+        if self.tipo == "Coração":
+            if jogador.inventário["Vidas"] == jogador.max_vidas:
+                self.esgotado = True
+            else:
+                self.esgotado = False
+        elif jogador.inventário["Item"] == self.tipo:
             self.esgotado = True
         else:
             self.esgotado = False
