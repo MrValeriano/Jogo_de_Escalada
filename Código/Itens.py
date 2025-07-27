@@ -16,7 +16,7 @@ class Itens(pygame.sprite.Sprite):
             self.indice_frame = rd.choice(range(len(self.frames)))
             self.acção = "brilhar"
             self.image = self.frames[self.indice_frame]
-            self.pos = (self.âncora[0], self.âncora[1] - self.image.height)
+            self.pos = (self.âncora[0], self.âncora[1] - self.image.height / 2)
         self.rect = self.image.get_frect(center = self.pos)
         self.ymax_min = [self.rect.centery + 5, self.rect.centery - 5]
         self.movimento = vector()
@@ -24,7 +24,7 @@ class Itens(pygame.sprite.Sprite):
         self.freq = ["brilhar"]*3 + ["não brilhar"]*7
         if self.tipo == "Moeda":
             self.rect.centery = self.rect.centery + rd.choice(range(-5, 5))
-    
+
     def flutuar(self, dt):
         if self.direção == "cima":
             self.movimento.y -= 1
@@ -49,9 +49,25 @@ class Itens(pygame.sprite.Sprite):
         else:
             self.image = self.frames[0]
     
+    def compra(self):
+        jogador = self.groups()[0].sprites()[-1]
+        if self.rect.colliderect(jogador.rect):
+            if self.alive():
+                if jogador.interagir:
+                    if jogador.inventário["Moedas"] >= Preços[self.tipo]:
+                        print("Buyable")
+    
     def update(self, dt):
         if self.tipo == "Moeda":
             self.flutuar(dt)
+        else:
+            self.compra()
         self.animação(dt)
 
 EQUIPAVEIS = ["Apicultor", "Calças", "Chicote"]
+Preços = {
+    "Apicultor": 15,
+    "Calças": 15,
+    "Chicote": 25,
+    "Coração": 50
+}

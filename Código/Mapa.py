@@ -116,12 +116,6 @@ class Mapa:
         #* limpar mapa para transição
         for grupo in (todos_sprites, self.sprites_colisão, self.sprites_transição):
             grupo.empty()
-        # self.lista_plataformas = {}
-        # self.lista_objectos = {
-        #     "Moeda":[],
-        #     "Tartaruga":[],
-        #     "Vespa":[]
-        # }
         #* iniciar
         self.name = nome_mapa
         tmx_mapa = self.mapas_tmx[nome_mapa]
@@ -293,6 +287,7 @@ class Mapa:
                     pts_moedas.remove(pt)
                     objecto = Itens("Moeda", pt, todos_sprites)
                     self.lista_objectos["Moeda"].append(objecto)
+        #* plataformas e portas predeterminadas e distribuição semi-aleatória dos itens pelas 3 lojas
         item_pos = []
         for obj in tmx_mapa.get_layer_by_name("Handmade"):
             if len(obj.properties.keys()) > 0:
