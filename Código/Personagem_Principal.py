@@ -122,7 +122,12 @@ class Principal(pygame.sprite.Sprite):
                 self.inventário["Moedas"] += 1
         if not DEBUGGING:
             if not self.invencibilidade.activo:
-                inimigos = self.mapa.lista_objectos["Vespa"] + self.mapa.lista_objectos["Tartaruga"]
+                if self.inventário["Item"] == "Apicultor":
+                    inimigos = self.mapa.lista_objectos["Tartaruga"]
+                elif self.inventário["Item"] == "Calças":
+                    inimigos = self.mapa.lista_objectos["Vespa"]
+                else:
+                    inimigos = self.mapa.lista_objectos["Vespa"] + self.mapa.lista_objectos["Tartaruga"]
                 if self.hitbox.collidelist(inimigos) > -1:
                     qual = self.hitbox.collidelist(inimigos)
                     if inimigos[qual].alive():
