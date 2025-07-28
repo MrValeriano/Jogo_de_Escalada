@@ -52,11 +52,3 @@ def input_jogador(jogador):
             print("dialog")
         else:
             jogador.interagir = False
-        # #* Input via rato
-        # # if not jogador.no_chão:
-        # if pygame.mouse.get_pressed()[0]:
-        #     jogador.pendurar = True
-        #     jogador.ponta_chicote = pygame.mouse.get_pos()
-        # else:
-        #     jogador.pendurar = False
-        #     jogador.ponta_chicote = ()

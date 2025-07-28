@@ -16,11 +16,7 @@ class Principal(pygame.sprite.Sprite):
             "salto": {
                 "direita": importar_pasta("Grafismos","Personagem_Principal","Jump_Cycle","Direita"),
                 "esquerda": importar_pasta("Grafismos","Personagem_Principal","Jump_Cycle","Esquerda")
-            }#,
-            # "pendurado": {
-            #     "direita": importar_pasta("Grafismos","Personagem_Principal","Hang_Cycle","Direita"),
-            #     "esquerda": importar_pasta("Grafismos","Personagem_Principal","Hang_Cycle","Esquerda")
-            # }
+            }
         }
         #* estados
         self.acção = "parado"
@@ -43,9 +39,6 @@ class Principal(pygame.sprite.Sprite):
         self.no_chão = False
         self.bounce_away = False
         self.interagir = False
-        # self.pendurar = False
-        # self.ponta_chicote = ()
-        # self.âncora_chicote = ()
         # timers
         self.invencibilidade = Timer(3000)
         self.ignorar_input = Timer(500)
@@ -76,9 +69,6 @@ class Principal(pygame.sprite.Sprite):
                     self.direção.y = -self.altura_salto
                 self.saltar = False
                 self.altura_salto = 800
-            # #* chicote
-            # if self.pendurar:
-            #     self.chicotear()
             self.rect.center = self.hitbox.center
     
     def ver_contacto(self):
@@ -103,10 +93,7 @@ class Principal(pygame.sprite.Sprite):
 
     def animação(self, dt):
         if not self.no_chão:
-            # if self.pendurar:
-            #     self.acção = "pendurado"
-            # else:
-                self.acção = "salto"
+            self.acção = "salto"
         self.indice_frame += ANIMATION_SPEED * dt
         if int(self.indice_frame) >= len(self.frames[self.acção][self.lado]):
             self.indice_frame = 0
@@ -144,42 +131,6 @@ class Principal(pygame.sprite.Sprite):
                         self.bounce_away = True
                         self.bounce(dt,inimigos[qual])
     
-    # def chicotear(self):
-    #     offset = vector()
-    #     offset.x = -EMPTY_EDGES[0]
-    #     if "Loja" not in self.mapa.name:
-    #         offset.y = (self.hitbox.centery - SCREEN_HEIGHT / 2)
-    #     else:
-    #         offset.y = self.mapa.altura / 2
-    #     if self.ponta_chicote[1] >= (self.hitbox.midtop - offset)[1]:
-    #         self.pendurar = False
-    #     if self.pendurar:
-    #         # y do jogador é sempre o meio do ecrã
-    #         # o ecrã é um rect que se move com o jogador no centro
-    #         if len(self.âncora_chicote) > 0:
-    #             self.posição_mapa = self.âncora_chicote
-    #         else:
-    #             self.posição_mapa = self.ponta_chicote + offset
-    #         if self.lado == "direita":
-    #             self.mão_chicote = self.hitbox.midright
-    #         else:
-    #             self.mão_chicote = self.hitbox.midleft
-    #         self.posição_ecrã = self.mão_chicote - offset
-    #         sprites = [sprite for sprite in self.mapa.sprites_colisão.sprites()]
-    #         if len(sprites)>0:
-    #             colisões = [sprite.rect.clipline(self.mão_chicote, self.posição_mapa) for sprite in sprites
-    #                         if len(sprite.rect.clipline(self.mão_chicote, self.posição_mapa)) > 0]
-    #             if len(colisões) > 0:
-    #                 fundos = [i[0] for i in colisões]
-    #                 dist_jogador = [tuple(self.mão_chicote - vector(i[0])) for i in colisões]
-    #                 if len(self.âncora_chicote) == 0:
-    #                     self.âncora_chicote = fundos[dist_jogador.index(min(dist_jogador))]
-    #                     self.ponta_chicote = offset - self.âncora_chicote
-    #                 self.direção -= dist_jogador[dist_jogador.index(min(dist_jogador))]
-    #     else:
-    #         self.âncora_chicote = ()
-    #         self.ponta_chicote = ()
-    
     def bounce(self, dt, sprite):
         dist = vector()
         dist.x += self.hitbox.centerx - sprite.rect.centerx
@@ -198,8 +149,7 @@ class Principal(pygame.sprite.Sprite):
             print("GAME OVER")
 
     def update(self, dt):
-        if dt >= 1:
-            dt = 0.05
+        if dt >= 1: dt = 0.05
         self.rect_anterior = self.hitbox.copy()
         self.invencibilidade.actualizar()
         self.ignorar_input.actualizar()
@@ -208,4 +158,3 @@ class Principal(pygame.sprite.Sprite):
         self.ver_contacto()
         self.collisão_entidades(dt)
         self.animação(dt)
-        # print(self.âncora_chicote, self.pendurar)
