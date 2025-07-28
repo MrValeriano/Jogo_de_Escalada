@@ -56,4 +56,7 @@ pygame.init()
 pygame.display.set_caption('Jogo de Escalada')
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 clock = pygame.time.Clock()
-font = pygame.font.Font(join("Grafismos", "minecraftia", "Minecraftia-Regular.ttf"), 30)
+fonts = {
+    "dialog": pygame.font.Font(join("Grafismos", "minecraftia", "Minecraftia-Regular.ttf"), 30),
+    "HUD": pygame.font.Font(join("Grafismos", "minecraftia", "Minecraftia-Regular.ttf"), 50)
+}
