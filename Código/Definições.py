@@ -40,6 +40,34 @@ class Timer:
                 self.função()
             self.desactivar()
 
+falas = {
+    "Calças": "Protegem de tartarugas",
+    "Apicultor": "Protege de abelhas",
+    "Chicote": "Remover!",
+    "Coração": "Vida extra!",
+    "Conversa": "Como vai isso?"
+}
+
+class DialogTree:
+    def __init__(self, item, player, all_sprites, font):
+        self.player = player
+        self.item = item
+        self.font = font
+        self.all_sprites = all_sprites
+        
+        self.dialog = item.get_dialog()
+        self.dialog_num = len(self.dialog)
+        self.dialog_index = 0
+        
+        self.cur_dialog = DialogSprite(self.dialog[self.dialog_index], self.item, self.font, self.all_sprites)
+
+class DialogSprite(pygame.sprite.Sprite):
+    def __init__(self, msg, pos, font, *groups):
+        super().__init__(*groups)
+        text_surf = font.render(msg, False, "black")
+        self.image = text_surf
+        self.rect = self.image.get_frect(bottomright = pos.rect.midtop + vector(0, -10))
+    
 # Constantes
 SCREEN_WIDTH = 1080
 SCREEN_HEIGHT = 720

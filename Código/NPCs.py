@@ -19,6 +19,12 @@ class NPC(pygame.sprite.Sprite):
         self.image = self.frames[self.acção][self.lado][self.indice_frame]
         self.rect = self.image.get_frect(center = pos)
     
+    def conversar(self):
+        DialogSprite(falas["Conversa"], self.rect.midtop, fonts["dialog"], self.groups()[0])
+    
+    def check_interação(self):
+        jogador = self.groups()[0].sprites()[-1]
+    
     def animação(self, dt):
         jogador = self.groups()[0].sprites()[-1]
         if jogador.rect.centerx > self.rect.centerx:
