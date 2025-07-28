@@ -44,7 +44,8 @@ class Principal(pygame.sprite.Sprite):
         self.bounce_away = False
         self.interagir = False
         self.pendurar = False
-        self.ponta_chicote = (0, 0)
+        self.ponta_chicote = ()
+        self.âncora_chicote = ()
         # timers
         self.invencibilidade = Timer(3000)
         self.ignorar_input = Timer(500)
@@ -77,21 +78,7 @@ class Principal(pygame.sprite.Sprite):
                 self.altura_salto = 800
             #* chicote
             if self.pendurar:
-                # y do jogador é sempre o meio do ecrã
-                # o ecrã é um rect que se move com o jogador no centro
-                offset = vector()
-                offset.x = -EMPTY_EDGES[0]
-                if "Loja" not in self.mapa.name:
-                    offset.y = (self.hitbox.centery - SCREEN_HEIGHT / 2)
-                else:
-                    offset.y = self.mapa.altura / 2
-                self.posição_mapa = self.ponta_chicote + offset
-                if self.lado == "direita":
-                    self.mão_chicote = self.hitbox.midright
-                else:
-                    self.mão_chicote = self.hitbox.midleft
-                self.posição_ecrã = self.mão_chicote - offset
-                    # pygame.draw.line(pygame.display.get_surface(), "brown", posição_ecrã, self.ponta_chicote, 5)
+                self.chicotear()
             self.rect.center = self.hitbox.center
     
     def ver_contacto(self):
@@ -157,6 +144,42 @@ class Principal(pygame.sprite.Sprite):
                         self.bounce_away = True
                         self.bounce(dt,inimigos[qual])
     
+    def chicotear(self):
+        offset = vector()
+        offset.x = -EMPTY_EDGES[0]
+        if "Loja" not in self.mapa.name:
+            offset.y = (self.hitbox.centery - SCREEN_HEIGHT / 2)
+        else:
+            offset.y = self.mapa.altura / 2
+        if self.ponta_chicote[1] >= (self.hitbox.midtop - offset)[1]:
+            self.pendurar = False
+        if self.pendurar:
+            # y do jogador é sempre o meio do ecrã
+            # o ecrã é um rect que se move com o jogador no centro
+            if len(self.âncora_chicote) > 0:
+                self.posição_mapa = self.âncora_chicote
+            else:
+                self.posição_mapa = self.ponta_chicote + offset
+            if self.lado == "direita":
+                self.mão_chicote = self.hitbox.midright
+            else:
+                self.mão_chicote = self.hitbox.midleft
+            self.posição_ecrã = self.mão_chicote - offset
+            sprites = [sprite for sprite in self.mapa.sprites_colisão.sprites()]
+            if len(sprites)>0:
+                colisões = [sprite.rect.clipline(self.mão_chicote, self.posição_mapa) for sprite in sprites
+                            if len(sprite.rect.clipline(self.mão_chicote, self.posição_mapa)) > 0]
+                if len(colisões) > 0:
+                    fundos = [i[0] for i in colisões]
+                    dist_jogador = [tuple(self.mão_chicote - vector(i[0])) for i in colisões]
+                    if len(self.âncora_chicote) == 0:
+                        self.âncora_chicote = fundos[dist_jogador.index(min(dist_jogador))]
+                        self.ponta_chicote = offset - self.âncora_chicote
+                    self.direção -= dist_jogador[dist_jogador.index(min(dist_jogador))]
+        else:
+            self.âncora_chicote = ()
+            self.ponta_chicote = ()
+    
     def bounce(self, dt, sprite):
         dist = vector()
         dist.x += self.hitbox.centerx - sprite.rect.centerx
@@ -185,3 +208,4 @@ class Principal(pygame.sprite.Sprite):
         self.ver_contacto()
         self.collisão_entidades(dt)
         self.animação(dt)
+        print(self.âncora_chicote, self.pendurar)

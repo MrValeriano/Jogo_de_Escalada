@@ -25,7 +25,10 @@ while True:
     todos_sprites.draw(jogador)
     
     if jogador.pendurar:
-        pygame.draw.line(pygame.display.get_surface(), pygame.Color("#b07145"), jogador.posição_ecrã, jogador.ponta_chicote, 5)
+        line = pygame.draw.line(pygame.display.get_surface(), pygame.Color("#b07145"), jogador.posição_ecrã, jogador.ponta_chicote, 5)
+        # if line.collidelist(mapa.sprites_colisão.sprites()) > -1:
+        #     line.co
+        #     print("colisão")
     
     mapa.fade(dt, jogador)
     pygame.display.update()

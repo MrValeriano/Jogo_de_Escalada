@@ -47,7 +47,6 @@ def input_jogador(jogador):
                 jogador.acção = "salto"
                 jogador.saltar = True
         if keys[pygame.K_s]:
-            jogador.interacção()
             jogador.interagir = True
         else:
             jogador.interagir = False
@@ -56,7 +55,6 @@ def input_jogador(jogador):
         if pygame.mouse.get_pressed()[0]:
             jogador.pendurar = True
             jogador.ponta_chicote = pygame.mouse.get_pos()
-        elif pygame.mouse.get_just_released()[0]:
-            jogador.pendurar = False
         else:
             jogador.pendurar = False
+            jogador.ponta_chicote = ()
