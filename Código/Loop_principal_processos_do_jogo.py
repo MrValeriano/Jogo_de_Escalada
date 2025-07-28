@@ -1,5 +1,5 @@
 from Definições import *
-from Display import *
+from HUD import *
 from Mapa import *
 from Itens import *
 from NPCs import *
