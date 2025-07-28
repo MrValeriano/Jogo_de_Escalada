@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "Loja1.tmx",
+    "activeFile": "Mapa.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -92,16 +92,16 @@
         },
         "Loja1.tmx": {
             "expandedObjectLayers": [
+                5,
                 3,
                 4,
-                7,
-                5
+                7
             ],
             "scale": 1.5,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 586.3333333333333,
-                "y": 209.66666666666663
+                "x": 485.33333333333326,
+                "y": 192
             }
         },
         "Loja1.tmx#Expositor": {
@@ -121,15 +121,15 @@
         },
         "Loja2.tmx": {
             "expandedObjectLayers": [
+                5,
                 4,
-                7,
-                5
+                7
             ],
             "scale": 1.1587121212121212,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 527.7410918600849,
-                "y": 336.14906832298135
+                "x": 528.17260542661,
+                "y": 191.59202353710361
             }
         },
         "Loja2.tmx#Expositor": {
@@ -149,15 +149,15 @@
         },
         "Loja3.tmx": {
             "expandedObjectLayers": [
+                5,
                 4,
-                7,
-                5
+                7
             ],
             "scale": 1.1587121212121212,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 527.7410918600849,
-                "y": 336.14906832298135
+                "x": 528.17260542661,
+                "y": 191.59202353710361
             }
         },
         "Loja3.tmx#Expositor": {
@@ -177,14 +177,14 @@
         },
         "Mapa.tmx": {
             "expandedObjectLayers": [
-                9,
-                10
+                10,
+                9
             ],
-            "scale": 1,
+            "scale": 0.75,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 527.5,
-                "y": 385.5
+                "x": 524.6666666666665,
+                "y": 66767.33333333333
             }
         },
         "Mapa.tmx#fundo": {
@@ -213,8 +213,8 @@
             "scale": 0.5,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 1151,
-                "y": 765
+                "x": 1189,
+                "y": 768
             }
         },
         "Tutorial.tmx#fundo": {
@@ -278,11 +278,11 @@
     ],
     "project": "mapa.tiled-project",
     "recentFiles": [
-        "Mapa.tmx",
-        "Tutorial.tmx",
         "Loja3.tmx",
         "Loja2.tmx",
         "Loja1.tmx",
+        "Tutorial.tmx",
+        "Mapa.tmx",
         "Loja.tmx",
         "expositor.tsx",
         "portas.tsx",
