@@ -29,7 +29,8 @@ def input_jogador(jogador):
         
     else:
         #* Input via teclado
-        keys = pygame.key.get_pressed()
+        keys = pygame.key.get_pressed() #* Input contínuo enquanto uma tecla é pressionada
+        teclas = pygame.key.get_just_pressed() #* Input único para cada nova tecla pressionada
         input_vector = vector()
         other_action = "None"
         if any([keys[pygame.K_a], keys[pygame.K_d]]):
@@ -46,7 +47,7 @@ def input_jogador(jogador):
         if keys[pygame.K_w]:
                 jogador.acção = "salto"
                 jogador.saltar = True
-        if keys[pygame.K_s]:
+        if teclas[pygame.K_s]:
             jogador.interagir = True
             print("dialog")
         else:

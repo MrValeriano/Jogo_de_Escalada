@@ -16,25 +16,25 @@ class Principal(pygame.sprite.Sprite):
             "salto": {
                 "direita": importar_pasta("Grafismos","Personagem_Principal","Jump_Cycle","Direita"),
                 "esquerda": importar_pasta("Grafismos","Personagem_Principal","Jump_Cycle","Esquerda")
-            },
-            "pendurado": {
-                "direita": importar_pasta("Grafismos","Personagem_Principal","Hang_Cycle","Direita"),
-                "esquerda": importar_pasta("Grafismos","Personagem_Principal","Hang_Cycle","Esquerda")
-            }
+            }#,
+            # "pendurado": {
+            #     "direita": importar_pasta("Grafismos","Personagem_Principal","Hang_Cycle","Direita"),
+            #     "esquerda": importar_pasta("Grafismos","Personagem_Principal","Hang_Cycle","Esquerda")
+            # }
         }
-        # estados
+        #* estados
         self.acção = "parado"
         self.lado = "direita"
-        # frames
+        #* frames
         self.indice_frame = 0
         self.frames_invencibilidade = 0
         self.image = self.frames[self.acção][self.lado][self.indice_frame]
-        # referências
+        #* referências
         self.mapa = mapa
         self.rect = self.image.get_frect(center = self.mapa.posição)
         self.hitbox = self.rect.inflate(-16, 0)
         self.rect_anterior = self.hitbox.copy()
-        # movimentos
+        #* movimentos
         self.direção = vector()
         self.velocidade = 400 if not DEBUGGING else 1200
         self.gravidade = 1400
