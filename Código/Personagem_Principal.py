@@ -103,9 +103,9 @@ class Principal(pygame.sprite.Sprite):
 
     def animação(self, dt):
         if not self.no_chão:
-            if self.pendurar:
-                self.acção = "pendurado"
-            else:
+            # if self.pendurar:
+            #     self.acção = "pendurado"
+            # else:
                 self.acção = "salto"
         self.indice_frame += ANIMATION_SPEED * dt
         if int(self.indice_frame) >= len(self.frames[self.acção][self.lado]):
