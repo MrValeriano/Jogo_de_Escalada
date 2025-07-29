@@ -1,4 +1,5 @@
 from Definições import *
+from Personagem_Principal import Principal
 
 class Itens(pygame.sprite.Sprite):
     def __init__(self, tipo, âncora, *groups):
@@ -54,7 +55,7 @@ class Itens(pygame.sprite.Sprite):
             self.image = self.frames[0]
     
     def compra(self):
-        jogador = self.groups()[0].sprites()[-1]
+        jogador = [i for i in self.groups()[0].sprites() if isinstance(i, Principal)][0]
         if self.tipo == "Coração":
             if jogador.inventário["Vidas"] == jogador.max_vidas:
                 self.esgotado = True

@@ -49,6 +49,5 @@ def input_jogador(jogador):
                 jogador.saltar = True
         if teclas[pygame.K_s]:
             jogador.interagir = True
-            print("dialog")
         else:
             jogador.interagir = False

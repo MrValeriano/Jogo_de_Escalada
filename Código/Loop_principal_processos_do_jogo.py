@@ -23,6 +23,10 @@ while True:
     todos_sprites.update(dt)
     #* representações no ecrã
     todos_sprites.draw(jogador)
+    vendedor = [i for i in todos_sprites.sprites() if isinstance(i, NPC)]
+    if len(vendedor) > 0:
+        vendedor = vendedor[0]
+        if vendedor.em_conversa: vendedor.em_conversa.update()
     
     mapa.fade(dt, jogador)
     pygame.display.update()
