@@ -54,7 +54,7 @@
   <object id="8" gid="23" x="44" y="361" width="104" height="131">
    <properties>
     <property name="Ligação" value="Mapa"/>
-    <property name="Posição" value="Início"/>
+    <property name="Posição" value="Loja 1"/>
    </properties>
   </object>
   <object id="10" gid="24" x="192" y="312" width="144" height="48"/>
