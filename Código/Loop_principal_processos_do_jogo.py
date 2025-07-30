@@ -10,7 +10,7 @@ from Personagem_Principal import *
 mapa = Mapa()
 clock.tick()
 jogador = Principal(mapa, todos_sprites)        
-jogador.inventário["Moedas"] = 60
+jogador.inventário["Item"] = "Sapato"
 
 while True:
     #* tick

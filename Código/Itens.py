@@ -84,10 +84,10 @@ class Itens(pygame.sprite.Sprite):
             self.compra()
         self.animação(dt)
 
-EQUIPAVEIS = ["Apicultor", "Calças", "Chicote"]
+EQUIPAVEIS = ["Apicultor", "Calças", "Sapato"]
 Preços = {
     "Apicultor": 15,
     "Calças": 15,
-    "Chicote": 25,
+    "Sapato": 25,
     "Coração": 50
 }

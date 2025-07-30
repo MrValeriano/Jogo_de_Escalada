@@ -44,7 +44,7 @@ class Timer:
 falas = {
     "Calças": ["Calças de armadura!", "Protegem dessas desgraçadas tartarugas!", "Custam 15$!"],
     "Apicultor": ["Um casaco de apicultor!", "Protege dessas malditas vespas!", "Custa 15$!"],
-    "Chicote": ["Não devia estar aqui!", "Custa 25$!"],
+    "Sapato": ["As botas de Hermes!", "Permitem saltar uma segunda\nvez, no ar!", "Custa 25$!"],
     "Coração": ["Levou das boas, hein, comparsa?", "Compre para recuperar uma vida!", "Custa 50$!"],
     "Conversa": [["Ohoh! Boas, compadre!", "Como vai isso?"],
                  ["Aquela maldita bicharada lá fora...", "A fazer a vida negra a quem tenta escalar!",

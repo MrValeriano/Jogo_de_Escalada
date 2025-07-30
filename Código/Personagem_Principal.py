@@ -35,6 +35,7 @@ class Principal(pygame.sprite.Sprite):
         self.velocidade = 400 if not DEBUGGING else 1200
         self.gravidade = 1400
         self.saltar = False
+        self.segundo_salto = True
         self.altura_salto = 800
         self.no_chão = False
         self.bounce_away = False
