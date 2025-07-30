@@ -147,7 +147,7 @@ class Principal(pygame.sprite.Sprite):
             input_jogador(self)
         
         if self.inventário["Vidas"] == 0:
-            print("GAME OVER")
+            pygame.event.post(pygame.event.Event(GAME_OVER))
 
     def update(self, dt):
         if dt >= 1: dt = 0.05

@@ -128,6 +128,8 @@ DEBUGGING = False
 # Activação do package pygame
 pygame.init()
 
+GAME_OVER = pygame.USEREVENT+1
+
 pygame.display.set_caption('Jogo de Escalada')
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 clock = pygame.time.Clock()

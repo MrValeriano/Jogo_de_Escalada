@@ -6,3 +6,8 @@ def event_loop():
         if event.type == pygame.QUIT:
             pygame.quit()
             exit()
+        
+        if event.type == GAME_OVER:
+            print("\n\nGame Over, baby!")
+            pygame.quit()
+            exit()
