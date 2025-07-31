@@ -94,14 +94,14 @@
             "expandedObjectLayers": [
                 5,
                 3,
-                4,
-                7
+                7,
+                4
             ],
             "scale": 1.5,
-            "selectedLayer": 2,
+            "selectedLayer": 5,
             "viewCenter": {
-                "x": 485.33333333333326,
-                "y": 192
+                "x": 485,
+                "y": 191.66666666666663
             }
         },
         "Loja1.tmx#Expositor": {
@@ -122,8 +122,8 @@
         "Loja2.tmx": {
             "expandedObjectLayers": [
                 5,
-                4,
-                7
+                7,
+                4
             ],
             "scale": 1.1587121212121212,
             "selectedLayer": 2,
@@ -150,8 +150,8 @@
         "Loja3.tmx": {
             "expandedObjectLayers": [
                 5,
-                4,
-                7
+                7,
+                4
             ],
             "scale": 1.1587121212121212,
             "selectedLayer": 2,
@@ -177,14 +177,14 @@
         },
         "Mapa.tmx": {
             "expandedObjectLayers": [
-                10,
-                9
+                9,
+                10
             ],
-            "scale": 0.75,
-            "selectedLayer": 4,
+            "scale": 0.5,
+            "selectedLayer": 6,
             "viewCenter": {
-                "x": 524.6666666666665,
-                "y": 66767.33333333333
+                "x": 399,
+                "y": 66907
             }
         },
         "Mapa.tmx#fundo": {
@@ -214,7 +214,7 @@
             "selectedLayer": 2,
             "viewCenter": {
                 "x": 1189,
-                "y": 768
+                "y": 767
             }
         },
         "Tutorial.tmx#fundo": {
@@ -271,7 +271,6 @@
     "map.width": 12,
     "openFiles": [
         "Mapa.tmx",
-        "Tutorial.tmx",
         "Loja1.tmx",
         "Loja2.tmx",
         "Loja3.tmx"
@@ -281,8 +280,8 @@
         "Loja3.tmx",
         "Loja2.tmx",
         "Loja1.tmx",
-        "Tutorial.tmx",
         "Mapa.tmx",
+        "Tutorial.tmx",
         "Loja.tmx",
         "expositor.tsx",
         "portas.tsx",

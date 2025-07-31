@@ -29,7 +29,7 @@ class NPC(pygame.sprite.Sprite):
                 if target == "Greeting":
                     self.em_conversa = DialogTree(target, (SCREEN_WIDTH/2,0), self.groups()[0], self.fim_conversa,
                                       custom_single=self.greetings)
-                    print("here")
+                    # print("here")
                     self.greetings = []
                 else:
                     if target not in self.tópicos_falados:
