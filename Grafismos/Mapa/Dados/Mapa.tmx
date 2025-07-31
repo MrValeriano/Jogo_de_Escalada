@@ -1594,7 +1594,7 @@
   <object id="39" name="100" x="12" y="24" width="1032" height="723"/>
  </objectgroup>
  <objectgroup id="9" name="Entidades">
-  <object id="300" name="Jogador" x="528" y="67128">
+  <object id="300" name="Jogador" x="378.667" y="50714.7">
    <properties>
     <property name="Posição" value="Início"/>
    </properties>

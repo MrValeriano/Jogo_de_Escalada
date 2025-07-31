@@ -10,14 +10,16 @@ from Personagem_Principal import *
 mapa = Mapa()
 clock.tick()
 jogador = Principal(mapa, todos_sprites)        
+hud = HUD(jogador, True)
+
 jogador.inventário["Moedas"] = 60
-jogador.inventário["Item"] = "Calças"
-jogador.inventário["Vidas"] = 1
-hud = HUD(jogador)
+# jogador.inventário["Item"] = "Calças"
+# jogador.inventário["Vidas"] = 1
 
 while True:
     #* tick
     dt = clock.tick()/1000
+    if dt >= 1: dt = 0.05
     screen.fill('black')
     #* eventos
     event_loop()
@@ -27,7 +29,7 @@ while True:
     #* representações no ecrã
     todos_sprites.draw(jogador)
     hud.update()
-    hud.draw()
+    hud.draw(dt)
     vendedor = [i for i in todos_sprites.sprites() if isinstance(i, NPC)]
     if len(vendedor) > 0:
         vendedor = vendedor[0]

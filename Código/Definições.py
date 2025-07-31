@@ -135,5 +135,6 @@ screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 clock = pygame.time.Clock()
 fonts = {
     "dialog": pygame.font.Font(join("Grafismos", "minecraftia", "Minecraftia-Regular.ttf"), 30),
-    "HUD": pygame.font.Font(join("Grafismos", "minecraftia", "Minecraftia-Regular.ttf"), 20)
+    "HUD_moedas": pygame.font.Font(join("Grafismos", "minecraftia", "Minecraftia-Regular.ttf"), 35),
+    "HUD_vidas": pygame.font.Font(join("Grafismos", "minecraftia", "Minecraftia-Regular.ttf"), 35)
 }

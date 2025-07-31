@@ -93,15 +93,15 @@
         "Loja1.tmx": {
             "expandedObjectLayers": [
                 5,
-                3,
+                4,
                 7,
-                4
+                3
             ],
             "scale": 1.5,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 485,
-                "y": 191.66666666666663
+                "x": 497.33333333333326,
+                "y": 192
             }
         },
         "Loja1.tmx#Expositor": {
@@ -122,8 +122,8 @@
         "Loja2.tmx": {
             "expandedObjectLayers": [
                 5,
-                7,
-                4
+                4,
+                7
             ],
             "scale": 1.1587121212121212,
             "selectedLayer": 2,
@@ -150,8 +150,8 @@
         "Loja3.tmx": {
             "expandedObjectLayers": [
                 5,
-                7,
-                4
+                4,
+                7
             ],
             "scale": 1.1587121212121212,
             "selectedLayer": 2,
@@ -183,8 +183,8 @@
             "scale": 0.5,
             "selectedLayer": 6,
             "viewCenter": {
-                "x": 399,
-                "y": 66907
+                "x": 529,
+                "y": 33600
             }
         },
         "Mapa.tmx#fundo": {
