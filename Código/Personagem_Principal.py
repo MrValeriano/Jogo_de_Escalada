@@ -33,6 +33,7 @@ class Principal(pygame.sprite.Sprite):
         #* movimentos
         self.direção = vector()
         self.velocidade = 400 if not DEBUGGING else 1200
+        self.velocidade_calças = int(self.velocidade/3)
         self.gravidade = 1400
         self.saltar = False
         self.segundo_salto = True
@@ -55,8 +56,12 @@ class Principal(pygame.sprite.Sprite):
         if DEBUGGING:
             self.rect.center += self.direção * self.velocidade * dt
         else:
+            if self.inventário["Item"] == "Calças":
+                vel_actual = self.velocidade_calças
+            else:
+                vel_actual = self.velocidade
             #* horizontal
-            self.hitbox.centerx += self.direção.x * self.velocidade * dt
+            self.hitbox.centerx += self.direção.x * vel_actual * dt
             self.colisão_mapa("horizontal")
             #* vertical
             self.direção.y += self.gravidade / 2 * dt
@@ -136,7 +141,11 @@ class Principal(pygame.sprite.Sprite):
         dist = vector()
         dist.x += self.hitbox.centerx - sprite.rect.centerx
         self.direção = dist.normalize()
-        self.hitbox.centerx += self.direção.x * self.velocidade * dt
+        if self.inventário["Item"] == "Calças":
+                vel_actual = self.velocidade_calças
+        else:
+            vel_actual = self.velocidade
+        self.hitbox.centerx += self.direção.x * vel_actual * dt
         self.saltar = True
         self.no_chão = True
         self.altura_salto /= 2
@@ -150,7 +159,6 @@ class Principal(pygame.sprite.Sprite):
             pygame.event.post(pygame.event.Event(GAME_OVER))
 
     def update(self, dt):
-        if dt >= 1: dt = 0.05
         self.rect_anterior = self.hitbox.copy()
         self.invencibilidade.actualizar()
         self.ignorar_input.actualizar()

@@ -13,7 +13,7 @@ jogador = Principal(mapa, todos_sprites)
 hud = HUD(jogador, False)
 
 jogador.inventário["Moedas"] = 60
-jogador.inventário["Item"] = "Apicultor"
+jogador.inventário["Item"] = ""
 # jogador.inventário["Vidas"] = 1
 
 while True:
