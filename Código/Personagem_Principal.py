@@ -36,15 +36,18 @@ class Principal(pygame.sprite.Sprite):
         self.velocidade_calças = int(self.velocidade/3)
         self.gravidade = 1400
         self.saltar = False
-        self.segundo_salto = True
+        self.segundo_salto = False
+        self.segundo_salto_dado = False
         self.altura_salto = 800
         self.no_chão = False
         self.bounce_away = False
         self.interagir = False
-        # timers
+        #* timers
         self.invencibilidade = Timer(3000)
         self.ignorar_input = Timer(500)
-        # inventário
+        
+        self.primeiro_salto = Timer(300)
+        #* inventário
         self.max_vidas = 3
         self.inventário = {
             "Moedas": 0,
@@ -72,18 +75,28 @@ class Principal(pygame.sprite.Sprite):
             #* salto
             if self.saltar:
                 if self.no_chão:
+                    self.primeiro_salto.activar()
                     if self.inventário["Item"] == "Calças":
                         self.direção.y = -(9*self.altura_salto/10)
                     else:
                         self.direção.y = -self.altura_salto
-                self.saltar = False
-                self.altura_salto = 800
+            self.saltar = False
+            self.altura_salto = 800
+            
+            if self.segundo_salto and not self.segundo_salto_dado:
+                if self.inventário["Item"] == "Sapato":
+                    if not self.primeiro_salto.activo:
+                        self.direção.y = -self.altura_salto
+                        self.segundo_salto_dado = True
+            self.segundo_salto = False
+
             self.rect.center = self.hitbox.center
     
     def ver_contacto(self):
         rect_chão = pygame.Rect(self.hitbox.bottomleft, (self.hitbox.width, 2))
         rects_colisão = [sprite.rect for sprite in self.mapa.sprites_colisão]
         self.no_chão = True if rect_chão.collidelist(rects_colisão) >= 0 else False
+        if self.no_chão: self.segundo_salto_dado = False
     
     def colisão_mapa(self, eixo):
         for sprite in self.mapa.sprites_colisão:
@@ -165,6 +178,7 @@ class Principal(pygame.sprite.Sprite):
         self.rect_anterior = self.hitbox.copy()
         self.invencibilidade.actualizar()
         self.ignorar_input.actualizar()
+        self.primeiro_salto.actualizar()
         self.verificar_estado()
         self.movimentação(dt)
         self.ver_contacto()

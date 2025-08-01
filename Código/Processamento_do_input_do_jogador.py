@@ -45,8 +45,10 @@ def input_jogador(jogador):
         else: jogador.acção = "parado"
         jogador.direção.x = input_vector.normalize().x if input_vector else input_vector.x
         if keys[pygame.K_w]:
-                jogador.acção = "salto"
-                jogador.saltar = True
+            jogador.acção = "salto"
+            jogador.saltar = True
+        if teclas[pygame.K_w]:
+            jogador.segundo_salto = True
         if teclas[pygame.K_s]:
             jogador.interagir = True
         else:
