@@ -65,32 +65,32 @@ class HUD(pygame.sprite.Group):
     def obstruct(self):
         #* y = m*x + b
         #* m = (y2 - y1)/(x2 - x1)
-        #* b = y - m*x
         m = SCREEN_HEIGHT/SCREEN_WIDTH
         point_pairs = []
-        # for x in range(0, SCREEN_WIDTH, 96):
-        #     x1 = x
-        #     y1 = 0
-        #     y2 = SCREEN_HEIGHT
-        #     x2 = ((y2 - y1) / m) + x1
-        #     point_pairs.append([(x1, y1), (x2, y2)])
-        #     x2 = ((y2 - y1) / (-m)) + x1
-        #     point_pairs.append([(x1, y1), (x2, y2)])
-        for y in range(0, SCREEN_HEIGHT, 96):
+        stepx = 90
+        for x in range(0, SCREEN_WIDTH, stepx):
+            x1 = x
+            y1 = 0
+            y2 = SCREEN_HEIGHT
+            x2 = ((y2 - y1) / m) + x1
+            point_pairs.append([(x1, y1), (x2, y2)])
+            x2 = ((y2 - y1) / (-m)) + x1
+            point_pairs.append([(x1, y1), (x2, y2)])
+        stepy = int(SCREEN_HEIGHT/(SCREEN_WIDTH/stepx))
+        for y in range(0, SCREEN_HEIGHT, stepx-stepy):
             x1 = 0
             y1 = y
             y2 = SCREEN_HEIGHT
             x2 = (y2 - y1) / m
             point_pairs.append([(x1, y1), (x2, y2)])
             x1 = SCREEN_WIDTH
-            y1 = 0
+            y1 = y
             y2 = SCREEN_HEIGHT
             m = -m
-            x2 = 
+            x2 = ((y2 - y1) / m) + x1
             point_pairs.append([(x1, y1), (x2, y2)])
-        print(point_pairs)
         for pt in point_pairs:
-            pygame.draw.line(self.display_surf,"red",pt[0],pt[1],5)
+            pygame.draw.line(self.display_surf, "#404040", pt[0], pt[1], 20)
     
     def draw(self, dt):
         #* Nº de moedas
