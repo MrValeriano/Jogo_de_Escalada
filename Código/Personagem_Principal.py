@@ -73,7 +73,7 @@ class Principal(pygame.sprite.Sprite):
             if self.saltar:
                 if self.no_chão:
                     if self.inventário["Item"] == "Calças":
-                        self.direção.y = -(6*self.altura_salto/7)
+                        self.direção.y = -(9*self.altura_salto/10)
                     else:
                         self.direção.y = -self.altura_salto
                 self.saltar = False
