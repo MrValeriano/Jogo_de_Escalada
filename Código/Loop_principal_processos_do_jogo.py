@@ -10,10 +10,10 @@ from Personagem_Principal import *
 mapa = Mapa()
 clock.tick()
 jogador = Principal(mapa, todos_sprites)        
-hud = HUD(jogador, True)
+hud = HUD(jogador, False)
 
 jogador.inventário["Moedas"] = 60
-# jogador.inventário["Item"] = "Calças"
+jogador.inventário["Item"] = "Apicultor"
 # jogador.inventário["Vidas"] = 1
 
 while True:

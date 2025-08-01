@@ -62,6 +62,36 @@ class HUD(pygame.sprite.Group):
         alt_surf = self.font_vidas.render(str(self.n_vidas), False, (255, int(self.hue), int(self.hue)))
         return alt_surf
     
+    def obstruct(self):
+        #* y = m*x + b
+        #* m = (y2 - y1)/(x2 - x1)
+        #* b = y - m*x
+        m = SCREEN_HEIGHT/SCREEN_WIDTH
+        point_pairs = []
+        # for x in range(0, SCREEN_WIDTH, 96):
+        #     x1 = x
+        #     y1 = 0
+        #     y2 = SCREEN_HEIGHT
+        #     x2 = ((y2 - y1) / m) + x1
+        #     point_pairs.append([(x1, y1), (x2, y2)])
+        #     x2 = ((y2 - y1) / (-m)) + x1
+        #     point_pairs.append([(x1, y1), (x2, y2)])
+        for y in range(0, SCREEN_HEIGHT, 96):
+            x1 = 0
+            y1 = y
+            y2 = SCREEN_HEIGHT
+            x2 = (y2 - y1) / m
+            point_pairs.append([(x1, y1), (x2, y2)])
+            x1 = SCREEN_WIDTH
+            y1 = 0
+            y2 = SCREEN_HEIGHT
+            m = -m
+            x2 = 
+            point_pairs.append([(x1, y1), (x2, y2)])
+        print(point_pairs)
+        for pt in point_pairs:
+            pygame.draw.line(self.display_surf,"red",pt[0],pt[1],5)
+    
     def draw(self, dt):
         #* Nº de moedas
         self.n_moedas_surf = self.font_moedas.render(str(self.n_moedas), False, "#ffffff")
@@ -73,14 +103,15 @@ class HUD(pygame.sprite.Group):
             self.font_vidas.set_point_size(self.font_moedas.get_point_size())
             self.n_vidas_surf = self.font_vidas.render(str(self.n_vidas), False, "#ffffff")
         self.n_vidas_rect = self.n_vidas_surf.get_frect(midleft = self.vidas_rect.midright + vector(self.padding, 0))
-        
-        # bg_rect = pygame.rect.Rect()
+        #* Drawing
+        if self.item == "Apicultor":
+            self.obstruct()
         self.display_surf.blits([(self.mochila, self.mochila_rect),
                                  (self.vidas_surf, self.vidas_rect),
                                  (self.moeda_surf, self.moeda_rect),
                                  (self.n_moedas_surf, self.n_moedas_rect),
                                  (self.n_vidas_surf, self.n_vidas_rect)])
-        #* Item
+        #* Item + Drawing
         if self.item != "":
             self.item_surf = pygame.image.load(join("Grafismos", "Itens", "Para_UI", f"{self.item}.png")).convert_alpha()
             self.item_rect = self.item_surf.get_frect(center = self.mochila_rect.center)
