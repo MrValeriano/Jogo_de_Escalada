@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "Mapa.tmx",
+    "activeFile": "Tutorial.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -98,10 +98,10 @@
                 3
             ],
             "scale": 1.5,
-            "selectedLayer": 5,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 497.33333333333326,
-                "y": 192
+                "x": 485,
+                "y": 191.66666666666663
             }
         },
         "Loja1.tmx#Expositor": {
@@ -128,8 +128,8 @@
             "scale": 1.1587121212121212,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 528.17260542661,
-                "y": 191.59202353710361
+                "x": 527.7410918600849,
+                "y": 191.1605099705786
             }
         },
         "Loja2.tmx#Expositor": {
@@ -151,13 +151,14 @@
             "expandedObjectLayers": [
                 5,
                 4,
-                7
+                7,
+                3
             ],
             "scale": 1.1587121212121212,
-            "selectedLayer": 2,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 528.17260542661,
-                "y": 191.59202353710361
+                "x": 96.22752533507679,
+                "y": 426.76691729323306
             }
         },
         "Loja3.tmx#Expositor": {
@@ -180,11 +181,11 @@
                 9,
                 10
             ],
-            "scale": 0.5,
+            "scale": 1,
             "selectedLayer": 6,
             "viewCenter": {
-                "x": 529,
-                "y": 33600
+                "x": 528.5,
+                "y": 50714.5
             }
         },
         "Mapa.tmx#fundo": {
@@ -208,13 +209,16 @@
         },
         "Tutorial.tmx": {
             "expandedObjectLayers": [
-                14
+                17,
+                16,
+                14,
+                18
             ],
-            "scale": 0.5,
-            "selectedLayer": 2,
+            "scale": 0.33,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 1189,
-                "y": 767
+                "x": 1683.3333333333333,
+                "y": 916.6666666666667
             }
         },
         "Tutorial.tmx#fundo": {
@@ -229,6 +233,9 @@
         },
         "Tutorial.tmx#plataformas": {
             "dynamicWrapping": true,
+            "scaleInDock": 1
+        },
+        "Tutorial.tmx#portas": {
             "scaleInDock": 1
         },
         "expositor.tsx": {
@@ -273,14 +280,15 @@
         "Mapa.tmx",
         "Loja1.tmx",
         "Loja2.tmx",
-        "Loja3.tmx"
+        "Loja3.tmx",
+        "Tutorial.tmx"
     ],
     "project": "mapa.tiled-project",
     "recentFiles": [
-        "Loja3.tmx",
-        "Loja2.tmx",
-        "Loja1.tmx",
         "Mapa.tmx",
+        "Loja1.tmx",
+        "Loja2.tmx",
+        "Loja3.tmx",
         "Tutorial.tmx",
         "Loja.tmx",
         "expositor.tsx",
@@ -290,6 +298,7 @@
         "paredes.tsx",
         "fundo.tsx"
     ],
+    "resizeMap.removeObjects": false,
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
