@@ -7,7 +7,7 @@ from Inimigos import *
 from Loop_de_gestao_de_eventos import event_loop
 from Personagem_Principal import *
 
-mapa = Mapa()
+mapa = Mapa("Tutorial")
 clock.tick()
 jogador = Principal(mapa, todos_sprites)        
 hud = HUD(jogador, False)
