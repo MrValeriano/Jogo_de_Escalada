@@ -19,7 +19,7 @@ class TodosSprites(pygame.sprite.Group):
             self.offset.x = -(player_center[0] - SCREEN_HEIGHT / 2)
         else:
             self.offset.x = EMPTY_EDGES[0]
-        if "Loja" not in map_name:
+        if "Loja" not in map_name and map_name != "Tutorial":
             self.offset.y = -(player_center[1] - SCREEN_HEIGHT / 2)
         else:
             self.offset.y = player.mapa.altura / 2
@@ -43,7 +43,7 @@ class Porta(Sprite):
         self.target = conn
 
 class Mapa:
-    def __init__(self):
+    def __init__(self, startmap):
         self.name = ""
         self.lista_plataformas = {}
         self.sprites_colisão = pygame.sprite.Group()
@@ -60,7 +60,7 @@ class Mapa:
         self.direção_fade = -1
         self.velocidade_fade = 600
         self.importar_grafismos()
-        self.setup("Mapa", "Início")
+        self.setup(startmap, "Início")
         self.fronteiras = fronteiras
     
     def importar_grafismos(self):
