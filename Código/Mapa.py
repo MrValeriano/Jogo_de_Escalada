@@ -19,10 +19,12 @@ class TodosSprites(pygame.sprite.Group):
             self.offset.x = -(player_center[0] - SCREEN_HEIGHT / 2)
         else:
             self.offset.x = EMPTY_EDGES[0]
-        if "Loja" not in map_name and map_name != "Tutorial":
-            self.offset.y = -(player_center[1] - SCREEN_HEIGHT / 2)
-        else:
+        if "Loja" in map_name:
             self.offset.y = player.mapa.altura / 2
+        elif map_name == "Tutorial":
+            self.offset.y = -EMPTY_EDGES[0]
+        else:
+            self.offset.y = -(player_center[1] - SCREEN_HEIGHT / 2)
         for sprite in self:
             self.display_surf.blit(sprite.image, sprite.rect.topleft + self.offset)
 
