@@ -13,6 +13,9 @@ jogador = Principal(mapa, todos_sprites)
 hud = HUD(jogador, False)
 
 jogador.inventário["Moedas"] = 60
+# if mapa.name == "Tutorial":
+#     jogador.inventário["Moedas"] = 99999999
+#     # make it show as [∞]
 jogador.inventário["Item"] = ""
 # jogador.inventário["Vidas"] = 1
 
