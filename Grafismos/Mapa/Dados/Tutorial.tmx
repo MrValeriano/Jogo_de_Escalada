@@ -52,7 +52,7 @@
   <object id="7" gid="23" x="930" y="745" width="104" height="131">
    <properties>
     <property name="Ligação" value="Mapa"/>
-    <property name="Posição" value="Loja 3"/>
+    <property name="Posição" value="Início"/>
    </properties>
   </object>
  </objectgroup>
