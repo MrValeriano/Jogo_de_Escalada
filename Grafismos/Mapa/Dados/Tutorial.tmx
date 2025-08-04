@@ -58,7 +58,7 @@
  </objectgroup>
  <objectgroup id="15" name="Níveis" visible="0"/>
  <objectgroup id="14" name="Entidades">
-  <object id="1" name="Jogador" x="108" y="720">
+  <object id="1" name="Jogador" x="108" y="696">
    <properties>
     <property name="Posição" value="Início"/>
    </properties>
