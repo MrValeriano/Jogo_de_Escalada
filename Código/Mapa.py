@@ -22,7 +22,7 @@ class TodosSprites(pygame.sprite.Group):
         if "Loja" in map_name:
             self.offset.y = player.mapa.altura / 2
         elif map_name == "Tutorial":
-            self.offset.y = -EMPTY_EDGES[0]
+            self.offset.y = -(player.mapa.altura/2)
         else:
             self.offset.y = -(player_center[1] - SCREEN_HEIGHT / 2)
         for sprite in self:
