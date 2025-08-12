@@ -308,3 +308,6 @@ class Mapa:
                     Itens("Coração", (obj.x, obj.y), todos_sprites)
         for i in range(len(item_pos)):
             Itens(itens_por_loja[self.name][i], item_pos[i], todos_sprites)
+
+if __name__ == "__main__":
+    import Loop_principal_processos_do_jogo
